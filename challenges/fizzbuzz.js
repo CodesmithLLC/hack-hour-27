@@ -18,6 +18,7 @@
 
 function fizzbuzz(num) {
 let result = [];
+let variable;
 for ( let i =1; i <= num; i++){
 	if (i%5 == 0 && i%3 == 0){
 		variable = 'fizzbuzz'

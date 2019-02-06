@@ -26,12 +26,12 @@ function fizzbuzz(num) {
     num.forEach((elem, i) => {
         if(elem === 1)
             num[i] = 'num';
-        if(elem % 3 ===  0 && elem % 5 === 0)
-            num[i] = 'fizzbuzz';
         if(elem % 3 ===  0)
             num[i] = 'fizz';
         if(elem % 5 ===  0)
             num[i] = 'buzz';
+        if(elem % 3 ===  0 && elem % 5 === 0)
+            num[i] = 'fizzbuzz';
     });
     return num;
 }

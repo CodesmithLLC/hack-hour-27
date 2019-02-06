@@ -18,7 +18,7 @@
 
 // function fizzbuzz(num) {
 //   let output = []
-//   for (let i = 1; i < num; i++){
+//   for (let i = 1; i <= num; i++){
 //     if (i % 3 === 0 && i % 5 === 0){
 //       output.push('fizzbuzz')
 //     } else if (i % 3 === 0) {
@@ -34,12 +34,12 @@
 
 function fizzbuzz(num) { // shorthand ver
   let output = []
-  for(let i = 1; i < num; i++){
+  for(let i = 1; i <= num; i++){
     i % 3 === 0 && i % 5 === 0 ? output.push('fizzbuzz') : i % 3 === 0 ? output.push('fizz') : i % 5 === 0 ? output.push('buzz') : output.push(i)
   }
   return output
 }
 
-// console.log(fizzbuzz(30))
+console.log(fizzbuzz(30))
 
 module.exports = fizzbuzz;

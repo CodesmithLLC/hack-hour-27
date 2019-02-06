@@ -19,16 +19,17 @@
 //                     'fizzbuzz',
 //                     16 ]
 
+function divByNum(num) {
+  return (x) => {
+    return x % num === 0;
+  };
+}
+
 function fizzbuzz(num) {
   let output = [];
 
-  function divBy3(num) {
-    return num % 3 === 0;
-  }
-
-  function divBy5(num) {
-    return num % 5 === 0;
-  }
+  divBy3 = divByNum(3);
+  divBy5 = divByNum(5);
 
   for (let i = 1; i <= num; i++) {
     if (divBy3(i) && divBy5(i)) {

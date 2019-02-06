@@ -17,7 +17,33 @@
 //                     16 ]
 
 function fizzbuzz(num) {
+//input number
+//returns an array with numbers 1 through to and including num. 
+//if num % 3, return fizz instead of number
+//if num % 5, return buzz instead of number
+//if num % 3 AND % 5, return fizzbuzz
+  //strategy: define empty array to store results 
+  //loop through beginning index at 1 and ending at num and with following conditions: 
+    //if any number mod 3 and mod 5, return fizzbuzz
+    //else if mod 3, return fizz
+    //else if mod 5, return buzz
+    //else return num 
+  const result = []; 
+  for (let i = 1; i <= num; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      result.push('fizzbuzz'); 
+    } else if (i % 3 === 0) {
+      result.push('fizz'); 
+    } else if (i % 5 === 0) {
+      result.push('buzz'); 
+    } else {
+      result.push(i); 
+    }
+  }
 
+  return result; 
 }
+
+console.log(fizzbuzz(16)); 
 
 module.exports = fizzbuzz;

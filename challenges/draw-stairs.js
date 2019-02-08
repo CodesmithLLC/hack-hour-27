@@ -18,4 +18,3 @@ function drawStairs(n) {
     console.log(`${' '.repeat(n - i)}${'*'.repeat(i)}`);
   }
 }
-drawStairs(10);

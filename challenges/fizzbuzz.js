@@ -17,15 +17,13 @@
 //                     16 ]
 
 function fizzbuzz(num) {
-    // goal: 1 = num, el % 3 === 0: 'fizz', el % 5 ===0: 'buzz',  el % 3 & 5 === 0: 'fizzbuzz'
+    // goal: el % 3 === 0: 'fizz', el % 5 ===0: 'buzz',  el % 3 & 5 === 0: 'fizzbuzz'
     // loop through array
     // check each element if a match, convert
     // if no match, move on
     // return mutated array
 
     num.forEach((elem, i) => {
-        if(elem === 1)
-            num[i] = 'num';
         if(elem % 3 ===  0)
             num[i] = 'fizz';
         if(elem % 5 ===  0)

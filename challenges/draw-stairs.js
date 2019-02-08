@@ -34,13 +34,13 @@ function drawStairs(n, m = n+1) {
 
 // tests
 
-drawStairs(1)
-drawStairs(4)
-drawStairs(40)
-drawStairs(0)
-drawStairs(0.6453)
-drawStairs(-10)
-drawStairs(101)
+// drawStairs(1)
+// drawStairs(4)
+// drawStairs(40)
+// drawStairs(0)
+// drawStairs(0.6453)
+// drawStairs(-10)
+// drawStairs(101)
 
 
 module.exports = drawStairs;

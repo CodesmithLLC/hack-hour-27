@@ -14,8 +14,23 @@
 */
 
 function drawStairs(n) {
+    if (n > 100) return;
+    let output = "";
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (j === n - 1) {
+                output += '*\n';
+            } else if (j > n - i - 2) {
+                output += '*';
+            } else {
+                output += ' ';
+            }
+        }
 
+    }
+    console.log(output);
 }
 
+// drawStairs(6);
 
 module.exports = drawStairs;

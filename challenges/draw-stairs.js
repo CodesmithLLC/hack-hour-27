@@ -18,8 +18,16 @@ function drawStairs(n) {
 // repeat n times for the level of stairs
   if (n >= 1 && n <= 100){
     for (let i = 1; i <= n; i++){
+<<<<<<< HEAD
       // create n-i space + create i star
       let stair = ' '.repeat(n-i) + '*'.repeat(i)
+=======
+      let stair
+      // create n-i space
+      stair = ' '.repeat(n-i)
+      // create i star
+      stair += '*'.repeat(i)
+>>>>>>> ee4209ace7a3a2f76596ebeba1a1b8516f48ad56
       console.log(stair)
     }
   }

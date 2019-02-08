@@ -17,12 +17,10 @@ function drawStairs(n) {
     let stairs = 1;
     let spaces = n - 1;
     while (spaces >= 0) {
-        console.log(" ".repeat(spaces) + ("*").repeat(stairs))
+        console.log(" ".repeat(spaces) + ("*").repeat(stairs));
         stairs+=1;
         spaces-=1;
     }
 }
 
 module.exports = drawStairs;
-
-drawStairs(5)

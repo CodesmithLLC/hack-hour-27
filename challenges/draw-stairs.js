@@ -13,9 +13,17 @@
 
 */
 
-function drawStairs(n) {
-
+function drawStairs(n){
+  let blank = '';
+  let aster='*';
+  for (let i = 0; i < n-1; i++){
+    blank += ' ';
+  }
+  for (let j = 0; j < n; j++){
+    console.log(blank + aster);
+    blank = blank.slice(1);
+    aster += '*';
+  }
 }
-
 
 module.exports = drawStairs;

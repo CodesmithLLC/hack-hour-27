@@ -14,7 +14,18 @@
 */
 
 function drawStairs(n) {
+    let size = n;
+    let stairs = '';
+    while(n != 0){
+        for(let i = 0; i < (size-n); i++)
+          stairs += ' ';
 
+        for(let i = 0; i < n; i++)
+            stairs += '*';
+        stairs += '\n';
+        n--;
+    }
+    return stairs;
 }
 
 

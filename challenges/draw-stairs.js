@@ -31,12 +31,12 @@ function drawStairs(n) {
     console.log(str);
   }
 }
-console.log('Drawing 6');
-drawStairs(6);
-console.log('Drawing 1');
+// console.log('Drawing 6');
+// drawStairs(6);
+// console.log('Drawing 1');
 
-drawStairs(1);
-console.log('Drawing 10');
-drawStairs(10);
+// drawStairs(1);
+// console.log('Drawing 10');
+// drawStairs(10);
 
 module.exports = drawStairs;

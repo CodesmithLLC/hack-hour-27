@@ -27,11 +27,7 @@ function fizzbuzz(num) {
 		if (num%5 === 0){
 			word += 'buzz';
 		}
-		if (word){
-			output.push(word);
-		}else{
-			output.push(num);
-		}
+		output.push(word||num);
 	}
 	return output;
 }

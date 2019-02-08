@@ -14,8 +14,15 @@
 */
 
 function drawStairs(n) {
-
+// use for loop to write space n-i then star* i times
+// repeat n times for the level of stairs
+  if (n >= 1 && n <= 100){
+    for (let i = 1; i <= n; i++){
+      // create n-i space + create i star
+      let stair = ' '.repeat(n-i) + '*'.repeat(i)
+      console.log(stair)
+    }
+  }
 }
-
 
 module.exports = drawStairs;

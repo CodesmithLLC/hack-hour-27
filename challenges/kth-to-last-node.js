@@ -37,7 +37,6 @@ function kthToLastNode(k, head) {
   //Guard clause for invalid k
   if (k > lengthCounter) return "k is beyond the linked list's length";
 
-  //console.log(lengthCounter) //was 5
   let kFromLast = lengthCounter - k;
   pointer = head;
   let i = 0;

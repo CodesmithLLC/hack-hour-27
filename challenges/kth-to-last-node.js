@@ -58,10 +58,5 @@ function kthToLastNode(k, head) {
 
 }
 
-console.log(kthToLastNode(2, a));
-console.log(kthToLastNode(3, a));
-console.log(kthToLastNode(1, a));
-console.log(kthToLastNode(7, a));
-console.log(kthToLastNode(-2, a));
 
 module.exports = { Node: Node, kthToLastNode: kthToLastNode };

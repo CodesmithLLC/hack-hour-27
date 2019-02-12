@@ -31,6 +31,8 @@ function kthToLastNode(k, head) {
     pointer = pointer.next;
   }
 
+  if (k > length) return undefined;
+
   // reset pointer to head
   pointer = head;
   

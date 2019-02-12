@@ -22,7 +22,28 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+  let feeler = head;
+  for (let i = 0; i < k; i++){
+    feeler = feeler.next;
+  }
+  let pointer = head;
+  console.log(pointer);
+  while (feeler !== null){
+    pointer = pointer.next;
+    feeler = feeler.next;
+  }
+  return pointer.value;
+}
 
+function recursiveKth(k, head, feeler = head){
+  if (k>0){
+    return recursiveKth(k-1, head, feeler.next);
+  }else{
+    if (feeler === null){
+      return head.value;
+    }
+    return recursiveKth(k, head.next, feeler.next);
+  }
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

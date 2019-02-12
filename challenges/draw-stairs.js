@@ -14,8 +14,14 @@
 */
 
 function drawStairs(n) {
-
+    let stars = 1
+    let spaces = n-1
+    while(stars <= n ) {
+        console.log(`${' '.repeat(spaces)}${'*'.repeat(stars)}`)
+        stars++
+        spaces--
+    }
 }
 
-
+drawStairs(6)
 module.exports = drawStairs;

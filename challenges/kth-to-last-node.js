@@ -41,12 +41,12 @@ function kthToLastNode(k, head) {
   let index = 1;
   while (index !== (len - k + 1) && curNode2) {
     // console.log('curNode2', curNode2);
-    curNode2 = curNode2.next
+    curNode2 = curNode2.next;
     index += 1;
   }
   // console.log('curnode2.value', curNode2.value);
   // console.log('curNode2: ', curNode2);
-  return curNode2.value;
+  return curNode2.value !== null ? curNode2.value : undefined;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

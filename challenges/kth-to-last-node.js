@@ -22,7 +22,24 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+  //need to determine the length of the linked list, so we loop through counting how many nodes there are
+  //set variables
+  let currentNodeCount = a; //keep track of node count with this variable
+  let length = 1;
+  let currentNode = a; //store the current node in a variable
 
+  while(true) {
+    if(currentNodeCount.next != null) {
+      length++
+      currentNodeCount = currentNodeCount.next //this will take us to the next node, so we can count the length
+    } else {
+      for(let i = 1; i < length - 1; i++) { //as we are looping through with i, we are changing the current node
+        //to the next node
+        currentNode = currentNode.next
+      } //once the condition is no longer met, we want to return the currentNode value, which should be updated
+      return currentNode.value
+    }
+  }
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

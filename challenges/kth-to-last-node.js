@@ -22,7 +22,27 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+//input arguments are k - an integer that represents the position of the node we want to access and head of the list
+//result will be the value of node at the given position
+//strategy: 
+  //check if the length of list === 0; if so, return undefined;
+  //iterate through the list loop. First node is the head, last node is this.next === null. 
+  //create a temp variable to hold current node and increment by one on each loop
+  //on each loop check if this.next points to k. If yes, return value that is stored at this.next.value. 
+  
+
+  let current = this.head; 
+  let nextNode = this.head.next; 
+  if (this.head === null) {
+    return undefined; 
+  }
+  if (nextNode !== k) {
+    nextNode++; 
+  } else {
+    return nextNode.value; 
+  }
 
 }
+
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};

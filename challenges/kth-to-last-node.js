@@ -21,7 +21,7 @@ function Node(val) {
   this.next = null;
 }
 
-function kthToLastNode(k, head) {
+function kthToLastNode_Brute_Force(k, head) {
   if (k < 1) return false;
   const maxLength = size(head);
   const movement = maxLength - k;
@@ -43,7 +43,7 @@ function size(head) {
   return counter;
 }
 
-function kthToLastNodeRefactored(k, head) {
+function kthToLastNode(k, head) {
   if (k < 1) return false;
   let curr = head;
   let counter = 1;
@@ -61,24 +61,24 @@ function kthToLastNodeRefactored(k, head) {
   return kthTrailingNode.value;
 }
 
-const a = new Node("A");
-const b = new Node("B");
-const c = new Node("C");
-const d = new Node("D");
-const e = new Node("E");
+// const a = new Node("A");
+// const b = new Node("B");
+// const c = new Node("C");
+// const d = new Node("D");
+// const e = new Node("E");
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
+// a.next = b;
+// b.next = c;
+// c.next = d;
+// d.next = e;
 
-console.log(kthToLastNode(5, b), "should equal", kthToLastNodeRefactored(5, b));
-console.log(kthToLastNode(3, a), "should equal", kthToLastNodeRefactored(3, a));
-console.log(kthToLastNode(2, a), "should equal", kthToLastNodeRefactored(2, a));
-console.log(
-  kthToLastNode(-1, a),
-  "should equal",
-  kthToLastNodeRefactored(-1, a)
-);
+// console.log(kthToLastNode(5, b), "should equal", kthToLastNodeRefactored(5, b));
+// console.log(kthToLastNode(3, a), "should equal", kthToLastNodeRefactored(3, a));
+// console.log(kthToLastNode(2, a), "should equal", kthToLastNodeRefactored(2, a));
+// console.log(
+//   kthToLastNode(-1, a),
+//   "should equal",
+//   kthToLastNodeRefactored(-1, a)
+// );
 
 module.exports = { Node: Node, kthToLastNode: kthToLastNode };

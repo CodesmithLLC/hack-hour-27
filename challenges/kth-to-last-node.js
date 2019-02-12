@@ -25,7 +25,7 @@ function kthToLastNode(k, head) {
   //move thru LL til you reach the end, to find out the length of LL (length)
   //kth to last will be length - k
   //move through LL again, but only (length - k) times, then return that value
-  if (k <= 0) return undefined;
+  if (k <= 0 || k !== Math.floor(k)) return undefined;
 
   let lengthCounter = 1;
   let pointer = head;

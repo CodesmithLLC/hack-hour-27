@@ -34,7 +34,7 @@ function Node(val) {
 
 function kthToLastNode(k, head) {
   if (k <= 0) {
-    return "Please provide a number larger than 0";
+    return undefined;
   }
 
   // two pointers
@@ -42,7 +42,7 @@ function kthToLastNode(k, head) {
   let lookoutPointer = head;
   for (let i = 1; i < k; i += 1) {
     if (lookoutPointer.next === null) {
-      return 'Boo! You gave me a number longer than the list!';
+      return undefined
     }
     lookoutPointer = lookoutPointer.next;
   }

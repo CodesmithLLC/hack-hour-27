@@ -26,6 +26,7 @@ function kthToLastNode(k, head) {
   //kth to last will be length - k
   //move through LL again, but only (length - k) times, then return that value
   if (k <= 0 || k !== Math.floor(k)) return undefined;
+  if (!head || !head.hasOwnProperty("value") && !head.hasOwnProperty("next")) return undefined;
 
   let lengthCounter = 1;
   let pointer = head;

@@ -23,9 +23,6 @@ function Node(val) {
 
 function kthToLastNode(k, head) {
   let len = 0;
-  if (head){
-    len = 1;
-  }
   // find length of the linked list
   let curNode = head;
   while (curNode.next) {
@@ -38,8 +35,8 @@ function kthToLastNode(k, head) {
     return undefined;
   }
   let curNode2 = head;
-  let index = 1;
-  while (index !== (len - k + 1)) {
+  let index = 0;
+  while (index <= (len - k)) {
     // console.log('curNode2', curNode2);
     curNode2 = curNode2.next;
     index += 1;
@@ -62,5 +59,5 @@ b.next = c;
 c.next = d;
 d.next = e;
 
-console.log('kthToLastNode(4, b): ', kthToLastNode(0, b));
-console.log('kthToLastNode(3, a): ', kthToLastNode(3, a));
+// console.log('kthToLastNode(4, b): ', kthToLastNode(0, b));
+// console.log('kthToLastNode(3, a): ', kthToLastNode(5, a));

@@ -30,7 +30,7 @@ function modemean(array) {
   }
 }
 
-console.log(modemean([1,2,3]))
-console.log(modemean([6,5,3,6]))
-console.log(modemean([1]))
+// console.log(modemean([1,2,3]))
+// console.log(modemean([6,5,3,6]))
+// console.log(modemean([1]))
 module.exports = modemean;

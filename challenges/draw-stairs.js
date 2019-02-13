@@ -54,4 +54,4 @@ function drawStairs(n) {
 }
 console.log('hi \n no')
 console.log(drawStairs(10))
-// module.exports = drawStairs;
+module.exports = drawStairs;

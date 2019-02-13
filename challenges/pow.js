@@ -3,6 +3,12 @@
  */
 
 function pow(base, power) {
+  // base case:
+  if (power === 1) {
+    return base;
+  }
+  // else, go back down the rabbit hole!
+  return base * pow(base, power - 1)
 
 }
 

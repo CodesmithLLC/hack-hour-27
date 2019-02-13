@@ -3,6 +3,9 @@
  */
 
 function pow(base, power) {
+    if (!Number.isInteger(power)) {
+        return base ** power;
+    }
     let sign = Math.sign(power); // if power is positve returns 1, if negative returns negative 1, returns 0 || -0 if zero
     switch(sign) { 
         case 0: return 1;
@@ -15,3 +18,4 @@ function pow(base, power) {
 }
 
 module.exports = pow;
+

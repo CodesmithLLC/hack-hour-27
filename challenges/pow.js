@@ -2,10 +2,10 @@
  * Use recursion!
  */
 
-console.log(pow(2, 3));
-console.log(pow(2, 4));
-console.log(pow(3, 3));
-console.log(pow(4, 4));
+// console.log(pow(2, 3));
+// console.log(pow(2, 4));
+// console.log(pow(3, 3));
+// console.log(pow(4, 4));
 
 function pow(base, power) {
     if(power === 0)

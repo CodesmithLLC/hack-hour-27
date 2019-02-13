@@ -35,7 +35,7 @@ function drawStairs(n) {
 	
 	let result = ""
 	let space = ' '
-	let lineBreak = /\/n/ 
+	let lineBreak = /n/ 
 	let star = '*';
 	let total = n;
 	for (let j = 0; j < n; j++){

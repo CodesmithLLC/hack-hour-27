@@ -3,7 +3,7 @@
  */
 
 function pow(base, power) {
-  if (power === 0) {
+  if (power === 1) {
     return base
   }
   if (power < 0) {
@@ -14,4 +14,5 @@ function pow(base, power) {
   }
 }
 
+console.log(pow(2, 3))
 module.exports = pow;

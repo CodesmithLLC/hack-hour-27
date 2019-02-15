@@ -13,8 +13,30 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
-function reverseInPlace(array) {
+let x4 =  [1, 2, 3, 4];
+let x5 = [1, 2, 3, 4, 5];
+let str = 'Hello world';
 
+function reverseInPlace(array) {
+    let temp;
+    let len = array.length-1;
+    for(let i = 0; i < ((len+1)/2); i++){
+        temp = array[len-i];
+        array[len-i] = array[i];
+        array[i] = temp;
+    }
+    return array;
 }
+
+// Test cases
+// reverseInPlace(x4);
+// console.log(x4);
+// reverseInPlace(x5);
+// console.log(x5);
+
+// string
+// console.log(reverseInPlace(str.split('')))
+// console.log(str);
+
 
 module.exports = reverseInPlace;

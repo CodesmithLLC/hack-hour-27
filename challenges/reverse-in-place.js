@@ -14,10 +14,14 @@
  */
 
 function reverseInPlace(array) {
-  for (let i = 0; i < array.length; i++) {
-    array.push(array.shift());
+  for (let i = 1; i < array.length; i++) {
+    array = array.concat(array.splice(array.length-1-i, 1));
   }
   return array;
 }
 
 module.exports = reverseInPlace;
+
+
+// const arr1 = [1,2,3,4,5];
+// console.log(reverseInPlace(arr1));

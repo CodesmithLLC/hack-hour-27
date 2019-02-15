@@ -20,8 +20,20 @@ function reverseInPlace(array) {
   return array;
 }
 
+function rip(array) {
+// works for array of single chars only
+  for (let i = 0; i < Math.floor(array.length/2); i++){
+    array[i] += array[array.length-1-i];
+    array[array.length-1-i] = array[i][0];
+    array[i] = array[i][1];
+  }
+  return array;
+}
+/*
+tests
+const strTest = ['a','b', 'c','d'];
 const test = [0, 1, 2, 3, 4];
-
-console.log(reverseInPlace(test));
+console.log(rip(strTest));
+*/
 
 module.exports = reverseInPlace;

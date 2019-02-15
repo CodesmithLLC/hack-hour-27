@@ -14,11 +14,12 @@
  */
 
 function reverseInPlace(array) {
-    for(let i = 0, j = array.length-1; i < j; i++, j--){
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array
+  for(let i = 0, j = array.length-1; i < j; i++, j--){
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array
 }
+
 
 console.log(reverseInPlace([1,2,3,4]))
 

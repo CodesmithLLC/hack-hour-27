@@ -8,7 +8,6 @@ function pow(base, power) {
   if (power === 1) return base;
   if (base === 0) return 0;
   
-
   //Recursive Case
   if (power < 0) {
   	base = 1 / base;

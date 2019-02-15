@@ -13,8 +13,23 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
-function reverseInPlace(array) {
-
+function rip(array) {
+  return array.reverse();
 }
+
+function reverseInPlace(array) {
+  for (let i = 1; i < array.length; i += 1) {
+    console.log('i is', i);
+    [array[0], array[i]] = [array[i], array[i - 1]]
+  }
+
+  return array;
+}
+
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [1, 2, 3];
+
+// console.log("using reverse method:", rip(arr1));
+console.log("reverseInPlace test:", reverseInPlace(arr2));
 
 module.exports = reverseInPlace;

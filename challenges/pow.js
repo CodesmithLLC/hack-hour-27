@@ -14,5 +14,4 @@ function pow(base, power) {
   }
 }
 
-console.log(pow(2, 3))
 module.exports = pow;

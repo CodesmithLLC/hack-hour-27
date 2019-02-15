@@ -14,7 +14,16 @@
  */
 
 function reverseInPlace(array) {
-
+  let newArr = array;
+  let mid = array.length / 2;
+  let num = array.length - 1;
+  for (let i = 0; i < mid; i++) {
+    newArr[i] = [newArr[num], newArr[num--] = newArr[i]][0];
+  }
+  return newArr;
 }
+
+let testArr = ['a', 'b', 'c'];
+console.log("Expect ['c', 'b', 'a'] --> ", reverseInPlace(testArr));
 
 module.exports = reverseInPlace;

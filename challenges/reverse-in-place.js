@@ -25,9 +25,19 @@ function reverseInPlace(array) {
 	return array;
 }
 
+function recuReverse(array, count = array.length-1) {
+
+	if(count === -1) return array;
+
+	let temp = array.splice(count,1);
+	array.push(...temp);
+	return recuReverse(array, count-1);
+
+}
+
 // tests
 
-// reverseInPlace([1,2,3,4,5,6,7,8,9])
+recuReverse([1,2,3,4,5,6,7,8,9])
 
 
 

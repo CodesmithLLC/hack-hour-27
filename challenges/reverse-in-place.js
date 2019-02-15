@@ -27,5 +27,5 @@ function reverseInPlace(array) {
 
 module.exports = reverseInPlace;
 
-let arr = ['a', 'b', 'c', 'd', 'e'];
-reverseInPlace(arr);
+// let arr = ['a', 'b', 'c', 'd', 'e'];
+// reverseInPlace(arr);

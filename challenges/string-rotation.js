@@ -15,8 +15,17 @@ function isSubstring(s1, s2) {
   return s1.indexOf(s2) >= 0;
 }
 
+// this only works if there's only one instance of first char in first string
 function stringRotation(s1, s2) {
-
+  let i = s2.indexOf(s1.charAt(0));
+  if (i === -1) return false;
+  let str2 = s2.substring(i).concat(s2.substring(0,i));
+  return isSubstring(s1, str2);
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+
+// console.log(stringRotation("hello", "hello"));
+// console.log(stringRotation("hello", "llohe"));
+// console.log(stringRotation("hello", "he"));
+// console.log(stringRotation("hello", "ollhe"));

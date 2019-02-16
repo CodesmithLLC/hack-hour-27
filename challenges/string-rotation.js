@@ -16,7 +16,20 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
-
+  // anagram: false
+  // terverse the tree and organize everything
+  // if there's extra string left, false
+  // if isSubstring return true or false
+  let temp;
+  if (s1.length !== s2.length) return false
+  if (s1 === s2.split('').reverse().join('')) return false
+  let startIndex = s2.indexOf(s1[0])
+  let firstHalf = s2.substring(startIndex)
+  let secondHalf = s2.substring(0, startIndex)
+  temp = firstHalf + secondHalf
+  return isSubstring(s1, temp)
 }
 
+
+console.log(stringRotation("hello", "llohe"))
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

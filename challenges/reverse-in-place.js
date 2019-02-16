@@ -23,6 +23,16 @@ function reverseInPlace(array) {
   return newArr;
 }
 
+function reverseInPlace(array) {
+  let newArr = array;
+  for (let i = 0; i < array.length / 2; i++) {
+    [newArr[i], newArr[(array.length - 1) - i]] 
+    = [newArr[(array.length - 1) - i], newArr[i]]; 
+  }
+  console.log(newArr);
+  return newArr;
+}
+
 let testArr = ['a', 'b', 'c'];
 console.log("Expect ['c', 'b', 'a'] --> ", reverseInPlace(testArr));
 

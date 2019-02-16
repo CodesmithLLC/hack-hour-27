@@ -16,11 +16,20 @@ function isSubstring(s1, s2) {
 }
 
 // this only works if there's only one instance of first char in first string
+// function stringRotation(s1, s2) {
+//   let i = s2.indexOf(s1.charAt(0));
+//   if (i === -1) return false;
+//   let str2 = s2.substring(i).concat(s2.substring(0,i));
+//   return isSubstring(s1, str2);
+// }
+
 function stringRotation(s1, s2) {
-  let i = s2.indexOf(s1.charAt(0));
-  if (i === -1) return false;
-  let str2 = s2.substring(i).concat(s2.substring(0,i));
-  return isSubstring(s1, str2);
+  if (s1.length !== s2.length) return false;
+  for (let i = 0; i < s2.length; i++) {
+    let str = s2.substring(i).concat(s2.substring(0,i));
+    if (isSubstring(s1, str)) return true;
+  }
+  return false;
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};

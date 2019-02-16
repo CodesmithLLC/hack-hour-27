@@ -16,11 +16,16 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
+  let firstCharS1 = '';
 
-  let first2CharS1 = s1.substring(0,2); // first character of string 1
-	// console.log('TCL: stringRotation -> firstCharS1', first2CharS1)
+  if (s1.length > 1) {
+    firstCharS1 = s1.substring(0,2); // first character of string 1
+  } else {
+    firstCharS1 = s1[0]; // first character of string 1
+  }
+	// console.log('TCL: stringRotation -> firstCharS1', firstCharS1)
 
-  let indexFirstCharS2 = s2.indexOf(first2CharS1);
+  let indexFirstCharS2 = s2.indexOf(firstCharS1);
   // console.log('TCL: stringRotation -> indexFirstCharS2', indexFirstCharS2)
 
   let newS2 = '';
@@ -46,7 +51,9 @@ function stringRotation(s1, s2) {
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
 
-// console.log(stringRotation("hello", 'hello'));
-// console.log(stringRotation("hello", 'llohe'));
-// console.log(stringRotation("hello", 'he'));
-// console.log(stringRotation("hello", 'ollhe'));
+console.log(stringRotation("hello", 'hello'));
+console.log(stringRotation("hello", 'llohe'));
+console.log(stringRotation("hello", 'he'));
+console.log(stringRotation("hello", 'ollhe'));
+console.log(stringRotation("h", 'h'));
+console.log(stringRotation("h", 'o'));

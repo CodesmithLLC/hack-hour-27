@@ -18,7 +18,7 @@ function isSubstring(s1, s2) {
 function stringRotation(s1, s2) {
   let firstCharS1 = '';
 
-  if (s1.length > 1) {
+  if (s1.length > 2) {
     firstCharS1 = s1.substring(0,2); // first character of string 1
   } else {
     firstCharS1 = s1[0]; // first character of string 1
@@ -55,5 +55,6 @@ console.log(stringRotation("hello", 'hello'));
 console.log(stringRotation("hello", 'llohe'));
 console.log(stringRotation("hello", 'he'));
 console.log(stringRotation("hello", 'ollhe'));
-console.log(stringRotation("h", 'h'));
+console.log(stringRotation("he", 'eh'));
 console.log(stringRotation("h", 'o'));
+console.log(stringRotation("he", 'oh'));

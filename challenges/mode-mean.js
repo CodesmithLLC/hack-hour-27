@@ -29,17 +29,7 @@ console.log(`mode equals ${mode}`)
 return false;
 
 }
-// module.exports = modemean;
+module.exports = modemean;
 
 
 
-
-
-let case1 = [98,99,100,103];
-let case2 = [10, 11, 12];
-let case3 = [80, 100, 120];
-
-
-console.log(modemean(case1));
-console.log(modemean(case2));
-console.log(modemean(case3));

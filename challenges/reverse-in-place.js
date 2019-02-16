@@ -13,23 +13,32 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
-function rip(array) {
-  return array.reverse();
-}
+// function rip(array) {
+//   return array.reverse();
+// }
 
 function reverseInPlace(array) {
-  for (let i = 1; i < array.length; i += 1) {
-    console.log('i is', i);
-    [array[0], array[i]] = [array[i], array[i - 1]]
+  // two pointers!
+  let startIndex = 0;
+  let endIndex = array.length - 1;
+  let temp;
+
+  while (endIndex > startIndex) {
+    temp = array[endIndex];
+    array[endIndex] = array[startIndex];
+    array[startIndex] = temp;
+    startIndex += 1;
+    endIndex -= 1;
   }
 
   return array;
+
 }
 
 let arr1 = [1, 2, 3, 4, 5];
 let arr2 = [1, 2, 3];
 
-// console.log("using reverse method:", rip(arr1));
-console.log("reverseInPlace test:", reverseInPlace(arr2));
+console.log("reverseInPlace test -- should be [5,4,3,2,1] - actual is:", reverseInPlace(arr1));
+console.log("reverseInPlace test -- should be [3,2,1] - actual is:", reverseInPlace(arr2));
 
 module.exports = reverseInPlace;

@@ -24,8 +24,26 @@
  *
  */
 
-function balancedParens(input){
-
+function balancedParens(input) {
+  const stack = [];
+  const pairs = {
+    ')': '(',
+    ']': '[',
+    '}': '{',
+  };
+  for (let i = 0; i < input.length; i++) {
+    if (/\(|\)|\[|\]|\{|\}/.test(input[i])) {
+      console.log(input[i])
+      if (input[i] === '(' || input[i] === '[' || input[i] === '{') {
+        stack.push(input[i]);
+      }
+      else if (pairs[input[i]] !== stack.pop()) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
 }
 
 module.exports = balancedParens;
+// console.log(balancedParens('[[()]])'));

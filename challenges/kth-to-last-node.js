@@ -22,28 +22,19 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-<<<<<<< HEAD
-  if (k === 0) return 'please select another k';
-  let values = [head.value];
-  let nowNode = head.next;
-  // loop thru linked list
-  while (nowNode) {
-    // push the current node value to the array of values
-    values.push(nowNode.value);
-    // increment the node
-    nowNode = nowNode.next;
+  let lead = head;
+  let follow = head;
+  // we are setting the lead to be k nodes in front of follow
+  // we are also checking if lead exists everytime, because if it doesn't then we break out of the loop
+  for (let i = 0; i < k && lead; i += 1) {
+    lead = lead.next;
   }
-  // when nowNode becomes null bc there's no next, we've reached the end of the list and the array is complete
-  // access the value of the kth node by subtracting k from the length of the array and returning its value
-  return values[values.length - k];
-}
-
-// console.log(kthToLastNode(3, a));
-
-module.exports = {Node: Node, kthToLastNode: kthToLastNode};
-=======
-
+  // iterate for both pointers through until end of linked list
+  while (lead && follow) {
+    lead = lead.next;
+    follow = follow.next;
+  }
+  return follow.value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
->>>>>>> 96a06fe9d073e5da10961016624df9f513c6a42a

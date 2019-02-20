@@ -24,8 +24,44 @@
  *
  */
 
-function balancedParens(input){
 
+
+function balancedParens(input){ 
+    const arr = [];
+    const data = input.split('');
+
+    let temp;
+    while(data.length){
+        temp = data.shift();
+        if('(' === temp || '[' === temp || '{' === temp){ // open 
+            if(data.length === 0) return false;
+
+            arr.push(temp);
+        }
+        else{ // closed
+            if(arr.length === 0 && data.length > 0) return false;
+
+            arr.shift();
+            arr.shift();
+            // data.shift();
+            // let check = data.shift();
+            // if(temp !== check )
+            //     return false;
+        }
+    }
+    if(arr.length)
+        return false;
+    return true;
 }
+
+console.log(  balancedParens('('));  // false
+console.log(  balancedParens('()')); // true
+console.log( balancedParens(')('));  // false
+console.log( balancedParens('(())'));  // true
+
+console.log("ADVANCED");
+ console.log( balancedParens('[](){}')); // true
+ console.log( balancedParens('[({})]'));   // true
+ console.log( balancedParens('[(]{)}')); // false
 
 module.exports = balancedParens;

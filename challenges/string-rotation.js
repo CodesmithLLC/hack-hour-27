@@ -19,6 +19,7 @@ function stringRotation(s1, s2) {
   if (s1.length !== s2.length) return false;
   let newStr = s2.slice();
   let count = 0;
+
   while (count < s2.length) {
     if (newStr === s1) return isSubstring(s1, newStr);
     newStr = newStr[newStr.length -1] + newStr;
@@ -29,3 +30,5 @@ function stringRotation(s1, s2) {
 }
 
 module.exports = { isSubstring: isSubstring, stringRotation: stringRotation };
+
+console.log(stringRotation("lol", "oll"))

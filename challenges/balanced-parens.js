@@ -25,7 +25,38 @@
  */
 
 function balancedParens(input){
+  const stack = [];
+  const openBr = new Set(['{','<','[','(']);
+  const closeBr = new Set(['}','>',']',')']);
+  const pairs = {
+    '}':'{',
+    '>':'<',
+    ']':'[',
+    ')':'('
+  }
 
+  for (let i = 0; i < input.length; i++){
+    if (openBr.has(input[i])){
+      stack.push(input[i]);
+    } else if (closeBr.has(input[i])){
+      if (stack.length < 1) return false;
+      if (stack[stack.length-1] !== pairs[input[i]]) return false;
+      stack.pop();
+    } 
+  }
+  return (!stack.length);
 }
+
+/*
+console.log('1 false ' + balancedParens('('))  // false
+console.log('2 true ' + balancedParens('()')); // true
+console.log('3 false ' + balancedParens(')('));  // false
+console.log('4 true ' + balancedParens('(())'));  // true
+console.log('5 true ' + balancedParens('[](){}')); // true
+console.log('6 true ' + balancedParens('[({})]'));   // true
+console.log('7 false ' + balancedParens('[(]{)}')); // false
+console.log('8 true ' + balancedParens(' var wow  = { yo: thisIsAwesome() }')); // true
+console.log('9 false ' + balancedParens(' var hubble = function() { telescopes.awesome();')); // false
+*/
 
 module.exports = balancedParens;

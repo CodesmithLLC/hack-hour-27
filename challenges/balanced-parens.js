@@ -25,7 +25,53 @@
  */
 
 function balancedParens(input){
+  // sanitize input to only keep parens
+  let string = input.replace(/[^\(\)\{\}\[\]]/g, '');
 
+  // temp storage to keep track of opening parens
+  let temp = [];
+
+  for (let i = 0; i < string.length; i++) {
+    // found opening parens
+    if (string[i] === '{' || string[i] === '[' || string[i] === '(') {
+      temp.push(string[i]);
+    }
+
+    // found closing parens
+    if (string[i] === '}' || string[i] === ']' || string[i] === ')') {
+      // found closing parens before any open
+      if (temp.length === 0) return false;
+      
+      // check if closing parens is the latest opened
+      switch (string[i]) {
+        case '}':
+          if (temp[temp.length-1] !== '{') return false;
+          temp.pop();
+          break;
+        case ']':
+          if (temp[temp.length-1] !== '[') return false;
+          temp.pop();
+          break;
+        case ')':
+          if (temp[temp.length-1] !== '(') return false;
+          temp.pop();
+          break;
+      }
+    }
+  }
+
+  // any remaining unclosed parens
+  if (temp.length !== 0) return false;
+
+  return true;
 }
 
 module.exports = balancedParens;
+
+
+// console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }')); // -> true
+// console.log(balancedParens(' var hubble = function() { telescopes.awesome();')); // -> false
+
+// console.log(balancedParens('[](){}')); // -> true
+// console.log(balancedParens('[({})]')); // -> true
+// console.log(balancedParens('[(]{)}')); // -> false

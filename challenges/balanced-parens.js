@@ -50,23 +50,23 @@ function balancedParens(input) {
     //	else keep going
     //return true if reach end of input
     //whenever you find a match, remove from input everything starting from the /* left, until right, and then start iteration again from the new beginning
-    if (leftParens === rightParens && leftParens > 0 && rightParens > 0) {
+    if (leftParens > 0 && rightParens > 0 && leftParens === rightParens) {
       substringsArray.push(
-        input.slice(input.indexOf("("), input.indexOf(")") + 1)
+        input.slice(input.indexOf("("), input.lastIndexOf(")") + 1)
       );
       leftParens = 0;
       rightParens = 0;
     }
     if (leftSquare === rightSquare && leftSquare > 0 && rightSquare > 0) {
       substringsArray.push(
-        input.slice(input.indexOf("["), input.indexOf("]") + 1)
+        input.slice(input.indexOf("["), input.lastIndexOf("]") + 1)
       );
       leftSquare = 0;
       rightSquare = 0;
     }
     if (leftCurly === rightCurly && leftCurly > 0 && rightCurly > 0) {
       substringsArray.push(
-        input.slice(input.indexOf("{"), input.indexOf("}") + 1)
+        input.slice(input.indexOf("{"), input.lastIndexOf("}") + 1)
       );
       leftCurly = 0;
       rightCurly = 0;
@@ -84,6 +84,7 @@ function balancedParens(input) {
     return false;
 
   //console.log("substringsArray", substringsArray);
+  if (substringsArray[0] === "") return false;
   //for each element in substringsArray, iterate thru substring starting from 2nd char until 2nd before last character
   let output = substringsArray.map(sub => {
     let counts = {

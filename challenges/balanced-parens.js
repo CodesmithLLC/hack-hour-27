@@ -24,63 +24,56 @@
  *
  */
 
-//  function findBalance(input, closingTag) {
-//    while (input[index] !== closingTag) {
-
-//    }
-//  }
-
-function balancedParens(input){
+ function findBalance(input, closingTag) {
   let openParensCount = 0; // keep track of open parens found.
   let openBracketCount = 0;
   let openSquigCount = 0;
+  while (input[index] !== closingTag && input[index]) {
+    if (input[index] === '(') {
+      // found open parens
+      if (findBalance(input, ')') === false) return false;
+    }
+
+    if (input[index] === '{') {
+      // found open parens
+      if (findBalance(input, '}') === false) return false;
+    }
+
+    if (input[index] === '[') {
+      // found open parens
+      if (findBalance(input, '}') === false) return false;
+    }
+
+    index++;
+
+  }
+ }
+
+function balancedParens(input){
+
   index = 0;
 
-  for (let i = 0; i < input.length; i += 1) {
-    if (input[i] === '(') {
+  while (input[index]) {
+    if (input[index] === '(') {
       // found open parens
-      openParensCount ++;
+      if (findBalance(input, ')') === false) return false;
     }
 
-    if (input[i] === ')') {
-      //found close parens. If there are no open parens found then return false. Not balanced.
-      if (openParensCount === 0)  return false;
-
-      // subtract 1 from open count
-      openParensCount--;
-    }
-
-    if (input[i] === '{') {
+    if (input[index] === '{') {
       // found open parens
-      openSquigCount ++;
+      if (findBalance(input, '}') === false) return false;
     }
 
-    if (input[i] === '}') {
-      //found close . If there are no open parens found then return false. Not balanced.
-      if (openSquigCount === 0)  return false;
-
-      // subtract 1 from open count
-      openSquigCount--;
-    }
-
-
-    if (input[i] === '[') {
+    if (input[index] === '[') {
       // found open parens
-      openBracketCount ++;
+      if (findBalance(input, '}') === false) return false;
     }
 
-    if (input[i] === ']') {
-      //found close . If there are no open found then return false. Not balanced.
-      if (openBracketCount === 0)  return false;
-
-      // subtract 1 from open count
-      openBracketCount--;
-    }
-
+    index++;
 
   }
 
-  return (openParensCount === 0 && openBracketCount === 0 && openSquigCount === 0);
+  return true;
 }
 
 module.exports = balancedParens;

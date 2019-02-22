@@ -9,7 +9,20 @@
  */
 
 function subsetSum(array, target) {
+// create a set and add numbers to the set with for loop
+  let combos = [[]]
 
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0, len = combos.length; j < len; j++){
+      let temp = combos[j].concat(array[i])
+      combos.push(temp)
+      let s = temp.reduce(function(acc, cur) { return acc + cur; });
+      if (s === target) { return "true"; }
+    }
+  }
+  return false
 }
+
+console.log(subsetSum([3, 34, 4, 12, 5, 12], 32))
 
 module.exports = subsetSum;

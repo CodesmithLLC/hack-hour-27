@@ -54,14 +54,14 @@ function balancedParens(input){
     return true;
 }
 
-console.log(  balancedParens('('));  // false
-console.log(  balancedParens('()')); // true
-console.log( balancedParens(')('));  // false
-console.log( balancedParens('(())'));  // true
+// console.log(  balancedParens('('));  // false
+// console.log(  balancedParens('()')); // true
+// console.log( balancedParens(')('));  // false
+// console.log( balancedParens('(())'));  // true
 
-console.log("ADVANCED");
- console.log( balancedParens('[](){}')); // true
- console.log( balancedParens('[({})]'));   // true
- console.log( balancedParens('[(]{)}')); // false
+// console.log("ADVANCED");
+//  console.log( balancedParens('[](){}')); // true
+//  console.log( balancedParens('[({})]'));   // true
+//  console.log( balancedParens('[(]{)}')); // false
 
 module.exports = balancedParens;

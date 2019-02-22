@@ -9,7 +9,13 @@
  */
 
 function subsetSum(array, target) {
-
+ const numbers = {};
+ for(let i = 0; i < array.length; i += 1) {
+   const complement = target - array[i];
+   if(numbers[complement] === true) return true
+   numbers[array[i]] = true
+ }
+ return false
 }
-
+console.log(subsetSum([3, 7, 4, 2], 5))
 module.exports = subsetSum;

@@ -47,14 +47,16 @@ function balancedParens(input){
   }
 
   let reverseInput = input.split('').reverse('').join('')
-  
+
   for (key in brackets) {
-    let openIndex = input.findIndex(key)
-    let closeIndex = reverseInput.findInex(brackets[key])
+    let openIndex = input.indexOf(key)
+    let closeIndex = reverseInput.indexOf(brackets[key])
     balancedParens(input.substring(openIndex, closeIndex))
   }
 
   return result
 }
+
+console.log(balancedParens('()'))
 
 module.exports = balancedParens;

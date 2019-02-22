@@ -13,7 +13,6 @@ function subsetSum(array, target) {
     let sum = 0;
 
     for(let i = 0; i < data.length; i++){
-        // console.log('loop');
         if(data[i] === target) return true;
 
         // if(data[i] > target) continue;

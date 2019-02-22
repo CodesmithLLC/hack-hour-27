@@ -33,14 +33,14 @@ function balancedParens(input) {
     }
 
     var openBrackets = ['(', '{', '['];
-    var closedBrackets = [']', '}', ')'];
+    var closeBrackets = [']', '}', ')'];
     var storage = [];
 
     for (var i of input) {
         if (openBrackets.includes(i)) {
             storage.push(i);
         }
-        if (closedBrackets.includes(i)) {
+        if (closeBrackets.includes(i)) {
             if (i !== opposites[storage.pop()]) {
                 return false;
             }

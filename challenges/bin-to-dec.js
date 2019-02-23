@@ -14,7 +14,23 @@
  */
 
 function binToDec(binary) {
-
+  let output = 0;
+  const arr = binary.split('');
+  for (let i = 0; i <arr.length; i++){
+    let index = (arr.length - 1 - i)
+    output += Number(arr[index])*(2**(i));
+  }
+  return output;
 }
+
+
+/*
+console.log(binToDec('0') + '-> 0');
+console.log(binToDec('11') + '-> 3');
+console.log(binToDec('100') + '-> 4');
+console.log(binToDec('101') + '-> 5');
+console.log(binToDec('0101') + '-> 5')
+*/
+
 
 module.exports = binToDec;

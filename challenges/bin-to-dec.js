@@ -15,7 +15,7 @@
 
 function binToDec(binary) {
   //The decimal number is equal to the sum of binary digits (dn) times their power of 2 (2n):
-  //decimal = d0×20 + d1×21 + d2×22 + ...
+  //decimal = d0×2^0 + d1×2^1 + d2×2^2 + ...
     
   //strat: stringify the number and reverse it
   // reverse iterate thru string
@@ -23,18 +23,11 @@ function binToDec(binary) {
   // store this result in a sum
   //return sum
     let prepped = binary.split('').reverse().join('')
-    //console.log(typeof prepped)
     let result = 0;
     for (let i = 0; i < prepped.length; i++){
       result += Number(prepped[i]) * Math.pow(2, i)
     }
     return result;
   }
-
-console.log(binToDec('0'))
-console.log(binToDec('11'))
-console.log(binToDec('100'))
-console.log(binToDec('101'))
-console.log(binToDec('0101'))
 
 module.exports = binToDec;

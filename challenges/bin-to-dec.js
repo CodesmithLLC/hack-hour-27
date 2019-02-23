@@ -14,7 +14,14 @@
  */
 
 function binToDec(binary) {
-
+  let result = 0;
+  for (let i = 0; i < binary.length; i++) {
+    result += binary[i] * Math.pow(2, binary.length - i);
+  }
+  return result / 2;
 }
 
 module.exports = binToDec;
+// console.log(parseInt(binary, 2));
+
+// binToDec('10001');

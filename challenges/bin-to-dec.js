@@ -20,6 +20,7 @@ function binToDec(binary) {
 module.exports = binToDec;
 
 
+
 // console.log(binToDec('11')); // -> 3
 // console.log(binToDec('100')); // -> 4
 // console.log(binToDec('101')); // -> 5

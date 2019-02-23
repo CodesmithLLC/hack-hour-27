@@ -9,13 +9,10 @@
  */
 
 function subsetSum(array, target) {
- const numbers = {};
- for(let i = 0; i < array.length; i += 1) {
-   const complement = target - array[i];
-   if(numbers[complement] === true) return true
-   numbers[array[i]] = true
- }
- return false
+  if(!target) return true;
+  if(!array.length) return false;
+
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
-console.log(subsetSum([3, 7, 4, 2], 5))
+console.log(subsetSum([3, 34, 4, 12, 5, 12], 32))
 module.exports = subsetSum;

@@ -13,15 +13,30 @@
  * Write a function that converts a decimal number to binary (then maybe hexadecimal)
  */
 
+// function binToDec(binary) {
+//   return parseInt(binary, 2);
+// }
+
 function binToDec(binary) {
-  return parseInt(binary, 2);
+  let dec = 0;
+  
+  if (binary[0] === '0') {
+    binary = binary.slice(1);
+  }
+
+  for (let i = binary.length - 1; i >= 0; i--) {
+    dec += binary[i] * Math.pow(2, binary.length - 1 - i);
+  }
+
+  return dec;
 }
+
 
 module.exports = binToDec;
 
 
 
-// console.log(binToDec('11')); // -> 3
-// console.log(binToDec('100')); // -> 4
-// console.log(binToDec('101')); // -> 5
-// console.log(binToDec('0101')); // -> 5
+console.log(binToDec('11')); // -> 3
+console.log(binToDec('100')); // -> 4
+console.log(binToDec('101')); // -> 5
+console.log(binToDec('0101')); // -> 5

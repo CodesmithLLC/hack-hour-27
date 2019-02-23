@@ -23,6 +23,27 @@ function binToDec(binary) {
   return output;
 }
 
+function decToBin(decimal){
+  let binOut = '';
+  let highestDigit = 0;
+  let result = Infinity;
+  while ( result > 1){
+    result = decimal/(2**highestDigit);
+    highestDigit++;
+  }
+  highestDigit-=1;
+  let remaining = decimal;
+  for (let i=highestDigit-1; i>=0; i--){
+    if (remaining > 2**i){
+      binOut += 1;
+      remaining -= 2**i;
+    }else{
+      binOut += 0;
+    }
+  }
+  return binOut;
+}
+
 
 /*
 console.log(binToDec('0') + '-> 0');

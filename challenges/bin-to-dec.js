@@ -30,4 +30,32 @@ function binToDec(binary) {
     return result;
   }
 
+function decToBin(decimal) {
+  //strat: find highest 2^i that is less than decimal
+  let highestPower = 0;
+  while (Math.pow(2, highestPower) <= decimal){
+    highestPower += 1;
+  }
+  //console.log('highestPower', highestPower);
+  let result = '';
+  //result will be i digits long
+  //check all 2^i-1
+  //if 2 ^ i-1 < decimal, concat a '1' and do decimal - 2^(i-1)
+  for (i = highestPower - 1; i >= 0; i--){
+    if ( Math.pow(2, i) <= decimal ){
+      result += '1';
+      decimal -= Math.pow(2, i);
+    } else {
+      result += '0';
+    }
+  }
+  return result;
+}
+  
+  console.log('bin 0', decToBin(0)) // 0
+  console.log('bin 3', decToBin(3)) // 11
+  console.log('bin 4', decToBin(4)) // 100
+  console.log('bin 5', decToBin(5)) // 101
+  console.log('bin 57', decToBin(57)) //111001
+
 module.exports = binToDec;

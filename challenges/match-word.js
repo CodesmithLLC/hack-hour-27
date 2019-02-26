@@ -12,6 +12,36 @@
 
 function matchWord(str) {
 
+    //iterate over string and begin to collect words
+    //use a stack 
+    let wordPairs = {}
+    let currentWord = '';
+    let stack = [];
+    for (let i = 0; i < str.length; i++) {
+        // if the next index is not a letter and the current is a letter add to current word and preform stack operations
+        if (!str[i+1].match(/[a-zA-Z]+/g) && str[i].match((/[a-zA-Z]+/g))) {
+            currentWord += str[i];
+            if (wordPairs[currentWord]) {
+                if (stack[stack.length-1] === wordPairs[currentWord]) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else {
+                let reversedWord = currentWord.split("").reverse().join("");
+                wordPairs[reversedWord] = currentWord; 
+                stack.push(currentWord);
+            }
+            
+        } else if (str[i]=== (/[a-zA-Z]+/g)) {
+            currentWord += str[i];
+        }
+        console.log(stack);
+    }
+    return stack.length === 0;
 }
 
+
+console.log(matchWord('__END_DNE-----')); 
+console.log(matchWord('__ENDDNE__')); 
 module.exports = matchWord;

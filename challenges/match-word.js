@@ -20,13 +20,14 @@ function matchWord(str) {
 
   if (strArr.length <= 1) return false
   let wordStack = [strArr[0]]
+  let position = 0
   for (let i = 1; i < strArr.length; i++){
-
-    if (wordStack[i-1].split('').reverse().join('') === strArr[i]){
+    if (wordStack[position].split('').reverse().join('') === strArr[i]){
       wordStack.pop()
-      
+      if (position != 0) position--
     } else {
       wordStack.push(strArr[i])
+      position++
     }
   }
   
@@ -34,5 +35,7 @@ function matchWord(str) {
   else return false
 
 }
+
+console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'))
 
 module.exports = matchWord;

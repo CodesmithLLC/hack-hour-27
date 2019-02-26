@@ -11,7 +11,31 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  let words = str.toLowerCase().match(/[a-z]+/g);
+
+  // catch empty string input
+  if (!words) return true; 
+
+  let temp = [];
+
+  for (let i = 0; i < words.length; i++) {
+
+    if (temp.length && words[i] === temp[temp.length-1].split('').reverse().join('')) {
+      temp.pop();
+    } else {
+      temp.push(words[i]);
+    }
+  }
+
+  return !temp.length;
 
 }
 
 module.exports = matchWord;
+
+console.log(matchWord('__END_DNE-----')); // -> true
+console.log(matchWord('__ENDDNE__')); // -> false       (not separated by a space)
+console.log(matchWord('IF()()fi[]')); // -> true        (should be case-insensitive)
+console.log(matchWord('for__if__rof__fi')); // -> false     not properly closed. like ( [) ] 
+console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw')); // -> true
+console.log(matchWord('')); // -> true

@@ -11,6 +11,7 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  if (!str) return true;
   const stack = [];
   const cleanArr = str.toLowerCase().match(/([A-Z]|[a-z])+/g);
   for (let i = 0; i < cleanArr.length; i++){
@@ -36,6 +37,7 @@ console.log(matchWord('__ENDDNE__') + ' -> false');
 console.log(matchWord('IF()()fi[]') + ' -> true');
 console.log(matchWord('for__if__rof__fi') + ' -> false')
 console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw') + ' -> true')
+console.log(matchWord('') + ' -> true')
 */
 
 module.exports = matchWord;

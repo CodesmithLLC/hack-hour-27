@@ -11,7 +11,31 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+  const stack = [];
+  const cleanArr = str.toLowerCase().match(/([A-Z]|[a-z])+/g);
+  for (let i = 0; i < cleanArr.length; i++){
+    const topStack = stack[stack.length-1];
+    const currentStr = cleanArr[i];
+    const reverseStr = cleanArr[i].split('').reverse().join('').toLowerCase();
+    if (topStack === reverseStr){
+      stack.pop();
+    } else{
+      stack.push(currentStr);
+    }
+  }
+  if (stack.length){
+    return false;
+  } else {
+    return true;
+  }
 }
+
+/*
+console.log(matchWord('__END_DNE-----') + ' -> true');
+console.log(matchWord('__ENDDNE__') + ' -> false');
+console.log(matchWord('IF()()fi[]') + ' -> true');
+console.log(matchWord('for__if__rof__fi') + ' -> false')
+console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw') + ' -> true')
+*/
 
 module.exports = matchWord;

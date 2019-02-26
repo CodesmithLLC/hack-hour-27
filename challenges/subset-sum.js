@@ -22,6 +22,10 @@
  }
 
 function subsetSum(array, target) {
+  if (array.length === 1) {
+    if (array[0] === target) return true;
+    return false;
+  }
   // sort array from big-> small and remove any numbers greater than target.
   let arr = array.sort((a,b) => b-a);
 
@@ -39,5 +43,7 @@ console.log('5', subsetSum([3, 7, 4, 2], 5));
 console.log('32', subsetSum([3, 34, 4, 12, 5, 12], 32));
 console.log('13', subsetSum([8, 2, 4, 12], 13));
 console.log('6', subsetSum([8, -2, 1, -3], 6));
+console.log('6', subsetSum([6], 6));
+console.log('6', subsetSum([5], 6));
 // console.log('', subsetSum());
 // console.log('', subsetSum());

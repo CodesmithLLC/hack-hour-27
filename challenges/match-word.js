@@ -11,7 +11,13 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+  let i = 0;
+  while (str[i] !== /a-zA-Z/g) {
+    i++;
+  }
+  return str;
 }
+
+console.log(matchWord('hello olleh'));
 
 module.exports = matchWord;

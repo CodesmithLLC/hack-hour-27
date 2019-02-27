@@ -15,8 +15,8 @@ function highestProduct(array) {
     return array[0] * array[1] * array[2];
 
   // 2 most negative is greater than 2 most positive
-  } else if (array[len - 1] * array[len - 2] > array[0] * array[1]) {
-    return array[array.length-1] * array[array.length-2] * array[0];
+  } else if (array[len - 1] * array[len - 2] > array[0] * array[1] || array[len - 1] * array[len - 2] > array[1] * array[2] ) {
+    return array[len - 1] * array[len - 2] * array[0];
   
   // otherwise 3 most positives
   } else {
@@ -29,4 +29,4 @@ module.exports = highestProduct;
 
 
 
-// console.log(highestProduct([-5, -4, 1, 2, 3, 4]));
+console.log(highestProduct([-5, -4, 1, 2, 3, 4]));

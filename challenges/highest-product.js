@@ -4,6 +4,11 @@
 
 function highestProduct(array) {
 
+  const sortedArray = array.sort(function (a, b) { return b - a });
+
+
+  return sortedArray[0] * sortedArray[1] * sortedArray[2];
+
 }
 
 

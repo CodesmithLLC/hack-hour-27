@@ -3,15 +3,15 @@
  */
 
 function highestProduct(array) {
+  if (!Array.isArray(array) || array.length < 3) return 0;
   array.sort((a,b) => a - b);
-  //console.log('all negatives?', array.every(x => x < 0))
+
   //case for all negatives array: grab 3 smallest values
   if (array.every(x => x < 0)){
     return array.slice(-3).reduce( (acc, val) => acc * val);
   }
 
   //case for non-negative array
-  if (!Array.isArray(array) || array.length < 3) return 0; 
   let candidates = [];
   candidates.push(Math.abs(array[0]));
   candidates.push(Math.abs(array[1]));

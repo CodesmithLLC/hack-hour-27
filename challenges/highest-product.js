@@ -18,6 +18,7 @@
 // }
 
 function highestProduct(array) {
+  if (!Array.isArray) return 0;
   if (array.length < 3) return 0;
 
   array.sort((a, b) => a - b);
@@ -29,11 +30,15 @@ function highestProduct(array) {
       newArr.push(array[i] * -1);
       i += 1;
     } else {
+      if (i === 1) {
+        newArr.push(array[i - 1]);
+      }
       newArr.push(array[i]);
     }
   }
 
   newArr.sort((a, b) => a - b);
+  console.log(newArr);
 
   const len = newArr.length;
   return newArr[len - 1] * newArr[len - 2] * newArr[len - 3];
@@ -52,5 +57,7 @@ function highestProduct(array) {
   //   array[array.length - 1] * array[array.length - 2] * array[array.length - 3]
   // );
 }
+
+console.log(highestProduct([1, 2, 3]));
 
 module.exports = highestProduct;

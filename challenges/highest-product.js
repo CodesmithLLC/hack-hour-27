@@ -3,18 +3,22 @@
  */
 
 function highestProduct(array) {
+  // catch if not array or array length less than 3
   if (!Array.isArray(array)) return 0;
   if (array.length < 3) return 0;
 
   array.sort((a, b) => b - a );
-
   let len = array.length;
 
   // all numbers negative
   if (array[0] < 0) {
-    return array[len - 1] * array[len - 2] * array[len - 3];''
+    return array[0] * array[1] * array[2];
+
+  // 2 most negative is greater than 2 most positive
   } else if (array[len - 1] * array[len - 2] > array[0] * array[1]) {
     return array[array.length-1] * array[array.length-2] * array[0];
+  
+  // otherwise 3 most positives
   } else {
     return array[0] * array[1] * array[2];
   }

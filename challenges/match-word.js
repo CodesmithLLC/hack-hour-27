@@ -11,7 +11,26 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+  if (str.length === 0) {
+    return true;
+  }
+  const charsRegEx = new RegExp(/[a-z]+/gi);
+  let foundStrs = str.match(charsRegEx);
 
+  if (foundStrs.length === 0) {
+    return true;
+  }
+
+  const matchStack = [foundStrs[0]];
+
+  for (let i = 1; i < foundStrs.length; i += 1) {
+    if (foundStrs[i].toLowerCase() === matchStack[matchStack.length - 1].split('').reverse().join('').toLowerCase()) {
+      matchStack.pop();
+    } else {
+      matchStack.push(foundStrs[i].toLowerCase());
+    }
+  }
+  return matchStack.length === 0;
 }
-
+console.log(matchWord(''));
 module.exports = matchWord;

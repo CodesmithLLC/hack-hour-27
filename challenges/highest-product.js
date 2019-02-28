@@ -36,9 +36,9 @@ function highestProduct(array) {
     small2 = Math.min(small2, Math.max(small1, num));
     small1 = Math.min(small1, num);
   })
-  let candidates = [small1, small2, big3, big2, big1]
+  let candidates = [small1, small2, big1, big2, big3]
   //console.log(candidates)
-  return Math.max( small1 * small2 * big1, big1 * big2 * big3)
+  return Math.max( small1 * small2 * big3, big1 * big2 * big3)
 }
 
 // console.log(highestProduct([-9000, -200, -8000, -5000, -32, -1, -5, -6, -8, -10, -11, -5, -4000])) //all negs

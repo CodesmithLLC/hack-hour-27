@@ -11,6 +11,14 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  if (!l1) {
+    return l2;
+  }
+  if (!l2) {
+    return l1;
+  }
+
+
   let p1 = l1.head;
   let p2 = l2.head;
   let cache;

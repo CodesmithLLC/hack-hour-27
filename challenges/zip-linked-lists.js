@@ -15,27 +15,26 @@ function Node(val) {
 
 
 // mutates original
-function zip(l1, l2) {
+function mZip(l1, l2) {
   if (!l2) return ;
   const l1nx = l1.next;
   const l2nx = l2.next;
   l1.next = l2;
-  zip(l2, l1nx);
+  mZip(l2, l1nx);
 };
 
 // returns new object
-function ndZip(l1, l2) {
+function zip(l1, l2) {
   if (!l2) return l1;
+  if (!l1) return l2;
   const l1nx = l1.next;
   const output = new Node(l1.value)
-  output.next = ndZip(l2,l1nx);
+  output.next = zip(l2,l1nx);
   return output;
 };
 
 
 
-/* test
-console.log(JSON.stringify(ndZip(ll1,ll2)));
-*/
+console.log(JSON.stringify(zip(ll1,ll2)));
 
 module.exports = {Node: Node, zip: zip};

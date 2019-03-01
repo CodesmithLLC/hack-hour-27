@@ -13,7 +13,7 @@ function Node(val) {
 function zip(l1, l2) {
   // cases where either input is null
   if (!l1 && l2) return l1 = l2;
-  if (l1 && !l2) return;
+  if (l1 && !l2) return l1;
 
   let p1 = l1;
   let p2 = l2;
@@ -31,6 +31,7 @@ function zip(l1, l2) {
     p2 = n2;
   }
 
+  return l1;
 };
 
 module.exports = {Node: Node, zip: zip};

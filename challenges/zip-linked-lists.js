@@ -32,7 +32,7 @@ function zip(l1, l2) {
     p2 = cache;
   }
 
-  return l1;
+  return l1.head;
 };
 
 

@@ -31,6 +31,8 @@ function zip(l1, l2) {
     p1 = p2.next;
     p2 = cache;
   }
+
+  return l1;
 };
 
 

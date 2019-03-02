@@ -11,6 +11,21 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  let l3 = new Node
+  // let l1next
+  // let l2next
+
+  if (l1.value) {
+    l3.value = l1.value
+  }
+  if (l2.value) {
+    l3.next = l2
+  }
+  if (l1.next) {
+    l3.next.next = l1.next
+  }
+  
 };
 
+// console.log(zip())
 module.exports = {Node: Node, zip: zip};

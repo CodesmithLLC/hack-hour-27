@@ -6,14 +6,19 @@ function highestProduct(array) {
   if (!Array.isArray(array)) return 0;
   if (array.length < 3) return 0;
 
-  const negArr = array.filter(el => el < 0);
+  // get all the negative numbers and sort them a - b
+  const negArr = array.filter(el => el < 0).sort((a, b) => a - b);
+
+  // sort the original array b-a
+  const arr = array.sort((a, b) => b - a);
+
   if (negArr.length < array.length && negArr.length > 2) {
-    negArr.sort((a, b) => a - b);
-    array.push(negArr.shift() * -1);
-    array.push(negArr.shift() * -1);
+    if (Math.abs(negArr[0]) >= arr[2] && Math.abs(negArr[1]) >= arr[2]) {
+      array.push(Math.abs(negArr.shift()));
+      array.push(Math.abs(negArr.shift()));
+    }
   }
 
-  const arr = array.sort((a, b) => b - a);
   // console.log('\nTCL: highestProduct -> arr', arr);
   // console.log('TCL: highestProduct -> negArr', negArr, '\n');
 
@@ -30,11 +35,15 @@ module.exports = highestProduct;
 
 console.log(
   'TCL: highestProduct([-2,-3,-4,-5]);',
-  highestProduct([-2, -3, -4, -5])
+  highestProduct([2, 3, -4, -5])
 );
 console.log(
-  'TCL: highestProduct([2,3,3,4,5,-4,-5]);',
+  'TCL: highestProduct([2, 3, 3, 4, 5, -4, -5]);',
   highestProduct([2, 3, 3, 4, 5, -4, -5])
+);
+console.log(
+  'TCL: highestProduct([2, 3, 3, 4, 5, 9, 7, -4, -5, -6, -8]);',
+  highestProduct([2, 3, 3, 4, 5, 9, 7, -4, -5, -6, -8])
 );
 
 // console.log('TCL: highestProduct([1, 2]);', highestProduct([1, 2]));

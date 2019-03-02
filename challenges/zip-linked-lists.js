@@ -11,6 +11,17 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  const pointerOne = l1;
+  const pointerTwo = l2;
+  const final = pointerOne;
+
+  while (pointerTwo.next) {
+    
+    pointerOne = pointerOne.next;
+    pointerTwo = pointerTwo.next;
+  }
+
+  return final;
 };
 
 module.exports = {Node: Node, zip: zip};

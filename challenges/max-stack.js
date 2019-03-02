@@ -30,15 +30,19 @@ Stack.prototype.pop = function(){
 }
 
 Stack.prototype.getMax = function(){
+  if (!this.storage) return undefined;
   return this.max;
 }
 
 module.exports = Stack;
 
 let myStack = new Stack();
-myStack.push(50);
-myStack.push(40);
 myStack.push(10);
+myStack.push(80);
+myStack.push(40);
+myStack.push(50);
+
 console.log(myStack)
 console.log(myStack.pop())
 console.log(myStack)
+console.log(myStack.getMax())

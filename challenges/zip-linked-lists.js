@@ -11,26 +11,48 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  // edge cases
   if (!l1) return l2;
   if (!l2) return l1;
-  let tail = l1;
-  let pointer = 'l2';
+  let head = l1;
+  let temp = l1;
+  l1 = l1.next;
   while (l1 && l2) {
-    if (pointer === 'l2') {
-      if (!l1.next) break;
-      l1 = l1.next;
-      tail.next = tail = l2;
-      pointer === 'l1'
-    } else {
-      if (!l2.next) break;
-      l2 = l2.next;
-      tail.next = tail = l1;
-      pointer === 'l2'
-    }
+    temp.next = l2;
+    l2 = l2.next;
+    temp = temp.next;
+    temp.next = l1;
+    l1 = l1.next;
+    temp = temp.next;
   }
-  if (!l1.next) tail.next = l2;
-  else tail.next = l1;
-  return l1;
+  // attach the remainder of listOne or listTwo to temp
+  temp.next = !l1 ? l22 : l1
+  return head;
 };
+
+// // with pointers
+// function zip(l1, l2) {
+//   if (!l1) return l2;
+//   if (!l2) return l1;
+//   let head = l1;
+//   let temp = l1;
+//   let pointer = 'l2';
+//   while (l1 && l2) {
+//     if (pointer === 'l2') {
+//       if (!l1.next) break;
+//       l1 = l1.next;
+//       temp.next = temp = l2;
+//       pointer === 'l1'
+//     } else {
+//       if (!l2.next) break;
+//       l2 = l2.next;
+//       temp.next = temp = l1;
+//       pointer === 'l2'
+//     }
+//   }
+//   if (!l1.next) temp.next = l2;
+//   else temp.next = l1;
+//   return head;
+// };
 
 module.exports = {Node: Node, zip: zip};

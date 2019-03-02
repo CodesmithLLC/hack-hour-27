@@ -10,4 +10,28 @@ function highestProduct(array) {
     return Math.max(productA, productB);
 }
 
+// greedy solution
+function highestProduct(array) {
+    if (!Array.isArray(array) || array.length < 3) return 0;
+    //set-up track variables to default values
+    let highest = Math.max(array[0], array[1]);
+    let lowest = Math.min(array[0], array[1]);
+    let highestProduct2 = array[0] * array[1];
+    let lowestProduct2 = array[0] * array[1];
+    let highestProduct3 = array[0] * array[1] * array[2];
+  
+    for (let i = 2; i < array.length; i += 1) {
+      //At each iteration grab the current price
+      const currPrice = array[i];
+      //Calculate all of the new values at each iteration
+      highestProduct3 = Math.max(highestProduct3, highestProduct2 * currPrice, lowestProduct2 * currPrice);
+      highestProduct2 = Math.max(highest * currPrice, highestProduct2, currPrice * lowest);
+      lowestProduct2 = Math.min(lowest * currPrice, lowestProduct2, currPrice * highest);
+      highest = Math.max(currPrice, highest);
+      lowest = Math.min(currPrice, lowest);
+    }
+    //At the end return highestProduct of 3
+    return highestProduct3;
+  }
+
 module.exports = highestProduct;

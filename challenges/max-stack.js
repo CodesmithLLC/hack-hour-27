@@ -7,7 +7,21 @@
  */
 
 function Stack() {
-  // body...
+  let arr = {
+    length: 0,
+    elements: [],
+    push: function (el) {
+      this.elements[this.elements.length] = el;
+      this.length += 1;
+      return this.length;
+    },
+    pop: function () {
+      let deleted = this.elements[this.elements.length - 1];
+      
+      return deleted;
+    }
+  };
+  
 }
 
 module.exports = Stack;

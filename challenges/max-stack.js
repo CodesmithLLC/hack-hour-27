@@ -29,16 +29,16 @@ function Stack() {
 }
 
 
-const test = Stack();
+// const test = Stack();
 
-test.push(1);
-test.push(2);
-test.push(3);
-console.log('TCL: test', test)
-console.log('TCL: getmax', test.getMax())
-console.log('TCL: test', test.pop())
-console.log('TCL: getmax', test.getMax())
-console.log('TCL: test', test)
+// test.push(1);
+// test.push(2);
+// test.push(3);
+// console.log('TCL: test', test)
+// console.log('TCL: getmax', test.getMax())
+// console.log('TCL: test', test.pop())
+// console.log('TCL: getmax', test.getMax())
+// console.log('TCL: test', test)
 
 
 

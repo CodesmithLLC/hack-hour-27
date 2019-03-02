@@ -56,8 +56,6 @@ let ledger = {
 if (counter === sanitized.length / 2) {return true};
 return false;
 
-
-
 }
 console.log(balancedParens('pefj{ffe}'))
 console.log(balancedParens('[{[}]'))

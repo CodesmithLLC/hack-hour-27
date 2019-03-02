@@ -9,7 +9,7 @@
 function Stack() {
   // body...
   this.storage = [];
-  this.max = 0;
+  this.max = -Infinity;
 }
 
 Stack.prototype.push = function(value) {
@@ -27,16 +27,20 @@ Stack.prototype.pop = function() {
 }
 
 Stack.prototype.getMax = function() {
+  if (!this.storage.length) return undefined;
   return this.max;
 }
 
 module.exports = Stack;
 
 // let myStack = new Stack();
-// console.log('push: ', myStack.push(4));
-// console.log('push: ', myStack.push(2));
+// console.log('push: ', myStack.push(-4));
+// console.log('push: ', myStack.push(-2));
 // console.log('push: ', myStack.push(8));
 // console.log('push: ', myStack.push(3));
+// console.log('push: ', myStack.push(8));
+// console.log('getMax: ', myStack.getMax());
+// console.log('pop: ', myStack.pop());
 // console.log('getMax: ', myStack.getMax());
 // console.log('pop: ', myStack.pop());
 // console.log('getMax: ', myStack.getMax());

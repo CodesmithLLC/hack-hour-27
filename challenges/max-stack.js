@@ -32,15 +32,16 @@ Stack.prototype.pop = function(){
 }
 
 Stack.prototype.getMax = function(){
-  if (!this.storage) return undefined;
+  if (this.length === 0) return undefined;
   return this.max;
 }
 
 module.exports = Stack;
 
 // let myStack = new Stack();
+// // console.log(myStack.getMax())
 // myStack.push(10);
-// myStack.push(70);
+// myStack.push(80);
 // myStack.push(40);
 // myStack.push(80);
 

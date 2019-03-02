@@ -38,13 +38,13 @@ Stack.prototype.getMax = function(){
 
 module.exports = Stack;
 
-let myStack = new Stack();
-myStack.push(10);
-myStack.push(70);
-myStack.push(40);
-myStack.push(80);
+// let myStack = new Stack();
+// myStack.push(10);
+// myStack.push(70);
+// myStack.push(40);
+// myStack.push(80);
 
-console.log(myStack)
-console.log(myStack.pop())
-console.log(myStack)
-console.log(myStack.getMax())
+// console.log(myStack)
+// console.log(myStack.pop())
+// console.log(myStack)
+// console.log(myStack.getMax())

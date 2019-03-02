@@ -8,6 +8,37 @@
 
 function Stack() {
   // body...
+  this.storage = [];
+  this.max = 0;
+}
+
+Stack.prototype.push = function(value) {
+  this.storage.push(value);
+  this.max = Math.max(this.max, value);
+  return this.storage.length;
+}
+
+Stack.prototype.pop = function() {
+  let result = this.storage.pop();
+  if (result === this.max) {
+    this.max = Math.max(...this.storage);
+  }
+  return result;
+}
+
+Stack.prototype.getMax = function() {
+  return this.max;
 }
 
 module.exports = Stack;
+
+// let myStack = new Stack();
+// console.log('push: ', myStack.push(4));
+// console.log('push: ', myStack.push(2));
+// console.log('push: ', myStack.push(8));
+// console.log('push: ', myStack.push(3));
+// console.log('getMax: ', myStack.getMax());
+// console.log('pop: ', myStack.pop());
+// console.log('getMax: ', myStack.getMax());
+// console.log('pop: ', myStack.pop());
+// console.log('getMax: ', myStack.getMax());

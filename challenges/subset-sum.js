@@ -9,7 +9,23 @@
  */
 
 function subsetSum(array, target) {
-
+  
+  // for (let i = 0; i < array.length; i++) {
+  //   let sum = array[i];
+  //   let subArr = array.slice(i);
+  //   for (let j = 0; j < subArr.length; j++) {
+  //     subArr = array.slice(j);
+  //     console.log('subArr: ', subArr);
+  //     sum += subArr[j];
+  //     console.log('sum: ', sum);
+  //     if (sum === target) {
+  //       return true;
+  //     }
+  //   }
+  // }
+  // return false;
 }
 
 module.exports = subsetSum;
+
+console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));

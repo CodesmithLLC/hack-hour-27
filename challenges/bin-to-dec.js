@@ -21,7 +21,20 @@ function binToDec(binary) {
   return result;
 }
 
+function decToBin(num) {
+  let result = '';
+  // let numClone = num;
+  let quotient = num;
+  while (Math.floor(quotient / 2) !== 0) {
+    result += quotient % 2;
+    console.log('result: ', result);
+    quotient = Math.floor(quotient / 2);
+  }
+  // console.log(result + (quotient % 2));
+}
+
 module.exports = binToDec;
 // console.log(parseInt(binary, 2));
 
 // binToDec('100000');
+decToBin(32);

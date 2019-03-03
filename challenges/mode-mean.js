@@ -36,4 +36,4 @@ function modemean(array) {
 
 module.exports = modemean;
 
-modemean([0, 1, 1, 2, 2, 1, 0, 0, 0, 1])
+modemean([0, 1, 1, 2, 2, 1, 0, 0, 0, 1, 2, 2, 1])

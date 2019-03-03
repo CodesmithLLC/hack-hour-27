@@ -29,10 +29,7 @@ function fizzbuzz(num) {
       result.push(i);
     }
   }
-  console.log('result:', result);
   return result;
 }
 
 module.exports = fizzbuzz;
-
-fizzbuzz(16);

@@ -13,13 +13,8 @@ function pow(base, power) {
   if (power < 0) {
     power *= -1;
     result = 1 / base * pow(base, -1 * (power - 1));
-    // result = 1 / result;
   }
   return result;
 }
 
 module.exports = pow;
-
-console.log(pow(2, -4));
-
-// console.log(Math.pow(3, -1))

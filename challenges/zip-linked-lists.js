@@ -10,18 +10,45 @@ function Node(val) {
   this.next = null;
 }
 
-function zip(l1, l2, index = 0) {
+function zip(l1, l2) {
+  if (!l1) return l2;
+  if (!l2) return l1;
 
+  let head = l1;
+  let temp = l1;
+  l1 = l1.next;
+
+  while (l1 && l2) {
+    temp.next = l2;
+    l2 = l2.next;
+    
+    temp = temp.next;
+    temp.next = l1;
+
+    temp = temp.next;
+    l1 = l1.next;
+  }
+
+  if (l1) {
+    temp.next = l1;
+  } else {
+    temp.next = l2;
+  }
+
+  return head;
 };
 
-module.exports = {Node: Node, zip: zip};
+module.exports = {
+  Node: Node,
+  zip: zip
+};
 
-let one = new Node(1);
-one.next = new Node(3);
-one.next.next = new Node(5)
+// let one = new Node(1);
+// one.next = new Node(3);
+// one.next.next = new Node(5)
 
-let two = new Node(2);
-two.next = new Node(4);
-two.next.next = new Node(6);
+// let two = new Node(2);
+// two.next = new Node(4);
+// two.next.next = new Node(6);
 
-(zip(one, two))
+// (zip(one, two))

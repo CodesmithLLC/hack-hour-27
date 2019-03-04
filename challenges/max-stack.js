@@ -10,7 +10,7 @@ function Stack() {
   this.length = 0;
   this.elements = {};
   this.max = {
-    index: -1,
+    index: 0,
     curValue: -Infinity,
   };
 
@@ -46,7 +46,7 @@ function Stack() {
       this.resetMax();
     }
     delete this.elements[Object.keys(this.elements).length - 1];
-    this.setNewMax;
+    this.setNewMax();
     this.length -= 1;
     return deleted;
   };

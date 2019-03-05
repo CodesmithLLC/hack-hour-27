@@ -27,3 +27,29 @@ Stack.prototype.getMax = function () {
   });
   return max;
 };
+
+// O(1) time, O(n) space
+// function Stack() {
+//   this.length = 0;
+//   this.stack = [];
+//   this.maxStack = [];
+// };
+
+// Stack.prototype.push = function(value) {
+//   this.stack.push(value);
+
+//   const m = this.maxStack;
+//   // if maxStack is empty, or if the value is greater than the max so far, push the value
+//   // otherwise, our last max is still our max at the new index
+//   const max = (!m.length || value > m[m.length - 1]) ? value : m[m.length - 1];
+//   return m.push(max);
+// }
+
+// Stack.prototype.pop = function() {
+//   this.maxStack.pop();
+//   return this.stack.pop();
+// }
+
+// Stack.prototype.getMax = function() {
+//   return this.maxStack[this.maxStack.length - 1];
+// }

@@ -34,4 +34,11 @@ Stack.prototype.getMax = function() {
   return this.max[this.max.length-1];
 }
 
+
+let stack = new Stack();
+stack.push(3,6,5,7,1,2,3,4,7,8)
+console.log(stack);
+stack.pop();
+stack.pop();
+console.log(stack.getMax());
 module.exports = Stack;

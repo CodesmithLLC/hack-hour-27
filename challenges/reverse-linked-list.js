@@ -14,7 +14,7 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
-    if (!head) return undefined;
+    if (!head) return head;
 
     const stack = [];
     let newHead = head;
@@ -37,17 +37,17 @@ function reverseLinkedList(head) {
     return newHead;
 }
 
-const n1 = new Node(1);
-const n2 = new Node(2);
-const n3 = new Node(3);
-const n4 = new Node(4);
-const n5 = new Node(5);
+// const n1 = new Node(1);
+// const n2 = new Node(2);
+// const n3 = new Node(3);
+// const n4 = new Node(4);
+// const n5 = new Node(5);
 
-n1.next = n2;
-n2.next = n3;
-n3.next = n4;
-n4.next = n5;
-console.log('return - ', JSON.stringify(reverseLinkedList(n1)))
+// n1.next = n2;
+// n2.next = n3;
+// n3.next = n4;
+// n4.next = n5;
+// console.log('return - ', JSON.stringify(reverseLinkedList(n1)))
 
 
 

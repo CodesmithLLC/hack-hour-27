@@ -26,7 +26,7 @@ function zip(l1, l2) {
     if(ptrL1 === null){ // l1 NULL, NOT L2
       ptrResult.next = new Node(ptrL2.value);
       ptrL2 = ptrL2.next;
-    } else if (ptrL2 === null) { // l1 NULL, NOT L2
+    } else if (ptrL2 === null) { // l2 NULL, NOT L1
       ptrResult.next = new Node(ptrL1.value);
       ptrL1 = ptrL1.next;
     }

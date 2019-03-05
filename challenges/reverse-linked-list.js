@@ -14,7 +14,28 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+    let newHead;
+    // We need a pointer to keep track of where we are
+    let pointer = head;
 
+    // We also need a stack to keep track of what we've seen
+    const stack = [];
+
+
+    // Let's fill up the stack with Nodes!
+    while (pointer.next) {
+        stack.push(pointer);
+        pointer = pointer.next;
+    }
+    pointer = newHead;
+
+    while (stack.length > 1) {
+        pointer.next = stack.pop();
+    }
+
+    pointer.next = null;
+
+    return newHead;
 }
 
-module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
+module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };

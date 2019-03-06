@@ -6,6 +6,24 @@
  * BONUS: The getMax method should retrieve the maximum value from the stack in O(1) time.
  */
 
+// function Stack(){
+//   this.arr = new Array();
+//   this.max = 0;
+// }
+
+// Stack.prototype.push = function (value) {
+//   if(this.arr.length === 0) return 0;
+
+//   this.arr.push(value)
+//   return this.arr.length;
+// }
+// Stack.prototype.pop = function () {
+//   return this.arr.pop();
+// }
+// Stack.prototype.getMax = function (value) {
+//   return 
+// }
+
 function Stack() {
   this.arr = new Array();
   this.max = new Array();

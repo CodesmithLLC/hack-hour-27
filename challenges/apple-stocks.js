@@ -13,7 +13,14 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+    let buy = stock_prices_yesterday[0];
+    let maxProfit = -Infinity;
+    stock_prices_yesterday.forEach(price => {
+        if  (price-buy > maxProfit )  maxProfit = price - buy;
+        if (price < buy) buy = price;
+    })
+    if (maxProfit <= 0) return 0;
+    return maxProfit;
 }
 
 module.exports = bestProfit;

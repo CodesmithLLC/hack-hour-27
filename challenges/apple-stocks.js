@@ -13,7 +13,24 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (!Array.isArray(stock_prices_yesterday)) return 0;
+  const prices = stock_prices_yesterday;
+  let low = Infinity
+  let high = -Infinity
+  let profit = 0;
 
+  for (let i = 0; i < prices.length; i += 1) {
+    if (low > prices[i]) {
+      // found a new low. Need to reset both low and high prices
+      low = prices[i];
+      high = prices[i];
+    }
+    if (high < prices[i]) high = prices[i];
+    profit = Math.max(profit, high - low);
+  }
+  return profit;
 }
+//let arr = [9,2,3,4,5,40,1,9,10,20];
+// console.log(arr, bestProfit(arr));
 
 module.exports = bestProfit;

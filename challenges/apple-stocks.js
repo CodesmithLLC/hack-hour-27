@@ -13,7 +13,17 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+  let globalMin = stock_prices_yesterday[0];
+  let highestProfit = 0;
+  for (let i = 1; i < stock_prices_yesterday.length; i++) {
+    if (stock_prices_yesterday[i] < globalMin) {
+      globalMin = stock_prices_yesterday[i];
+    }
+    if (stock_prices_yesterday[i] - globalMin > highestProfit) {
+      highestProfit = stock_prices_yesterday[i] - globalMin;
+    }
+  }
+  return highestProfit;
 }
 
 module.exports = bestProfit;

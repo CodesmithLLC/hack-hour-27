@@ -13,7 +13,19 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+    let arr = stock_prices_yesterday;
+    if(arr.length < 1) return 0;
 
+    let high = arr[0];
+    let low = arr[1];
+
+    for(let i = 0; i < arr.length; i++){
+        high = Math.max(high, arr[i]);
+        low = Math.min(low, arr[i]);
+    }
+
+    let profit = high - low;
+    return (high - low < 0) ? 0 : high-low;
 }
 
 module.exports = bestProfit;

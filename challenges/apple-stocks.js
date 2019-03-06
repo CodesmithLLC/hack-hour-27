@@ -18,11 +18,11 @@ function bestProfit(stockArr){
   if (stockArr.length < 2) return 0;
     let curLow = stockArr[0]
     let curProfitA = 0;
-    let curHigh = stockArr[0]
+    let curHigh = stockArr[stockArr.length-1]
     let curProfitB = 0;
     for (let i = 0; i < stockArr.length; i++){
-        if (stockArr[i] > curHigh){
-            curHigh = stockArr[i]
+        if (stockArr[stockArr.length-1-i] > curHigh){
+            curHigh = stockArr[stockArr.length-1-i]
         }
         if (stockArr[i] < curLow){
             curLow = stockArr[i]
@@ -30,8 +30,9 @@ function bestProfit(stockArr){
         if (curProfitA < stockArr[i] - curLow){
             curProfitA = stockArr[i] - curLow;
         }
-        if (curProfitB < curHigh - stockArr[i]){
-            curProfitB = curHigh - stockArr[i];
+        // this part doesn't work;
+        if (curProfitB < curHigh - stockArr[stockArr.length-1-i]){
+            curProfitB = curHigh - stockArr[stockArr.length-1-i];
         }
     }
     if (curProfitA < 0 && curProfitB < 0) return 0;
@@ -43,7 +44,7 @@ function bestProfit(stockArr){
 
 
 /*
-const teststocks = [564, 12, 87, 95, 624, 11, 25, 89]
+const teststocks = [6, 7, 2, 4]
 console.log(bestProfit(teststocks))
 */
 

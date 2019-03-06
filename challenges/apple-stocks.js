@@ -14,6 +14,39 @@
 
 function bestProfit(stock_prices_yesterday) {
 
+    if ( !Array.isArray(stock_prices_yesterday)  ) return 0;
+
+    let lowest = {index: 0, value: stock_prices_yesterday[0]}
+    let highest = {index: 0, value: stock_prices_yesterday[0]}
+    let biggestDiff = 0
+    let increasing = false; 
+    
+    for (let i = 0; i < stock_prices_yesterday.length; i++) {
+        
+        if (stock_prices_yesterday[i] < lowest.value){
+            lowest = {index: i, value: stock_prices_yesterday[i]};
+        }
+
+        if (stock_prices_yesterday[i] > highest.value){
+            highest = {index: i, value: stock_prices_yesterday[i]};
+        }
+
+        if ((highest.value - lowest.value > biggestDiff) && (highest.index > lowest.index)){
+            // console.log(highest.value, lowest.value)
+            biggestDiff = highest.value - lowest.value;
+        }
+
+    }
+
+    return biggestDiff;
+
 }
 
 module.exports = bestProfit;
+
+
+let stocks = [5, 10, 7, 15, 2, 20]
+let stocks2 = [5, 10, 7, 15, 2, 10]
+
+console.log(bestProfit(stocks));
+console.log(bestProfit(stocks2));

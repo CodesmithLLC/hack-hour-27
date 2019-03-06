@@ -14,6 +14,20 @@
 
 function bestProfit(stock_prices_yesterday) {
 
+  // stack to track the max profit margin
+  let minPrice = stock_prices_yesterday[0]
+  let maxPrice = stock_prices_yesterday[0]
+  let profitStack = []
+
+  for (let i = 1; i < stock_prices_yesterday.length; i++){
+    profitStack.push(maxPrice - minPrice)
+    if (stock_prices_yesterday[i] < minPrice) minPrice = stock_prices_yesterday[i]
+    if (stock_prices_yesterday[i] > maxPrice) maxPrice = stock_prices_yesterday[i]
+  }
+
+  if (Math.max(profitStack) > 0) return Math.max(profitStack)
+  else return 0
+
 }
 
 module.exports = bestProfit;

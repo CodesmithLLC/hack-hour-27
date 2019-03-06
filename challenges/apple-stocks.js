@@ -14,6 +14,8 @@
 
 
 function bestProfit(stockArr){
+  if (!Array.isArray(stockArr)) return 0;
+  if (stockArr.length < 2) return 0;
     let curLow = stockArr[0]
     let curProfitA = 0;
     let curHigh = stockArr[0]
@@ -32,6 +34,7 @@ function bestProfit(stockArr){
             curProfitB = curHigh - stockArr[i];
         }
     }
+    if (curProfitA < 0 && curProfitB < 0) return 0;
     if (curProfitA > curProfitB){
         return curProfitA;
     }
@@ -41,7 +44,7 @@ function bestProfit(stockArr){
 
 /*
 const teststocks = [564, 12, 87, 95, 624, 11, 25, 89]
-console.log(profit(teststocks))
+console.log(bestProfit(teststocks))
 */
 
 module.exports = bestProfit;

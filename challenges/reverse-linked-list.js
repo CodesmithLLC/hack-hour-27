@@ -14,6 +14,7 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+  if (head == null) return null;
 	if (!head.next) return head;
   //strat: prev, curr, next; movement: c <- to p, P to C, C to N, N to N.N
   let prev = null;

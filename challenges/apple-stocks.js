@@ -13,6 +13,8 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (!Array.isArray(stock_prices_yesterday)) return 0;
+  if (stock_prices_yesterday.length === 0) return 0;
   let globalMin = stock_prices_yesterday[0];
   let highestProfit = 0;
   for (let i = 1; i < stock_prices_yesterday.length; i++) {

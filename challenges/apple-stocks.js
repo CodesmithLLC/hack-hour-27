@@ -13,6 +13,7 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (!Array.isArray(stock_prices_yesterday)) return undefined;
   // let sell = -Infinity;
   let buy = Infinity;
   let maxProfit = 0;

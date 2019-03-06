@@ -12,8 +12,36 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
-function bestProfit(stock_prices_yesterday) {
 
+function bestProfit(stockArr){
+    let curLow = stockArr[0]
+    let curProfitA = 0;
+    let curHigh = stockArr[0]
+    let curProfitB = 0;
+    for (let i = 0; i < stockArr.length; i++){
+        if (stockArr[i] > curHigh){
+            curHigh = stockArr[i]
+        }
+        if (stockArr[i] < curLow){
+            curLow = stockArr[i]
+        }
+        if (curProfitA < stockArr[i] - curLow){
+            curProfitA = stockArr[i] - curLow;
+        }
+        if (curProfitB < curHigh - stockArr[i]){
+            curProfitB = curHigh - stockArr[i];
+        }
+    }
+    if (curProfitA > curProfitB){
+        return curProfitA;
+    }
+    return curProfitB;
 }
+
+
+/*
+const teststocks = [564, 12, 87, 95, 624, 11, 25, 89]
+console.log(profit(teststocks))
+*/
 
 module.exports = bestProfit;

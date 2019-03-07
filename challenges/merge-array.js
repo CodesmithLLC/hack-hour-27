@@ -14,7 +14,27 @@
  */
 
 function mergeArrays(arr1, arr2) {
-
+  const result = [];
+  while (arr1.length && arr2.length) {
+    result.push(
+      arr1[arr1.length - 1] > arr2[arr2.length - 1] 
+      ? arr1.pop() : arr2.pop()
+    );
+  }
+  return result.concat(arr1.length ? arr1 : arr2).reverse();
 }
+
+// function mergeArrays2(arr1, arr2) {
+//   const result = [];
+//   let length = arr1.length + arr2.length - 1;
+//   while (length > 0) {
+//     result[length] 
+//     = arr1[arr1.length - 1] > arr2[arr2.length - 1] 
+//     ? arr1.pop() : arr2.pop();
+//     --length;
+//   }
+
+//   return result;
+// }
 
 module.exports = mergeArrays;

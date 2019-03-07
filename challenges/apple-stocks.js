@@ -13,19 +13,43 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-    let arr = stock_prices_yesterday;
-    if(arr.length < 1) return 0;
+    const data = stock_prices_yesterday;
+    let min = data[0];
+    let max = data[0];
+    let maxProfit = 0;
 
-    let high = arr[0];
-    let low = arr[1];
-
-    for(let i = 0; i < arr.length; i++){
-        high = Math.max(high, arr[i]);
-        low = Math.min(low, arr[i]);
+    for(let i = 1; i < data.length; i++){  // loop down stocks for the day
+        // IF DOWN set max and min to the current value, ONLY if dips below current min
+        if(data[i] < max && data[i] < min){ // set global max and min
+            max = data[i];
+            min = data[i];
+        }
+        else if(data[i] > max){
+        // IF find an UP only set max
+            // compare the max profit with current profit
+            max = data[i];
+            if(maxProfit < max - min){
+                maxProfit = max - min;
+            }
+        }
     }
-
-    let profit = high - low;
-    return (high - low < 0) ? 0 : high-low;
+    return maxProfit;
 }
+
+// function bestProfit(stock_prices_yesterday) {
+//     let arr = stock_prices_yesterday;
+//     if(arr.length < 1) return 0;
+
+//     let high = arr[0];
+//     let low = arr[1];
+
+//     for(let i = 0; i < arr.length; i++){
+//         high = Math.max(high, arr[i]);
+//         low = Math.min(low, arr[i]);
+//     }
+
+//     let profit = high - low;
+//     return (high - low < 0) ? 0 : high-low;
+// }
 
 module.exports = bestProfit;

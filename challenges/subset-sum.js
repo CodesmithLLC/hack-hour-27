@@ -10,6 +10,25 @@
 
 function subsetSum(array, target) {
 
+//for each number starting at the first one
+//check if the sum of all the next ones is target
+//if not check if the summ of al the next ones minus the last one
+//if not check if the sum of all the next ones minus the one before last
+//if not check if the sum of all the next ones minus the last two
+//until the last n is i, then move i by one.
+let sum = 0;
+for (let i=0;i<array.length;i++){
+	sum += array[i]
+}
+if (sum === target) return true
+else 
+
+
+
+
+
+
+
 }
 
 module.exports = subsetSum;

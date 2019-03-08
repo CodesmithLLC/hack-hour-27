@@ -10,8 +10,48 @@
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
+//console.log(regex1.test(str1));
+
 function matchWord(str) {
+let queue = [];
+//create module to seperate words
+let arr = str.split('');
+let temp = [];
+let ch = 0 
+
+function reverse(string){
+	return string.split('')
+				 .reverse()	
+				 .toUpperCase()
+				 .join('')
+
+}	
+
+while (str[ch]) {
+	if ((/([^AZ-az])\w+/).test(str[ch])) {temp.push(str[ch]);}
+	if (!(/([^AZ-az])\w+/).test(str[ch])) {
+		temp = temp.join('').toUpperCase();
+		if (queue[-1] && temp === reverse(queue[-1])){
+			queue.pop()
+		} else {
+			queue.push(temp);
+			temp = [];
+		}
+		console.log(queue);
+		ch++
+	}
+}
+
+
+if (queue) {return false} else {return true}
+
+
+
+
 
 }
+console.log(matchWord('IF()()fi[]'))
+console.log(matchWord('__ENDDNE__'))
+
 
 module.exports = matchWord;

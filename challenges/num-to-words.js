@@ -59,6 +59,7 @@ const thous={
 }
 
 function numToWords(num) {
+  if (num === 0) return "Zero";
   let output = '';
   const str = num.toString();
   let digits = str.length;
@@ -77,7 +78,7 @@ function numToWords(num) {
         output += singles[curNum]
       }
     }
-if (thous[(digits-1)/3]){
+if (thous[(digits-1)/3] && curNum!=='0'){
       output += thous[(digits-1)/3];
     }
     digits -= 1;
@@ -85,6 +86,5 @@ if (thous[(digits-1)/3]){
   return output;
 }
 
-console.log(numToWords(11111951))
 
 module.exports = numToWords;

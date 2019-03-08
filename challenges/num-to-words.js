@@ -78,8 +78,10 @@ function numToWords(num) {
         output += singles[curNum]
       }
     }
-if (thous[(digits-1)/3] && curNum!=='0'){
-      output += thous[(digits-1)/3];
+if (thous[(digits-1)/3]){
+      if (str[i] !== '0' || str[i-1] !== '0' || str[i-2] !=='0'){
+        output += thous[(digits-1)/3];
+      }
     }
     digits -= 1;
   }

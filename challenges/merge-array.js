@@ -19,7 +19,7 @@ function mergeArrays(arr1, arr2) {
   while (i < arr1.length || j < arr2.length) {
     if (arr1[i] < arr2[j] || !arr2[j]) {
       merged.push(arr1[i++]);
-    } else if (arr1[i] > arr2[j] || !arr1[i]){
+    } else if (arr1[i] >= arr2[j] || !arr1[i]){
       merged.push(arr2[j++]);
     }
   }

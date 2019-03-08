@@ -2,7 +2,7 @@
 // Include support for 11-19 ('Eleven', 'Twelve', 'Thirteen', ... 'Nineteen').
 
 
-/**
+/*
  * numToWords(0) -> 'Zero'
  * numToWords(43) -> 'FortyThree'
  * numToWords(2999) -> 'TwoThousandNineHundredNintyNine'

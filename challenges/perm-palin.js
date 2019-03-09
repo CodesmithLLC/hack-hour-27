@@ -10,6 +10,7 @@
  */
 
 function permPalin(str) {
+  if (str === '') return false;
   if (str.length == 1) return true;
   let cleanStr = str.replace(/([^A-Z])+/gi, '')
   //console.log('cleanStr', cleanStr)
@@ -61,7 +62,7 @@ function permPalin(str) {
 //console.log(permPalin('abab')); //true
 //console.log(permPalin('cbaba')); //true
 //console.log(permPalin('cbac')); //false
-//console.log(permPalin(test)); //true
+//console.log(permPalin('')); //true
 // console.log(permPalin('a')); //true
 
 

@@ -14,6 +14,40 @@
 
 function numToWords(num) {
 
+let integers = [One, Two, Three, Four, Five, Six, Seven, Eight, Nine];
+let tweens = [Ten, Eleven, Twelve, Thirteen, Fourteen, Fifteen, Sixteen, Seventeen, Eighteen, Nineteen];
+let twoDigit = [Ten, Twenty, Thirty, Fourty, Fifty, Sixty, Seventy, Eighty, Ninety]
+let hundred = "Hundred"
+
+let intoArray = num.split("");
+let length = num.toString().length;
+let pointer = 0;
+let result = ""
+
+switch(intoArray.length){
+    case 1: {
+        result = integers[num];
+    }
+    break;
+    case 2: {
+        if (intoArray[0] === 1){
+            result = tweens[intoArray[1]];
+        } else {
+            result = twoDigit[intoArray[0]] + integers[1];
+        }
+    }    
+    break;
+    case 3: {
+        if (intoArray[2])    
+    }
+    }
+}
+
+
+
+
+
+
 }
 
 module.exports = numToWords;

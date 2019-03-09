@@ -13,7 +13,52 @@
  */
 
 function numToWords(num) {
+  const NUM_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+                      'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const TENS_WORDS = ['', '', 'Twenty', 'Thirty', 'Fourty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
 
+
+  if (num < 20) return NUM_WORDS[num];
+
+  let word = '';
+
+  let numStr = num.toString();
+
+  // Get word from last 2 digits first.
+  let last2digits = num % 100;
+
+  // last 2 less than 20. easy.
+  if (last2digits < 20) {
+    if (last2digits !== 0) word = NUM_WORDS[last2digits] + word;
+  } else {
+    // last 2 greater than 20. Get the first digit first.
+    let firstDigit = num % 10;
+    if (firstDigit !== 0) word = NUM_WORDS[firstDigit] + word;
+    // get 2nd digit
+    let secondDigit = parseInt(numStr[numStr.length - 2]);
+    word = TENS_WORDS[secondDigit] + word;
+  }
+
+
+  // Get word from hundreds
+  if (numStr.length > 2) {
+    let thirdDigit = parseInt(numStr[numStr.length - 3]);
+    word = numToWords(thirdDigit) + 'Hundred' + word;
+  }
+
+
+
+
+
+  return word;
 }
+
+const test = [0,5,10,19,20,25,30,37,95, 100, 105, 110, 170, 195, 200, 905, 999];
+
+for (let i = 0; i < test.length; i++)
+ {
+   console.log(test[i], ' - ', numToWords(test[i]));
+ }
+
 
 module.exports = numToWords;

@@ -35,21 +35,8 @@ function permPalin(str) {
       oddEven.odd += 1;
     }
   });
-
-  if (str.length % 2 === 0) {
-    if (oddEven.odd > 0) {
-      return false;
-    }
-  }
-  if (str.length % 2 !== 0) {
-    if (oddEven.odd !== 1) {
-      return false;
-    }
-  }
-
-  return true;
+  
+  return oddEven.odd < 2;
 }
-
-permPalin('cacabacac')
 
 module.exports = permPalin;

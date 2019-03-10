@@ -57,6 +57,6 @@ function parseThree(digits) {
 }
 //92,120,000,000,000,000
 
-console.log(numToWords(311));
+// console.log(numToWords(311));
 
 module.exports = numToWords;

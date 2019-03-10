@@ -12,64 +12,48 @@
  * numToWords(92120000000000000) -> 'NintyTwoQuadrillionOneHundredTwentyTrillion'
  */
 
+const ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const TENS = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+const PLACES = ['', 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion'];
+
 function numToWords(num) {
-  if (num === '0') return 'Zero';
-  //strat: hard code 0, 1-9, 10-90, 11-19. Go from left to right. Convert number to string. First, figure out how to parse a triple. And then split number into an array of triplets. Iterate thru this
-  // array, and build up a string to return.
-  let output = '';
-  
-  let str = JSON.stringify(num);
-  let digitPlace = str.length;
-  for (let i = 0; i < str.length; i++){
-    if (digitPlace === 2){
-      if (str[i] == '1') {
-        let pair = str[i] + str[i + 1];
-        output += numToWordsStorage(pair)
-      }
-    }else {
-
-      output += numToWordsStorage(str[i]);
-      if (digitPlace === 3) {
-        output += 'Hundred';
-        digitPlace--;
-      }
-    }
-    
+  if (!num) return 'Zero';
+  let str = num.toString();
+  // make sure the length is divisible by 3
+  while (str.length % 3) {
+    str = '0' + str;
   }
-
-  return output;
-
+  return recurringNum(str)
+         .replace('TenOne', 'Eleven')
+         .replace('TenTwo', 'Twelve')
+         .replace('TenThree', 'Thirteen')
+         .replace('TenFour', 'Fourteen')
+         .replace('TenFive', 'Fifteen')
+         .replace('TenSix', 'Sixteen')
+         .replace('TenSeven', 'Seventeen')
+         .replace('TenEight', 'Eighteen')
+         .replace('TenNine', 'Nineteen');
 }
 
-function numToWordsStorage(num) {
-  if (num === '1') return 'One';
-  if (num === '2') return 'Two';
-  if (num === '3') return 'Three';
-  if (num === '4') return 'Four';
-  if (num === '5') return 'Five';
-  if (num === '6') return 'Six';
-  if (num === '7') return 'Seven';
-  if (num === '8') return 'Eight';
-  if (num === '9') return 'Nine';
-  if (num === '10') return 'Ten';
-  if (num === '11') return 'Eleven';
-  if (num === '12') return 'Twelve';
-  if (num === '13') return 'Thirteen';
-  if (num === '14') return 'Fourteen';
-  if (num === '15') return 'Fifteen';
-  if (num === '16') return 'Sixteen';
-  if (num === '17') return 'Seventeen';
-  if (num === '18') return 'Eighteen';
-  if (num === '19') return 'Nineteen';
-  if (num === '20') return 'Twenty';
-  if (num === '30') return 'Thirty';
-  if (num === '40') return 'Four';
-  if (num === '50') return 'Fifty';
-  if (num === '60') return 'Sixty';
-  if (num === '70') return 'Seventy';
-  if (num === '80') return 'Eighty';
-  if (num === '90') return 'Ninety';
-  
+function recurringNum(str) {
+  if (!str.length) return '';
+	// get the first three numbers
+  const nextNums = str.slice(0, 3);
+	let nextWords;
+  if (nextNums === '000') nextWords = '';
+	else {
+    const placesIndex = Math.floor(str.length / 3) - 1;
+    nextWords = parseThree(nextNums) + PLACES[placesIndex];
+  }
+  return nextWords + recurringNum(str.slice(3));
+}
+
+function parseThree(digits) {
+  let words;
+  if (digits >= 100) words = ONES[digits[0]] + 'Hundred' + TENS[digits[1]] + ONES[digits[2]];
+  else if (digits >= 10) words = TENS[digits[1]] + ONES[digits[2]];
+  else words = ONES[digits[2]];
+  return words;
 }
 //92,120,000,000,000,000
 

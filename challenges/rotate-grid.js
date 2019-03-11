@@ -23,7 +23,7 @@ function rotateGrid(grid, n) {
   for (let c = 0; c < n; c += 1) {
     const eachRow = [];
     for (let r = n - 1; r >= 0; r -= 1) {
-      eachRow.push(sampleGrid[r][c]);
+      eachRow.push(grid[r][c]);
     }
     output.push(eachRow);
   }

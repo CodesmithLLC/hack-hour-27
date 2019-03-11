@@ -62,7 +62,7 @@ function permPalin(str) {
 // console.log(permPalin(test)); //true
 //console.log(permPalin('cbaba')); //true
 //console.log(permPalin('cbac')); //false
-//console.log(permPalin('')); //true
+console.log(permPalin('ploop')); //true 
 // console.log(permPalin('a')); //true
 
 

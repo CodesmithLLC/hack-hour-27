@@ -18,6 +18,30 @@
 
 function rotateGrid(grid, n) {
 
+	// combine grid into a composite array
+
+	let composite = grid.reduce( (acc, ele) => {
+		acc = acc.concat(ele);
+		return acc;
+	}, []);
+
+	let output = new Array(composite.length);
+
+	composite.reduce( (acc, ele, i) => {
+		acc = (acc + n) % (composite.length + 1)
+		output[acc] = ele;
+		return acc;
+	}, -1)
+
+	// BOOM
+
+	return output;
+
 }
+
+rotateGrid([ [1, 2, 3],[4, 5, 6],[7, 8, 9] ], 3)
+
+rotateGrid([ [1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16] ], 4) 
+
 
 module.exports = rotateGrid;

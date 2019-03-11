@@ -11,20 +11,20 @@
 
 function permPalin(str) {
   if (str === '') return false;
-  if (str.length == 1) return true;
-  let cleanStr = str.replace(/([^A-Z])+/gi, '')
-  //console.log('cleanStr', cleanStr)
+  if (str.length === 1) return true;
+  let cleanStr = str.replace(/([^A-Z])+/gi, '').toLowerCase();
+  // console.log('cleanStr', cleanStr)
   //strat: iterate thru str, count each character
   let counts = {};
   for (let i = 0; i < cleanStr.length; i++){
-    let element = cleanStr[i].toLowerCase();
+    let element = cleanStr[i];
     if (!counts[element]) counts[element] = 1;
     else counts[element]++;
   }
-  //console.log('counts', counts)
+  // console.log('counts', counts)
   //conditions: every character must occur an even number of times. Only one character can be odd.
   let countsArray = Object.values(counts).filter(num => num % 2 !== 0);
-  //console.log('countsArray', countsArray);
+  // console.log('countsArray', countsArray);
 
   return countsArray.length > 1 ? false : true;
 
@@ -59,7 +59,7 @@ function permPalin(str) {
 // "Sir, I deliver. I'm a dog"
 // Evil is a deed as I live.
 // Dammit I'm mad."`
-//console.log(permPalin('abab')); //true
+// console.log(permPalin(test)); //true
 //console.log(permPalin('cbaba')); //true
 //console.log(permPalin('cbac')); //false
 console.log(permPalin('ploop')); //true 

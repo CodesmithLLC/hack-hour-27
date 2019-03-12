@@ -22,3 +22,26 @@ function permPalin(str) {
 }
 
 module.exports = permPalin;
+
+// function permPalin(str) {
+//   let dict = {};
+//   let oneSeen = false;
+//   for (let i = 0; i < str.length; i += 1) {
+//     if (dict[str[i]]) {
+//       dict[str[i]] += 1;
+//     } else {
+//       dict[str[i]] = 1;
+//     }
+//   }
+//   const dictVals = Object.values(dict);
+//   for (let i = 0; i < dictVals.length; i += 1) {
+//     if (dictVals[i] === 1 && !oneSeen) {
+//       oneSeen = true;
+//     } else if (dictVals[i] % 2 !== 0) {
+//       return false;
+//     } else if (dictVals[i] === 1 && oneSeen) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }

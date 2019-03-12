@@ -62,9 +62,9 @@ module.exports = rotateGrid;
 // console.log(grid2);
 // console.log(rotateGrid(grid2, 4));
 
-const grid3 = [[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]];
-console.log(grid3);
-console.log(rotateGrid(grid3, 5));
+// const grid3 = [[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]];
+// console.log(grid3);
+// console.log(rotateGrid(grid3, 5));
 
 // const grid4 = [[1,2],[3,4]];
 // console.log(grid4),

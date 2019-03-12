@@ -3,17 +3,17 @@
  */
 function Stack() {
   this.storage = [];
-  this.size = 0;
+  this.length = 0;
 }
 
 Stack.prototype.push = function (value) {
-  this.size++;
-  this.storage[this.size] = value;
+  this.length++;
+  this.storage[this.length] = value;
 }
 
 Stack.prototype.pop = function () {
-  delete this.storage[this.size];
-  this.size--;
+  delete this.storage[this.length];
+  this.length--;
 }
 
 

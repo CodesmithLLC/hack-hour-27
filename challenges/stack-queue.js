@@ -4,7 +4,8 @@
 
 
 function Stack() {
-
+  let storage = {};
+  
 }
 
 

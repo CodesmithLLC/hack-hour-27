@@ -11,7 +11,7 @@ Stack.prototype.push = function(elem){
   this.storage.push(elem); 
 }
 
-Stack.prototype.pop = function(elem){
+Stack.prototype.pop = function(){
   return this.storage.pop();
 }
 
@@ -21,23 +21,22 @@ Stack.prototype.pop = function(elem){
 
 
 function Queue() {
-  this.storage = new Stack();
+  // 2 storages? 1 is regular stack, 1 is reverse stack. WHen enqueueing, push onto regular stack, unshift onto reverse stack. When dequeueing, 
+  this.stack1 = new Stack();
+  this.stack2 = new Stack();
 }
 
 Queue.prototype.enqueue = function(elem){
-  this.storage.push();
-}
+  this.stack1.push(elem)
+;}
 
-Queue.prototype.dequeue = function(elem){
-  return this.storage.shift();
-}
-
-Queue.prototype.pop = function(elem){
-  return this.storage.pop();
-}
-
-Queue.prototype.push = function(elem){
-  this.storage.push(elem); 
+Queue.prototype.dequeue = function(){
+  //fill up stack2 by reverse iterating thru stack1
+  for (let i = this.stack1.length - 1; i >= 0; i++){
+    this.stack2.push(this.stack1[i])
+  }
+  //return top of stack2 by popping it
+  return this.stack2.pop()
 }
 
 module.exports = {Stack: Stack, Queue: Queue};

@@ -6,12 +6,7 @@
  * 	- permPalin('cbaba') => true
  * 	- permPalin('cbac') => false
  * 	- permPalin('a') => true
- * 7=> aababaa(5a,2b), bbbabbb(6b,1a), bbaaabb(4b3a), 
- * 6 => abaaba
- * 5 letters => ababa
- * 4 letters: abba
- * 3 letters => aba
- * 2 letters => aa
+ *
  */
 
 function permPalin(str) {
@@ -36,20 +31,7 @@ function permPalin(str) {
     }
   });
 
-  if (str.length % 2 === 0) {
-    if (oddEven.odd > 0) {
-      return false;
-    }
-  }
-  if (str.length % 2 !== 0) {
-    if (oddEven.odd !== 1) {
-      return false;
-    }
-  }
-
-  return true;
+  return oddEven.odd < 2;
 }
-
-permPalin('cacabacac')
 
 module.exports = permPalin;

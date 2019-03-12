@@ -8,7 +8,8 @@ function Stack() {
 }
 
 Stack.prototype.pop = () => {
-    return this.data = this.data.pop();
+    if(this.data.length === 0) return undefined;
+    return this.data.pop();
 }
 
 Stack.prototype.push = (item) => {
@@ -38,6 +39,9 @@ Queue.prototype.enqueue = (item) => {
 Queue.prototype.dequeue = () => {
     while(!this.stage.isEmpty())
         this.data(this.stage.pop());
+    
+    if(this.data.isEmpty()) return undefined;
+
     return this.data.pop();
 }
 

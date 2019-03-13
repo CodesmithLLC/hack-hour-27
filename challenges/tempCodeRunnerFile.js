@@ -1,1 +1,2 @@
-console.log(reverseLinkedList(myLL));
+console.log(Object.values(compliments))
+  // return false;

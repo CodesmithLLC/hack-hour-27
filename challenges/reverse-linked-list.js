@@ -26,3 +26,17 @@ function reverseLinkedList(head) {
 }
 
 module.exports = { Node: Node, reverseLinkedList: reverseLinkedList };
+
+// function reverseLinkedList(head) {
+//     let curr = head;
+//     let prev = null;
+//     let next;
+//     while(curr) {
+//       next = curr.next;
+//       curr.next = prev;
+//       prev = curr;
+//       curr = next;
+//     }
+//     head = prev;
+//     return head;
+//   }

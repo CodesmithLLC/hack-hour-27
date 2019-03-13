@@ -12,8 +12,10 @@ Stack.prototype.push = function (value) {
 }
 
 Stack.prototype.pop = function () {
+  let popped = this.storage[this.length];
   delete this.storage[this.length];
   this.length--;
+  return popped;
 }
 
 
@@ -26,19 +28,22 @@ function Queue() {
 }
 
 Queue.prototype.enqueue = function(value) {
-  // this.size ++;
+  if (!this.stack1.length && this.stack2.length) {
+    while (this.stack2.length) {
+      this.stack1.push(this.stack2.pop());
+    }
+  }
   this.stack1.push(value);
+  return value;
 };
 
 Queue.prototype.dequeue = function() {
-  if (this.stack1.length === 0) {
-    if (this.stack2.length === 0) { return 'Cannot dequeue because queue is empty'; }
-    while (this.stack2.length > 0) {
-      let popped = this.stack2.pop();
-      this.stack1.push(popped);
+  if (this.stack1.length) {
+    while (this.stack1.length) {
+      this.stack2.push(this.stack1.pop());
     }
   }
-  return popped;
+  return this.stack2.pop();
 };
 
 module.exports = { Stack: Stack, Queue: Queue };

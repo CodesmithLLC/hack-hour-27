@@ -24,8 +24,8 @@ function twoSum(arr, n) {
   const newArr = (Array.from(set)) 
   let answer = false
   for (let i = 0; i < newArr.length; i++){
-    if (newArr.indexOf(n-newArr[i])){
-      answer = true
+    if ( newArr.indexOf(n-newArr[i]) !== -1 ){
+      answer = true 
     }
   }
   return answer

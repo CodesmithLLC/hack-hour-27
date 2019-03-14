@@ -20,7 +20,7 @@ function validBST(tree) {
   }
 
   if (tree.right) {
-    if (tree.right.value > tree.value) return false;
+    if (tree.right.value < tree.value) return false;
     if (!validBST(tree.right)) return false;
   }
 
@@ -39,6 +39,7 @@ function validBST(tree) {
 // node2.left = node4;
 // node2.right = node5;
 // node3.left = node6;
+// console.log(validBST(node1));
 
 // const node7 = new BinaryTree(20);
 // const node8 = new BinaryTree(17);

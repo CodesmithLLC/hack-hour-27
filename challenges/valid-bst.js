@@ -12,7 +12,7 @@ function BinaryTree(val) {
     this.right = null;
 }
 
-function validBST(tree, parents = [] , left) {
+function validBST(tree, parents = []) {
     for (let parent of parents) {
         if (parent.left) {
             if (tree.value > parent.value) return false; 
@@ -21,16 +21,14 @@ function validBST(tree, parents = [] , left) {
         }
     }
 
-    parents.push({value: tree.value, left});
-
     if (tree.left) {
         if (tree.left.value > tree.value) return false;
-        if (!validBST(tree.left, parents.slice(), true)) return false;
+        if (!validBST(tree.left, parents.concat([{value: tree.value, left: true}]))) return false;
     }
 
     if (tree.right) {
         if (tree.right.value < tree.value) return false;
-        if (!validBST(tree.right, parents.slice(), false)) return false;
+        if (!validBST(tree.right, parents.concat([{value: tree.value, left: false}]))) return false;
     }
 
     return true;

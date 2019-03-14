@@ -15,10 +15,12 @@ function BinaryTree(val) {
 function validBST(tree) {
   if (tree.right){
     if (tree.value > tree.right.value) return false;
+    if (tree.right.left && tree.right.left.value < tree.value) return false;
     if (!validBST(tree.right)) return false;
   }
   if (tree.left){
     if (tree.value < tree.left.value) return false;
+    if (tree.left.right && tree.left.right.value > tree.value) return false;
     if (!validBST(tree.left)) return false;
   }
   return true

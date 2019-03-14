@@ -13,9 +13,6 @@ function BinaryTree(val) {
 }
 
 function validBST(tree, parents = [] , left) {
-
-    parents.push({value: tree.value, left});
-
     for (let parent of parents) {
         if (parent.left) {
             if (tree.value > parent.value) return false; 
@@ -23,6 +20,8 @@ function validBST(tree, parents = [] , left) {
             if (tree.value < parent.value) return false;
         }
     }
+
+    parents.push({value: tree.value, left});
 
     if (tree.left) {
         if (tree.left.value > tree.value) return false;

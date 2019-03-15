@@ -9,7 +9,10 @@
  */
 
 function subsetSum(array, target) {
-
+// base case: either target is 0 (meaning that subsets sum up to target) OR array is empty
+if (!target) return true;
+if (!array.length) return false;
+return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
 module.exports = subsetSum;

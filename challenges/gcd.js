@@ -8,7 +8,19 @@
  */
 
 function gcd(a, b) {
+  ////// ohhhhhhhh yeah
+  if (a === b) {
+    return a;
+  }
+  const max = Math.max(a, b);
+
+  for (let i = max; i > 0; i -= 1) {
+    if (a % i === 0 && b % i === 0) {
+      return i;
+    }
+  }
 
 }
+
 
 module.exports = gcd;

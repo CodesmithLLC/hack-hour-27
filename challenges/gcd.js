@@ -8,7 +8,9 @@
  */
 
 function gcd(a, b) {
-
+  let temp = a % b;
+  if (temp === 0) return b;
+  return gcd(a, temp);
 }
 
 module.exports = gcd;

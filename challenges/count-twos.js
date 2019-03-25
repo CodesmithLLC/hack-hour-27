@@ -8,26 +8,6 @@
 // countTwos(1000);  -> 300
 // countTwos(11420);  -> 4483
 
-
-// if the last digit of the last number is > 2, add 1
-// divide by 10 and you'll get the other 2s
-// probably use recursion lol
-// if a digit is > 2, the number of times it will appear should be equal to other digits * 10 ** length
-//
-/*
-function coTwos(num, place = 1, trailing = 0) {
-  let leading = Math.floor(num/10)
-  let count = leading
-  if (num - (count*10) > 2){
-    count += 1;
-  }
-  if (num > 9){
-    return count*place + countTwos(count, place*10, remainder + Math.floor(num/10)*place)
-  } 
-  return count;
-}
-*/
-
 function countTwos(num){
   const strNum = num.toString()
   let count = 0;
@@ -56,4 +36,5 @@ console.log(countTwos(13), '-> 2')
 console.log(countTwos(1000), '-> 300')
 console.log(countTwos(11420), '-> 4483')
 */
+
 module.exports = countTwos;

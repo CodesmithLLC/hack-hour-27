@@ -32,6 +32,6 @@ function countTwos(num) {
 // console.log(countTwos(13)); // -> 2
 // console.log(countTwos(1000)); // -> 300
 // console.log(countTwos(11420)); // -> 4483
-//console.log(countTwos(20)); // -> 
+// console.log(countTwos(20)); // -> 
 
 module.exports = countTwos;

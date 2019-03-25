@@ -18,6 +18,6 @@ function gcd(a, b) {
   return 1;
 }
 
-//console.log(gcd(3333, 1001));
+console.log(gcd(44, 8));
 
 module.exports = gcd;

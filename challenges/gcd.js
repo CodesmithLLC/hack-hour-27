@@ -19,6 +19,10 @@ function gcd(a, b) {
   }
 }
 
+<<<<<<< HEAD
+console.log(gcd(44, 8));
+=======
 //console.log(gcd(210, 45))
+>>>>>>> 5af0f7c68668718feb179a5c47700ffdcb9c709a
 
 module.exports = gcd;

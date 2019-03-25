@@ -10,14 +10,19 @@
 function gcd(a, b) {
   let small = Math.min(a, b);
   let big = Math.max(a, b);
-  //if (big / small === Math.floor(big/small)) return (big / small);
-  //Brute force: start from 1. While big % i !== 0, and small % i !== 0, i++;
-  for (let i = 2; i <= small; i++){
-    if (big / i === Math.floor(big / i) && small / i === Math.floor(small / i)) return i;
+  //Strat: Euclid's Theorem: divide big by small. Grab remainder. Divide small by remainder. Repeat until Small / remainder === 0. Then return remainder.
+  while (big && small){
+    if (big % small === 0) return small;
+    let remainder = big % small;
+    big = small;
+    small = remainder;
   }
-  return 1;
 }
 
+<<<<<<< HEAD
 console.log(gcd(44, 8));
+=======
+//console.log(gcd(210, 45))
+>>>>>>> 5af0f7c68668718feb179a5c47700ffdcb9c709a
 
 module.exports = gcd;

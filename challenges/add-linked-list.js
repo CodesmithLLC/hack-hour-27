@@ -18,7 +18,51 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  // I'll want two pointers - one for each LL
+  // and a remainder storage, to hold remainders as I move through the LL
+  const output = {};
+  // the pointers
+  let p1 = l1;
+  let p2 = l2;
+  let pOutput = output;
+  let remainder = 0;
 
+
+
+  // I'll use a while loop to iterate through the LL, first assuming they are both the same length
+  while (p1 !== null) {
+    // perform addition with remainder or nah
+    if (remainder > 0) {
+      pOutput.value = p1.value + p2.value + remainder;
+      remainder = 0;
+    } else {
+      pOutput.value = p1.value + p2.value;
+    }
+
+    // detect and store remainder
+    if (pOutput.value > 9) {
+      let digitStr = pOutput.value.toString();
+      remainder = parseInt(digitStr[0]);
+      pOutput.value = parseInt(digitStr[1]);
+    }
+
+
+    // Increment to the next step
+    if (p1.next !== null) {
+      pOutput.next = {};
+      pOutput = pOutput.next;
+    }
+    p1 = p1.next;
+    p2 = p2.next;
+  }
+
+  pOutput.next = null;
+  return output;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+// const ll1 = { value: 2, next: { value: 1, next: { value: 5, next: null } } }
+// const ll2 = { value: 5, next: { value: 9, next: { value: 2, next: null } } }
+
+// console.log(addLinkedList(ll1, ll2));
+
+module.exports = { Node: Node, addLinkedList: addLinkedList };

@@ -18,7 +18,34 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  const output = new Node(null);
+  function helper(la, lb, lc, carry = 0){
+    if (!(la||lb)) return null;
+    lc.next = new Node(la.value + lb.value + carry)
+    if (la.value + lb.value >= 10){
+      carry++
+      lc.next.value = lc.next.value%10
+    } else {
+      carry = 0
+    }
+    helper(la.next, lb.next, lc.next, carry)
+  }
+  helper(l1, l2, output)
+  return output.next
 }
+
+/*
+const ll1 = new Node(2);
+ll1.next = new Node(1);
+ll1.next.next = new Node(5);
+ll1.next.next.next = new Node(5);
+
+const ll2 = new Node(5);
+ll2.next = new Node(9);
+ll2.next.next = new Node(2);
+ll2.next.next.next = new Node(2);
+
+console.log(addLinkedList(ll1, ll2).next)
+*/
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

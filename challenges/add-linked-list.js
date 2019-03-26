@@ -19,6 +19,66 @@ function Node(val) {
 
 function addLinkedList(l1, l2) {
 
+  // construct your nums
+
+  function traverse(node, all = []) {
+    if(!node) return undefined;
+    if(node.next === null) {
+      all.unshift(node.value.toString());
+      return all;
+    } else {
+      all.unshift(node.value.toString());
+      return traverse(node.next, all);
+    }
+  }
+
+  // add them and make a new num
+
+  const numOne = Number(traverse(l1).join(''));
+  const numTwo = Number(traverse(l2).join(''));
+  let outputNum = (numOne + numTwo).toString();
+
+  // make a new linked list representing the new num
+
+  const newHead = new Node(Number(outputNum.slice(-1)));
+  outputNum = outputNum.slice(0,-1);
+
+  function constructAddedList(node, num) {
+    if(!node) return undefined;
+    if(num !== '') {
+      node.next = new Node(Number(num.slice(-1)));
+      constructAddedList(node.next, num.slice(0,-1));
+    }
+  }
+
+  constructAddedList(newHead, outputNum);
+
+  // return the num
+
+  return newHead;
+
+
 }
+
+//testing
+
+let aa = new Node(1);
+let ab = new Node(3);
+let ac = new Node(9);
+
+
+let ba = new Node(2);
+let bb = new Node(4);
+let bc = new Node(9);
+
+
+aa.next = ab
+ab.next = ac
+
+ba.next = bb
+bb.next = bc
+
+
+console.log(addLinkedList(aa, ba))
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

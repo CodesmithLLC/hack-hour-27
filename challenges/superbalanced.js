@@ -14,25 +14,29 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
-  if(!tree) return true;
-  if(!tree.left && !tree.right) return 1
-  if(tree.left && !tree.right) {
-    if( superbalanced(tree.left) > 1 ) return false
-    else return 2;
-  }
-  if(!tree.left && tree.right) {
-    if( superbalanced(tree.right) > 1 ) return false
-    else return 2;
-  }
-  if(tree.left && tree.right) {
-    const leftCount  = superbalanced(tree.left)
-    const rightCount = superbalanced(tree.right)
-    if(leftCount && rightCount){
-      return 1 + Math.max(leftCount,rightCount);
-    } else {
-      return false;
+  function recu(tree) {
+    if(!tree) return true;
+    if(!tree.left && !tree.right) return 1
+    if(tree.left && !tree.right) {
+      if( recu(tree.left) > 1 ) return false
+      else return 2;
+    }
+    if(!tree.left && tree.right) {
+      if( recu(tree.right) > 1 ) return false
+      else return 2;
+    }
+    if(tree.left && tree.right) {
+      const leftCount  = recu(tree.left)
+      const rightCount = recu(tree.right)
+      if(leftCount && rightCount){
+        return 1 + Math.max(leftCount,rightCount);
+      } else {
+        return false;
+      }
     }
   }
+  if(recu(tree)) return true
+  else return false;
 }
 
 let a = new BinaryTree(5)

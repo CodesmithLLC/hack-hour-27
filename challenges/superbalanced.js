@@ -32,11 +32,11 @@ function superbalanced(tree) {
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
 
 
-const myTree = new BinaryTree(6);
-myTree.left = new BinaryTree(3);
-myTree.left.right = new BinaryTree(4);
-myTree.right = new BinaryTree(8);
-myTree.left.right.right = new BinaryTree(5);
+// const myTree = new BinaryTree(6);
+// myTree.left = new BinaryTree(3);
+// myTree.left.right = new BinaryTree(4);
+// myTree.right = new BinaryTree(8);
+// myTree.left.right.right = new BinaryTree(5);
 
-console.log(findHeight(myTree)); // 3
-console.log(superbalanced(myTree)); // false
+// console.log(findHeight(myTree)); // 3
+// console.log(superbalanced(myTree)); // false

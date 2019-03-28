@@ -11,7 +11,19 @@
  */
 
 function repeatNumbers(array) {
+  // iterate through the array
+  // check if set has i
+  // if yes, return i
+  // if no, add i to set
+  const ledger = new Set;
 
+  for (let i = 0; i < array.length; i += 1) {
+    if (ledger.has(array[i])) {
+      return array[i]
+    }
+    else ledger.add(array[i]);
+  }
 }
+
 
 module.exports = repeatNumbers;

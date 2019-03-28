@@ -28,10 +28,16 @@ function repeatNumbersConstantSpace(array) {
   return recu(array.sort());
 }
 
+function repeatNumbersConstantSpaceBetter(array) {
+  const length = array.length - 1;
+  let sum = (length * (length + 1) / 2);
+  return (array.reduce( (acc, curr) => acc + curr)) - sum;
+}
+
 // tests
 
-// let arr = [1,2,3,4,5,4]
-// console.log(repeatNumbersConstantSpace(arr))
+let arr = [1,2,3,4,5,6,7,8,9,10,11,12,12]
+console.log(repeatNumbersConstantSpaceBetter(arr))
 
 module.exports = repeatNumbers;
 

@@ -16,44 +16,41 @@ function BinaryTree(value) {
 function superbalanced(tree) {
   //strategy： find height of L, find height of R
   // if Math.abs(heightL - heightR)  > 1, return false. else return true
-  
-  //base: empty tree
-  if (tree.left === null & tree.right === null) return true;
+  //also need to check for subtrees to be balanced themselves
+  return (isBalanced(tree.left) && isBalanced(tree.right))
+}
 
-  //recurse
-  return Math.abs(height(tree.left) - height(tree.right)) <= 1; 
+function isBalanced(BST){
+  return Math.abs(height(BST.left) - height(BST.right)) <= 1; 
 }
 
 function height(BST){
-  function levelHeight(current){
-    if (!current) return 0;
-    const left = levelHeight(current.left)
-    const right = levelHeight(current.right)
-    return Math.max(left, right) + 1;
-  }
-  return levelHeight(BST);
+  if (!BST) return 0;
+  const left = height(BST.left);
+  const right = height(BST.right);
+  return Math.max(left, right) + 1;
 }
 
-// let badBST = new BinaryTree(10)
-// badBST.left = new BinaryTree(3)
-// badBST.left.right = new BinaryTree(4)
-// badBST.right = new BinaryTree(15)
-// badBST.right.left = new BinaryTree(11);
-// badBST.right.left.right = new BinaryTree(12);
-// badBST.right.left.right.right = new BinaryTree(13);
+let badBST = new BinaryTree(10)
+badBST.left = new BinaryTree(3)
+badBST.left.right = new BinaryTree(4)
+badBST.right = new BinaryTree(15)
+badBST.right.left = new BinaryTree(11);
+badBST.right.left.right = new BinaryTree(12);
+badBST.right.left.right.right = new BinaryTree(13);
 
-// let goodBST = new BinaryTree(10)
-// goodBST.left = new BinaryTree(3)
-// goodBST.left.right = new BinaryTree(4)
-// goodBST.left.right.right = new BinaryTree(6);
-// goodBST.left.right.right.right = new BinaryTree(7)
-// goodBST.right = new BinaryTree(15)
-// goodBST.right.left = new BinaryTree(11);
-// goodBST.right.left.right = new BinaryTree(12);
-// goodBST.right.left.right.right = new BinaryTree(13);
+let goodBST = new BinaryTree(10)
+goodBST.left = new BinaryTree(3)
+goodBST.left.right = new BinaryTree(4)
+goodBST.left.right.right = new BinaryTree(6);
+goodBST.left.right.right.right = new BinaryTree(7)
+goodBST.right = new BinaryTree(15)
+goodBST.right.left = new BinaryTree(11);
+goodBST.right.left.right = new BinaryTree(12);
+goodBST.right.left.right.right = new BinaryTree(13);
 
-
-// console.log(superbalanced(badBST));
-// console.log(superbalanced(goodBST));
+console.log(superbalanced(badBST)); // false
+console.log(superbalanced(goodBST)); // true
+console.log(superbalanced(new BinaryTree(1))) // true
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

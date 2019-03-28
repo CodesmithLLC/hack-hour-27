@@ -11,7 +11,16 @@
  */
 
 function repeatNumbers(array) {
-
+  let result = {}
+  for (let i = 0; i < array.length; i++){
+    if (!result[array[i]]) result[array[i]] = 1
+    else return array[i]
+  }
+  // for (let key in result) {
+  //   if (result[key] === 2) return key
+  // }
 }
+
+console.log(repeatNumbers([1,2,3,3]))
 
 module.exports = repeatNumbers;

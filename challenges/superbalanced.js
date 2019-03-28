@@ -14,6 +14,22 @@ function BinaryTree(value) {
 }
 
 function superbalanced(tree) {
+  // determin the height of left and right
+  // if difference is less 1 or less, then it's balanced
+
+  if (!tree.left && !tree.right ) return true
+
+  // find height
+  function height(tree) {
+    if (tree.value === null) return 0
+    else return max(height(tree.left), height(tree.right)) + 1 
+  }
+
+  let leftHeight = height(tree.left)
+  let rightHeight = height(tree.right)
+
+  if (Math.abs(leftHeight - rightHeight) <= 1) return true
+  else return false
 
 }
 

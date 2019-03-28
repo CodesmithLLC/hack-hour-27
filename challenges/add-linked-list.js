@@ -18,7 +18,27 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
+  // find the last link
+  // move backward on link
 
+  let currOne = l1
+  let currTwo = l2
+  let prevOne = null
+  let prevTwo = null
+  whlie (currOne && currTwo) {
+    if (currOne.next.value + currTwo.next.value >= 10) {
+      currOne.next.value = currOne.next.value + currTwo.next.value - 10
+      currOne.value += 1
+    } else {
+      currOne.next.value = currOne.next.value + currTwo.next.value
+    
+    prevOne = currOne
+    prevTwo = currTwo
+    currOne = currOne.next
+    currTwo = currTwo.next
+  }
+
+  return currOne
 }
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};

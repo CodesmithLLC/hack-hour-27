@@ -10,14 +10,13 @@
  *
  */
 
-function repeatNumbers(array) {
-  const track = new Set();
-  for(let i = 0; i < array.length; i++){
-    if track.has(array[i]){ 
-      return array[i]
-    }
-    track.add(array[i])
-  }
+function repeatNumbers(array){
+  const topValue = array.length-1
+  const projectedVal = (1 + topValue)*topValue/2
+  const sum = array.reduce((acc,val)=>{
+    return acc + val;
+  }, 0)
+  return sum - projectedVal;
 }
 
 module.exports = repeatNumbers;

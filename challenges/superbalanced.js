@@ -15,7 +15,6 @@ function BinaryTree(value) {
 
 function treeHeight(tree) {
   let leftHeight = 0, rightHeight = 0;
-  let height = 1;
   if (tree.left) {
     leftHeight = treeHeight(tree.left);
   }
@@ -23,7 +22,7 @@ function treeHeight(tree) {
     rightHeight = treeHeight(tree.right);
   }
 
-  return height + Math.max(leftHeight, rightHeight);
+  return 1 + Math.max(leftHeight, rightHeight);
 }
 
 function superbalanced(tree) {
@@ -37,6 +36,8 @@ function superbalanced(tree) {
     if (superbalanced(tree.left)) {
       // left is balanced so get left height
       leftHeight = treeHeight(tree.left);
+    } else {
+      return false;
     }
   }
 
@@ -45,6 +46,8 @@ function superbalanced(tree) {
     if (superbalanced(tree.right)) {
       // left is balanced so get left height
       rightHeight = treeHeight(tree.right);
+    } else {
+      return false;
     }
   }
 

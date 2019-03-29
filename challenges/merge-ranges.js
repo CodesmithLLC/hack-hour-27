@@ -14,15 +14,13 @@ function mergeRanges(array) {
   // sort the array
   array.sort((a, b) => a[0] - b[0]);
   return array.reduce((acc, curr) => {
-		console.log("TCL: mergeRanges -> acc", acc)
-
     if (!acc[0]) {
       // acc is empty. Push first one on
       acc.push(curr);
     } else {
       let last = acc.pop();
       if (curr[0] <= last[1]) {
-        acc.push([last[0], curr[1]]);
+        acc.push([last[0], curr[1] < last[1] ? last[1] : curr[1]]);
       } else {
         acc.push(last);
         acc.push(curr);

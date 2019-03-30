@@ -33,7 +33,15 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
-
+  let set = new Set();
+  while (head) {
+    if (set.has(head)) return true;
+    set.add(head)
+    head = head.next;
+  }
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
+
+

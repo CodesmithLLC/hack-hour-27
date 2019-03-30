@@ -14,10 +14,6 @@ function mergeRanges(array) {
   // sort the array
   array.sort((a, b) => a[0] - b[0]);
   return array.reduce((acc, curr) => {
-    if (!acc[0]) {
-      // acc is empty. Push first one on
-      acc.push(curr);
-    } else {
       let last = acc.pop();
       if (curr[0] <= last[1]) {
         acc.push([last[0], curr[1] < last[1] ? last[1] : curr[1]]);
@@ -25,11 +21,13 @@ function mergeRanges(array) {
         acc.push(last);
         acc.push(curr);
       }
-    }
     return acc;
-  }, [])
+  }, [array[0]], 1)
 }
 
-// var times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]]
-// console.log(mergeRanges(times));
+console.time();
+var times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]]
+console.log(mergeRanges(times));
+console.timeEnd();
+
 module.exports = mergeRanges;

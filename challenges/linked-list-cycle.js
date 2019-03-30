@@ -36,6 +36,9 @@ function hasCycle(head) {
   let arr = []
   let temp = head;
   arr.push(temp);
+  if(head === null) {
+    return false
+  }
   while (temp.next) {
       temp = temp.next
 			if (arr.indexOf(temp) !== -1) {

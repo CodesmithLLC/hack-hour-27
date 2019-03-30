@@ -33,20 +33,22 @@ var Node = function (value) {
 }
 
 function hasCycle(head) {
-  const ledger = {};
+  if (head == null) {
+    return false;
+  }
+  const ledger = new Set;
   // we need a pointer
   // pointer is set to the head of the LL
   let pointer = head;
 
-  while (pointer.next !== null) {
+  while (pointer !== null) {
     // check and see if pointer.next value is in the ledger
-    if (ledger[pointer.next.value]) {
+    if (ledger.has(pointer)) {
       // if yes, return true
       return true;
     } else {
       // if no, add pointer.value to ledger
-      ledger[pointer.value] = pointer.next.value;
-      console.log('ledger is', ledger);
+      ledger.add(pointer);
     }
     pointer = pointer.next;
   }

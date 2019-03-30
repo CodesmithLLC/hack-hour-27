@@ -32,28 +32,42 @@ var Node = function(value) {
   this.next = null;
 }
 
+// function hasCycle(head) {
+//   let store = new Set();
+//   let pointer = head;
+//   while (pointer) {
+//     if (store.has(pointer)) {
+//       return true;
+//     } else {
+//       store.add(pointer);
+//       pointer = pointer.next;
+//     }
+//   }
+//   return false;
+// }
+
 function hasCycle(head) {
-  let store = new Set();
-  let pointer = head;
-  while (pointer) {
-    if (store.has(pointer)) {
-      return true;
-    } else {
-      store.add(pointer);
-      pointer = pointer.next;
-    }
+  if (head && head.next) {
+    return findCycle(head, head.next);
   }
   return false;
+}
+
+function findCycle(lag, lead) {
+  // if lag catches up to lead, it is a cycle
+  if (lag === lead) return true;
+  // lead moves forward 2, lag moves forward 1
+  else return lead !== null && lead.next !== null && findCycle(lag.next, lead.next.next);
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
 
 
-var node1 = new Node('1');
-var node2 = node1.next = new Node('2');
-var node3 = node2.next = new Node('3');
-var node4 = node3.next = new Node('4');
-var node5 = node4.next = new Node('5');
-console.log(hasCycle(node1)); // => false
-node5.next = node2;
-console.log(hasCycle(node1)); // => true
+// var node1 = new Node('1');
+// var node2 = node1.next = new Node('2');
+// var node3 = node2.next = new Node('3');
+// var node4 = node3.next = new Node('4');
+// var node5 = node4.next = new Node('5');
+// console.log(hasCycle(node1)); // => false
+// node5.next = node2;
+// console.log(hasCycle(node1)); // => true

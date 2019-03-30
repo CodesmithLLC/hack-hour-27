@@ -32,8 +32,47 @@ var Node = function(value) {
   this.next = null;
 }
 
-function hasCycle(head) {
-
+// fails challenge 2 and 3
+function hasCycle(node) {
+  if(node.seen) return true;
+  if(!node.next) return false;
+  node.seen = true;
+  return hasCycle(node.next);
 }
+
+
+function hasCycleBetter(node) {
+  if(!node.next) return false;
+  return hasCycleBetter(node.next);
+}
+
+
+function once(cb) {
+  let found = false
+  return function(...args) {
+    if(found === true) return true;
+    else {
+      found = true;
+      return cb(...args);
+    }
+  }
+}
+
+// fails challenge 2
+const betterHasCycle = once(hasCycleBetter);
+
+// tests
+
+// var node1 = new Node('1');
+// var node2 = node1.next = new Node('2');
+// var node3 = node2.next = new Node('3');
+// var node4 = node3.next = new Node('4');
+// var node5 = node4.next = new Node('5');
+// console.log(hasCycle(node1)); // => false
+// console.log(betterHasCycle(node1))
+// node5.next = node2;
+// console.log(betterHasCycle(node1))
+// console.log(hasCycle(node1)); // => true
+
 
 module.exports = {Node: Node, hasCycle: hasCycle}

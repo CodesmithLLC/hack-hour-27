@@ -27,13 +27,37 @@
  *
  */
 
-var Node = function(value) {
+var Node = function (value) {
   this.value = value;
   this.next = null;
 }
 
 function hasCycle(head) {
+  const ledger = {};
+  // we need a pointer
+  // pointer is set to the head of the LL
+  let pointer = head;
+
+  while (pointer.next !== null) {
+    // check and see if pointer.next value is in the ledger
+    if (ledger[pointer.next.value]) {
+      // if yes, return true
+      return true;
+    } else {
+      // if no, add pointer.value to ledger
+      ledger[pointer.value] = pointer.next.value;
+      console.log('ledger is', ledger);
+    }
+    pointer = pointer.next;
+  }
+
+  return false;
+
+
+
 
 }
 
-module.exports = {Node: Node, hasCycle: hasCycle}
+
+
+module.exports = { Node: Node, hasCycle: hasCycle }

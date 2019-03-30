@@ -10,8 +10,18 @@
  */
 
 
-function mergeRanges(array) {
-
-}
+function mergeRanges(array, count = 0) {
+  if (!array[count]) {return array};
+  if (count === 0) {
+    array.sort((a, b) => a[0] > b[0]);
+  }
+  let current = array[count++];
+  let next = array[count];
+  if (current[1] >= next[0]) {
+    current[1] = Math.max(current[1], next[1]);
+    array.splice(count, 1);
+  }
+  return mergeRanges(array, count);
+};
 
 module.exports = mergeRanges;

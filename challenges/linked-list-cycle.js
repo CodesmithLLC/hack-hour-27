@@ -33,6 +33,7 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
+  if (!head) return false;
   // a slower pointer and faster pointer to keep track of pace
   let axolotl = head;
   let shark = head;

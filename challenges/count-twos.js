@@ -22,3 +22,27 @@ function countTwos(num) {
 }
 
 module.exports = countTwos;
+
+// function countTwos(num) {
+//   // create digits array
+//   const digits = num.toString().split('');
+//   return digits.reduce((count, strDigit, idx, arr) => {
+//     const digit = Number(strDigit);
+//     const digitLength = arr.length - idx;
+
+//     if (digitLength === 1) {
+//       if (digit >= 2) count += 1;
+//     } else {
+//       // use formula to add to count based on digit and digitLength
+//       count += digit * (digitLength - 1) * Math.pow(10, digitLength - 2);
+//       if (digit > 2) {
+//         count += Math.pow(10, digitLength - 1);
+//       } else if (digit === 2) {
+//         // for digits === 2, add the total of all previous digits to the count
+//         console.log()
+//         count += Number(arr.slice(idx + 1).join('')) + 1;
+//       }
+//     }
+//     return count;
+//   }, 0);
+// }

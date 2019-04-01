@@ -41,3 +41,61 @@ function superbalanced(tree) {
 }
 
 module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
+
+// *** Joel's solution *** //
+
+// function treeHeight(tree) {
+//   let maxHeight = 0;
+//   let leftHeight = 0;
+//   let rightHeight = 0;
+
+//   // base case
+//   if (tree.left === null && tree.right === null) return maxHeight;
+
+//   // update heights for left and right
+//   if (tree.left !== null) leftHeight = treeHeight(tree.left);
+//   if (tree.right !== null) rightHeight = treeHeight(tree.right);
+
+//   // update value for height base on what recurive call found
+//   if (leftHeight > maxHeight) maxHeight = leftHeight;
+//   if (rightHeight > maxHeight) maxHeight = rightHeight;
+
+//   return 1 + maxHeight;
+// }
+
+// function superbalanced(tree) {
+//   let leftHeight = 0;
+//   let leftBalanced = true;
+
+//   let rightHeight = 0;
+//   let rightBalanced = true;
+
+//   // base case
+//   if (tree.left === null && tree.right === null) return true;
+
+//   if (tree.left !== null) {
+//     leftHeight = treeHeight(tree.left);
+//     leftBalanced = superbalanced(tree.left);
+//   }
+
+//   if (tree.right !== null) {
+//     rightHeight = treeHeight(tree.right);
+//     rightBalanced = superbalanced(tree.right);
+//   }
+
+//   return (Math.abs(leftHeight - rightHeight) < 2) && rightBalanced && leftBalanced;
+// }
+
+
+
+ // *** SOLUTION *** //
+
+// function height(tree) {
+//   if (tree === null) return 0;
+//   return 1 + Math.max(height(tree.left), height(tree.right));
+// }
+
+// function superbalanced(tree) {
+//   if (tree === null) return true;
+//   return Math.abs(height(tree.left) - height(tree.right)) <= 1 && superbalanced(tree.left) && superbalanced(tree.right);
+// }

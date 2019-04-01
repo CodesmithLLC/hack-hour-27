@@ -42,6 +42,8 @@ function hasCycle(head) {
     pointer = pointer.next;
   }
   return false;
+
+  //200 IQ: slow pointer, fast pointer. If they ever meet, return true. If any pointers are null, return false;
 }
 
 var node1 = new Node('1');

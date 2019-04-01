@@ -43,5 +43,3 @@ function hasCycle(head) {
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
-
-

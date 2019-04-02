@@ -38,11 +38,11 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
   }
   // console.log('storage', storage)
   return storage.reduce( (acc, val) => acc + val);
+
+  //faster strat: have a counter that starts at 1, and increments by x, until z. Push all these numbers into storage. Same with y. return storage sum.
+  //Big Brain solution: x( (z / x) * ((z / x) + 1 )) / 2, do same for y, add x and y verison, subtract x*y version
 }
-
 // console.log(sumMultiplesXOrYBelowZ(3, 5, 10))
-
-
 const objectToExport = {
   sumMultiples3Or5Below1000,
   sumMultiplesXOrYBelowZ,

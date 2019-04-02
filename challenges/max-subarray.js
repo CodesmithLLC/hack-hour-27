@@ -8,22 +8,22 @@
  */
 
 function maxSubarray(arr) {
-  let accSum = 0;
-  let maxSubarray = 0;
+  let accSum = -Infinity;
+  let maxSubarray = -Infinity;
+
   for (let i = 0; i < arr.length; i += 1) {
     const currNum = arr[i];
     accSum += currNum;
     if (currNum > accSum) {
       accSum = currNum;
-    } else {
-      if (accSum > maxSubarray) {
-        maxSubarray = accSum;
-      }
+    }
+    if (accSum > maxSubarray) {
+      maxSubarray = accSum;
     }
   }
   return maxSubarray;
 }
 
-console.log(maxSubarray([15, 20, -5, 10]));
+console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5, 40]));
 
 module.exports = maxSubarray;

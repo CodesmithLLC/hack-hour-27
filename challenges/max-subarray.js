@@ -8,7 +8,31 @@
  */
 
 function maxSubarray(arr) {
+  // The subarray that will produce the most max
+  let winningArray = [];
+  console.log(Math.ceil(arr.length / 2));
+  // iterate through the argument
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] >= 0) {
+      winningArray.push(arr[i])
+    } else {
+      if ((winningArray[winningArray.length - 1] + arr[i] < 0)) {
+
+        // winningArray = [];
+
+      } else {
+        winningArray.push(arr[i]);
+      }
+    }
+  }
+  console.log('winningArray is', winningArray);
+  return winningArray.reduce((acc, cur) => {
+    return acc + cur
+  });
+
 
 }
+
+
 
 module.exports = maxSubarray;

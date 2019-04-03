@@ -13,7 +13,22 @@
   */
 
 function anagrams(string) {
-
+  const anagramSet = new Set();
+    function recuAnagrams(str, output = '') {
+      if (str.length === 1) {
+        anagramSet.add(output + str[0]);
+      } else {
+        for(let i=0; i<str.length; i++) {
+          const newStr = [...str]
+          newStr.splice(i, 1);
+          recuAnagrams(newStr, output + str[i])
+        }
+      }
+    }
+  recuAnagrams(string)
+  return [...anagramSet]
 }
+
+console.log(anagrams('butt'))
 
 module.exports = anagrams;

@@ -27,11 +27,13 @@ function anagrams(string) {
     let newArr = strArr.slice(0, i).concat(strArr.slice(i+1))
     let ana = anagrams(newArr.join(''));
     for (let j = 0; j < ana.length; j += 1) {
-      out.push(first + ana[j]);
+      let newAna = first + ana[j];
+      if (!out.includes(newAna))
+        out.push(newAna);
     }
   }
 
   return out;
 }
-// console.log(anagrams('abcd'))
+console.log(anagrams('abb'))
 module.exports = anagrams;

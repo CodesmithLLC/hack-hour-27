@@ -8,25 +8,12 @@
  */
 
 function maxSubarray(arr) {
-  let sum = arr[0];
-  let min = arr[0];
-  let maxSum = sum;
-  let recount = false;
-  for (let i = 1; i < arr.length; i++) {
-    if (recount) {
-      sum = arr[i];
-      min = arr[i];
-      maxSum = Math.max(maxSum, sum);
-      recount = false;
-    } else {
-      if (sum + arr[i] < min) {
-        recount = true;
-      } else {
-        sum += arr[i];
-        maxSum = Math.max(maxSum, sum);
-      }
-    }
-    // console.log(`i: ${i}, sum: ${sum}, min: ${min}, maxSum: ${maxSum}`);
+  let sum = -Infinity;
+  let maxSum = -Infinity;
+  
+  for (let i = 0; i < arr.length; i++) {
+    sum = Math.max(sum + arr[i], arr[i]);
+    maxSum = Math.max(sum, maxSum);
   }
   return Math.max(maxSum, sum);
 }

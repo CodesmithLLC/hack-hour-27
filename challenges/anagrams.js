@@ -13,7 +13,7 @@
   */
 
 function anagrams(string) {
-  if (string.length === 1) return [string];
+  if (string === '') return [''];
   let output = [];
   let doubleStr = string + string;
   let len = string.length;
@@ -22,10 +22,16 @@ function anagrams(string) {
       output.push(string[i] + e);
     })
   }
-  return output;
+  
+  let deDupedOutput = [];
+  for (let i = 0; i < output.length; i++) {
+    if (!deDupedOutput.includes(output[i])) deDupedOutput.push(output[i]);
+  }
+  return deDupedOutput;
 }
 
 module.exports = anagrams;
 
 // var result = anagrams('abc');
 // console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
+console.log(anagrams('holo'));

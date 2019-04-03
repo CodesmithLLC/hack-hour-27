@@ -8,7 +8,18 @@
  */
 
 function maxSubarray(arr) {
+  // find all possible combination of arrays
+  // calculate the max of each array and store as key: value object
 
+  function findSubarray(arr) {
+    if (arr.length === 1) return arr
+    else {
+      let subArr = findSubarray(arr.slice(1))
+      return subArr.concat(subArr.map(el => el.concat(arr[0]), [[arr[0]]]))
+    }
+  }
+
+  return Math.max(findSubarray(arr).forEach(el => el.reduce((acc, cur) => {return acc + cur})))
 }
 
 module.exports = maxSubarray;

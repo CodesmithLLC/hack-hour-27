@@ -16,7 +16,7 @@ function deleteDups(head) {
   if (!head.next) return head;
   let lead = head.next;
   let lag = head;
-  let cache = new Set(head.value);
+  let cache = new Set([head.value]);
   while (lead) {
     if (cache.has(lead.value)) {
       lag.next = lead.next;
@@ -31,3 +31,28 @@ function deleteDups(head) {
 }
 
 module.exports = deleteDups;
+
+// class Node {
+//   constructor (val) {
+//     this.value = val;
+//     this.next = null;
+//   }
+// }
+
+// const head = new Node(1);
+// head.next = new Node(2);
+// head.next.next = new Node(3);
+// head.next.next.next = new Node(3);
+// let p = head;
+// while (p) {
+//   console.log(p.value);
+//   p = p.next;
+// }
+
+// deleteDups(head);
+// console.log('deleteDups:');
+// p = head;
+// while (p) {
+//   console.log(p.value);
+//   p = p.next;
+// }

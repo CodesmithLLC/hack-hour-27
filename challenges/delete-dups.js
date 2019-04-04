@@ -13,7 +13,21 @@
 
 
 function deleteDups(head) {
-
+  if (!head.next) return head;
+  let lead = head.next;
+  let lag = head;
+  let cache = new Set(head.value);
+  while (lead) {
+    if (cache.has(lead.value)) {
+      lag.next = lead.next;
+      lead = lead.next;
+    } else {
+      cache.add(lead.value);
+      lead = lead.next;
+      lag = lag.next;
+    }
+  }
+  return head;
 }
 
 module.exports = deleteDups;

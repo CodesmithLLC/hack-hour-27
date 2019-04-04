@@ -8,7 +8,21 @@
  */
 
 function maxSubarray(arr) {
+  let maxSum = -Infinity;
+  let sum = -Infinity;
 
+  for (let i = 0; i < arr.length; i++) {
+    const curNum = arr[i];
+    sum += curNum;
+    if (curNum > sum) {
+      sum = curNum;
+    }
+    if (sum > maxSum) {
+      maxSum = sum;
+    }
+  }
+  return maxSum;
 }
 
 module.exports = maxSubarray;
+maxSubarray([15,20,-5,10])

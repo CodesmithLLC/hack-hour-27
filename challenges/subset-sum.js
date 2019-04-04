@@ -9,23 +9,12 @@
  */
 
 function subsetSum(array, target) {
-  
-  // for (let i = 0; i < array.length; i++) {
-  //   let sum = array[i];
-  //   let subArr = array.slice(i);
-  //   for (let j = 0; j < subArr.length; j++) {
-  //     subArr = array.slice(j);
-  //     console.log('subArr: ', subArr);
-  //     sum += subArr[j];
-  //     console.log('sum: ', sum);
-  //     if (sum === target) {
-  //       return true;
-  //     }
-  //   }
-  // }
-  // return false;
+  console.log('target', target)
+  if (target === 0) return true;
+  if (array.length === 0) return false;
+  return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target);
 }
 
 module.exports = subsetSum;
 
-console.log(subsetSum([3, 34, 4, 12, 5, 12], 32));
+// console.log(subsetSum([8, 2, 4, 12], 13));

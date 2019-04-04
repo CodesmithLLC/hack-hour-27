@@ -8,9 +8,20 @@
 // countTwos(1000);  -> 300
 // countTwos(11420);  -> 4483
 
-
 function countTwos(num) {
 
+  let count = 0;
+  for (let i = 0; i <= num; i++) {
+    let str = i.toString();
+    for (let j = 0; j < str.length; j++) {
+      if (str[j] === '2') {
+        count += 1
+      }
+    }
+  }
+  return count;
 }
 
 module.exports = countTwos;
+
+console.log(countTwos(2300))

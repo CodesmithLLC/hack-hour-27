@@ -26,6 +26,8 @@ function mergeRanges(array) {
 }
 
 module.exports = mergeRanges;
-// var times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10], [19, 20]]
-// mergeRanges(times)
+var times = [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10], [19, 20]]
+console.time();
+console.log(mergeRanges(times))
+console.timeEnd();
 // console.log(times.sort((a,b) => a[0] > b[0]))

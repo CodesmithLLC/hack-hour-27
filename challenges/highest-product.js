@@ -6,9 +6,10 @@ function highestProduct(array) {
   if (!Array.isArray(array)) return 0;
   if (array.length < 3) return 0;
 
-  let sorted = array.sort((a, b) => a - b);
-  // console.log(sorted)
-  return Math.max(sorted[sorted.length - 1] * sorted[sorted.length - 2] * sorted[sorted.length - 3], sorted[0] * sorted[1] * sorted[sorted.length - 1]);
+  // let sorted = array.sort((a, b) => a - b);
+  // // console.log(sorted)
+  // return Math.max(sorted[sorted.length - 1] * sorted[sorted.length - 2] * sorted[sorted.length - 3], sorted[0] * sorted[1] * sorted[sorted.length - 1]);
+  
 }
 
 module.exports = highestProduct;

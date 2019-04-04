@@ -11,7 +11,14 @@
  */
 
 function repeatNumbers(array) {
-
+  let str = '';
+  for (let i = 0; i < array.length; i++) {
+    str += array[i].toString();
+  }
+  return parseInt(str.match(/(.).*\1/)[1], 10);
 }
 
 module.exports = repeatNumbers;
+
+let test = [1, 2, 2, 3, 4];
+console.log(repeatNumbers(test));

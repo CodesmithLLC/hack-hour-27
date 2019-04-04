@@ -8,12 +8,20 @@
 
 /**
   * example:
-  * var result = anagrams('abc');
+  * var result = anagrams('abc')
   * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
 function anagrams(string) {
+  let result = [];
 
 }
 
+function swap(s1, s2) {
+  let temp = s1;
+  s1 = s2;
+  s2 = temp;
+}
 module.exports = anagrams;
+
+console.log(anagrams('abc'))

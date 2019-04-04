@@ -26,15 +26,16 @@ function Stack() {
   this.resetMax = function () {
     this.max.curValue = -Infinity;
     this.max.index = -1;
+    return;
   }
 
   this.push = function (el) {
-    this.elements[Object.keys(this.elements).length] = el;
-    this.length += 1;
     if (el > this.max.curValue) {
-      this.max.index = this.length - 1;
+      this.max.index = this.length;
       this.max.curValue = el;
     }
+    this.elements[Object.keys(this.elements).length] = el;
+    this.length += 1;
     return this.length;
   };
 
@@ -42,7 +43,7 @@ function Stack() {
     if (this.length === 0 ) return undefined;
 
     let deleted = this.elements[Object.keys(this.elements).length - 1];
-    if (deleted >= this.max.curValue) {
+    if (deleted === this.max.curValue) {
       this.resetMax();
     }
     delete this.elements[Object.keys(this.elements).length - 1];

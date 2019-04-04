@@ -20,7 +20,6 @@ function maxSubarray(arr) {
 }
 
 const getSubarrays = (arr) => {
-  //base
   let output = [];
   for (let j = arr.length; j >= 0; j--) {
     for (let i = 0; i < j; i++){
@@ -31,7 +30,7 @@ const getSubarrays = (arr) => {
   return output;
 }
 
-console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])) // -> 18 from [3, 10, -4, 7, 2]
-console.log(maxSubarray([15,20,-5,10])) //  -> 40
+//console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])) // -> 18 from [3, 10, -4, 7, 2]
+//console.log(maxSubarray([15,20,-5,10])) //  -> 40
 
 module.exports = maxSubarray;

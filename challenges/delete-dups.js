@@ -13,7 +13,33 @@
 
 
 function deleteDups(head) {
+  // We will need to iterate through the LL
+  // and keep track of what we've seen
+  // and change .next vaules to remove values we've seen previously
 
+  // our 'temp buffer'
+  const ledger = new Set;
+
+  // pointer for iteration
+  let trailer;
+  let pointer = head;
+
+  // iterate through the LL
+  while (pointer !== null) {
+    if (ledger.has(pointer.value)) {
+      if (pointer.next !== null) {
+        trailer.next = trailer.next.next;
+      }
+    }
+    ledger.add(pointer.value);
+    trailer = pointer;
+    pointer = pointer.next
+  }
+
+  return head;
 }
+
+
+
 
 module.exports = deleteDups;

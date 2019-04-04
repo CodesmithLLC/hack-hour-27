@@ -10,10 +10,14 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
-
-
+const seen = new Set()
 function deleteDups(head) {
-
+  if (!head || !head.next) return;
+  seen.add(head.value)
+  if (seen.has(head.next.value)){
+    head.next = head.next.next
+  }
+  return deleteDups(head.next);
 }
 
 module.exports = deleteDups;

@@ -29,8 +29,10 @@ var EventEmitter = /** @class */ (function () {
     }
     EventEmitter.prototype.on = function (funcName, func) {
         if (!this.cache.has(funcName)) {
-            this.cache.set(funcName, func);
+            this.cache.set(funcName, []);
         }
+        var funcArr = this.cache.get(funcName);
+        funcArr.push(func);
     };
     EventEmitter.prototype.trigger = function (funcName) {
         var args = [];
@@ -38,13 +40,15 @@ var EventEmitter = /** @class */ (function () {
             args[_i - 1] = arguments[_i];
         }
         if (this.cache.has(funcName)) {
-            var func = this.cache.get(funcName);
-            if (args) {
-                func.apply(void 0, args);
-            }
-            else {
-                func();
-            }
+            var funcArr = this.cache.get(funcName);
+            funcArr.forEach(function (func) {
+                if (args) {
+                    func.apply(void 0, args);
+                }
+                else {
+                    func();
+                }
+            });
         }
     };
     return EventEmitter;

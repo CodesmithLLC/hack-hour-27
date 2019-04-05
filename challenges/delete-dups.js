@@ -17,3 +17,5 @@ function deleteDups(head) {
 }
 
 module.exports = deleteDups;
+
+console.log(2^2, 2^0, 2^1, 1^2)

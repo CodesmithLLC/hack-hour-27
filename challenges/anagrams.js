@@ -14,6 +14,7 @@
 
 function anagrams(string) {
   const out = [];
+  if (string === '') return '';
 
   if (string.length === 1) {
     out.push(string);
@@ -35,5 +36,5 @@ function anagrams(string) {
 
   return out;
 }
-console.log(anagrams('abb'))
+console.log(anagrams('a'))
 module.exports = anagrams;

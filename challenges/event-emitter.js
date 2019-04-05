@@ -22,15 +22,39 @@
  */
 
 function EventEmitter() {
-
+  this.funcObj = {};
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-
+  if(!this.funcObj[funcName]) {
+    this.funcObj[funcName] = [func];
+  } else {
+    this.funcObj[funcName].push(func);
+  }
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-
+  this.funcObj[funcName].forEach( func => {
+    func(...args);
+  })
 };
+
+// tests
+
+// const a = (n) => console.log(n + 2);
+// const b = (n) => console.log(n + 'string');
+// const c = (n) => console.log(n ** 10);
+// const d = (n) => console.log(n + 'two');
+
+// const emit = new EventEmitter()
+
+// emit.on('number', a)
+// emit.trigger('number', 2)
+// emit.on('string', b)
+// emit.trigger('string', 2)
+// emit.on('number', c)
+// emit.on('string', d)
+// emit.trigger('number', 2)
+// emit.trigger('string', 2)
 
 module.exports = EventEmitter;

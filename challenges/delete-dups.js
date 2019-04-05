@@ -15,7 +15,6 @@ function Node(val){
   this.next = null;
 }
 
-
 function deleteDups(head) {
   let seen = new Set();
   let curNode = head;

@@ -43,12 +43,12 @@ module.exports = {
   zip: zip
 };
 
-// let one = new Node(1);
-// one.next = new Node(3);
-// one.next.next = new Node(5)
+let one = new Node(1);
+one.next = new Node(3);
+one.next.next = new Node(5)
 
-// let two = new Node(2);
-// two.next = new Node(4);
-// two.next.next = new Node(6);
+let two = new Node(2);
+two.next = new Node(4);
+two.next.next = new Node(6);
 
-// (zip(one, two))
+console.log(zip(one, two))

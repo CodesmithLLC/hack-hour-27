@@ -26,11 +26,18 @@ function EventEmitter() {
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  this.storage[funcName] = func
+  //place an array at the location "funcName"
+    //push onto that array the func
+  if (!this.storage[funcName]) {
+    let storageArr = [];
+    storageArr.push(func)
+    this.storage[funcName] = storageArr;
+  }
+  else this.storage[funcName].push(func);
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-  this.storage[funcName](...args)
+  this.storage[funcName].forEach(func => func(...args))
 };
 
 module.exports = EventEmitter;
@@ -40,6 +47,9 @@ module.exports = EventEmitter;
 // instance.on('increment', function() {
 //   counter++;
 // }); // counter should be 0
+// instance.on('increment', function() {
+//   console.log('YEET')
+// })
 // instance.trigger('increment'); // counter should be 1
 // instance.trigger('increment'); // counter should be 2
 // console.log('counter after triggers', counter)

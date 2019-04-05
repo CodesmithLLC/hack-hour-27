@@ -7,27 +7,41 @@
  *
  */
 
-function maxSubarray(arr) {
-  //50 IQ: get all subarrays, return highest sum.
-  let subarrays = getSubarrays(arr);
-  console.log('subarrays', subarrays)
-  let max = -Infinity;
-  let combos = subarrays.forEach( subarray => {
-  	let subarraySum = subarray.reduce((acc, val) => acc + val);
-    if (subarraySum > max) max = subarraySum;
-  })
-  return max;
-}
+//  //stupid solution
+// function maxSubarray(arr) {
+//   //50 IQ: get all subarrays, return highest sum.
+//   let subarrays = getSubarrays(arr);
+//   console.log('subarrays', subarrays)
+//   let max = -Infinity;
+//   let combos = subarrays.forEach( subarray => {
+//   	let subarraySum = subarray.reduce((acc, val) => acc + val);
+//     if (subarraySum > max) max = subarraySum;
+//   })
+//   return max;
+// }
 
-const getSubarrays = (arr) => {
-  let output = [];
-  for (let j = arr.length; j >= 0; j--) {
-    for (let i = 0; i < j; i++){
-      output.push(arr.slice(i, j))
-    }
-  }
+// const getSubarrays = (arr) => {
+//   let output = [];
+//   for (let j = arr.length; j >= 0; j--) {
+//     for (let i = 0; i < j; i++){
+//       output.push(arr.slice(i, j))
+//     }
+//   }
   
-  return output;
+//   return output;
+// }
+
+//smart solution
+function maxSubarray(arr) {
+
+  var currentMax = Number.NEGATIVE_INFINITY;
+  var finalMax = Number.NEGATIVE_INFINITY;
+
+  for (var i = 0; i < arr.length; i++) {
+    currentMax = Math.max(arr[i], currentMax + arr[i]);
+    finalMax = Math.max(finalMax, currentMax);
+  }
+  return finalMax;
 }
 
 //console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])) // -> 18 from [3, 10, -4, 7, 2]

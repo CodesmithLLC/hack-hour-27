@@ -20,17 +20,50 @@
  *   listeners.
  * - It is not necessary to write a way to remove listeners.
  */
-
-function EventEmitter() {
-
-}
-
-EventEmitter.prototype.on = function(funcName, func) {
-
-};
-
-EventEmitter.prototype.trigger = function(funcName, ...args) {
-
-};
-
+// function EventEmitter() {}
+// EventEmitter.prototype.on = function(funcName, func) {};
+// EventEmitter.prototype.trigger = function(funcName, ...args) {};
+var EventEmitter = /** @class */ (function () {
+    function EventEmitter() {
+        this.cache = new Map();
+    }
+    EventEmitter.prototype.on = function (funcName, func) {
+        if (!this.cache.has(funcName)) {
+            this.cache.set(funcName, func);
+        }
+    };
+    EventEmitter.prototype.trigger = function (funcName) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        if (this.cache.has(funcName)) {
+            var func = this.cache.get(funcName);
+            if (args) {
+                func.apply(void 0, args);
+            }
+            else {
+                func();
+            }
+        }
+    };
+    return EventEmitter;
+}());
+// const instance = new EventEmitter();
+// let counter = 0;
+// instance.on('increment', function() {
+//   counter++;
+// });
+// instance.trigger('increment');
+// console.log(counter);
+// instance.trigger('increment');
+// console.log(counter);
+// const arr = [];
+// instance.on('addStuff', input => {
+//   arr.push(input);
+// });
+// instance.trigger('addStuff', 123);
+// console.log(arr);
+// instance.trigger('addStuff', 456);
+// console.log(arr);
 module.exports = EventEmitter;

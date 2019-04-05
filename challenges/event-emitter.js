@@ -22,15 +22,21 @@
  */
 
 function EventEmitter() {
-
+  this.listeners = {};
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-
+  if (! this.listeners[funcName]){
+    this.listeners[funcName] = [];
+  }
+  this.listeners[funcName].push(func);
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-
+  const events = this.listeners[funcName];
+  events.forEach((fn)=>{
+    fn(...args);
+  })
 };
 
 module.exports = EventEmitter;

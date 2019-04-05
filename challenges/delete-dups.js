@@ -35,6 +35,7 @@ function deleteDups(head) {
   }
   return head;
 }
+
 const node1 = new Node(1)
 node1.next = new Node(2)
 node1.next.next = new Node(3);

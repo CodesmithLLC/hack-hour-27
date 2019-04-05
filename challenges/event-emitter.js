@@ -22,15 +22,29 @@
  */
 
 function EventEmitter() {
-
+  this.functions = new Map();
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-
+  this.functions.set(funcName, func)
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-
+  if (this.functions.has(funcName)) {
+    this.functions.get(funcName)(...args)
+  } else {
+    console.log('event does not exist')
+  }
 };
 
 module.exports = EventEmitter;
+
+const instance = new EventEmitter();
+let counter = 0;
+instance.on('increment', function() {counter++})
+instance.on('say hello', (name)=>console.log('Hi', name, 'how are you today?'))
+instance.trigger('increment');
+instance.trigger('increment');
+instance.trigger('increment');
+
+instance.trigger('sayhello', 'Siye')

@@ -22,11 +22,11 @@
  */
 
 function EventEmitter() {
-
+  this.storage = [];
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  this.funcName = func;
+  this.storage.push()
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {

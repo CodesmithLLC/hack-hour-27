@@ -10,9 +10,19 @@ findInOrderedSet(nums, 2);  -> false
  */
 
 
+ // binary search 
 function findInOrderedSet(arr, target) {
+    if(!arr.length) return false;
 
+    const mid = Math.floor(arr.length/2);
+    if(arr[mid] === target) return true;
+    else if(arr[mid] > target) return findInOrderedSet(arr.slice(0, mid), target);
+    else return findInOrderedSet(arr.slice(mid+1), target);
 }
+
+var nums = [1, 4, 6, 7, 9, 17, 45]
+console.log(findInOrderedSet(nums, 4));  //-> true
+console.log(findInOrderedSet(nums, 2));  //-> false
 
 
 module.exports = findInOrderedSet;

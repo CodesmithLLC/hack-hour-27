@@ -26,19 +26,20 @@ function EventEmitter() {
 }
 
 EventEmitter.prototype.on = function (string, callback) {
-  this.functions[string] = callback;
+  if (!this.functions[string]) {
+    this.functions[string] = [];
+    this.functions[string].push(callback);
+  } else {
+    this.functions[string].push(callback);
+  }
+
 };
 
 EventEmitter.prototype.trigger = function (string, ...args) {
-  if (this.functions[string] !== undefined) {
-    if (args.length === 0) {
-      this.functions[string]();
-    } else {
-      this.functions[string](args[0]);
-    }
-  }
-  return 'No event listener has been set for this event';
-};
-
+  if (this.functions[string] === undefined) return;
+  this.functions[string].forEach(fn => {
+    fn(...args)
+  })
+}
 
 module.exports = EventEmitter;

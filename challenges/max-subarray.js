@@ -34,8 +34,8 @@
 //smart solution
 function maxSubarray(arr) {
 
-  var currentMax = Number.NEGATIVE_INFINITY;
-  var finalMax = Number.NEGATIVE_INFINITY;
+  var currentMax = -Infinity;
+  var finalMax = -Infinity;
 
   for (var i = 0; i < arr.length; i++) {
     currentMax = Math.max(arr[i], currentMax + arr[i]);
@@ -44,7 +44,7 @@ function maxSubarray(arr) {
   return finalMax;
 }
 
-//console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])) // -> 18 from [3, 10, -4, 7, 2]
-//console.log(maxSubarray([15,20,-5,10])) //  -> 40
+console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])) // -> 18 from [3, 10, -4, 7, 2]
+console.log(maxSubarray([15,20,-5,10])) //  -> 40
 
 module.exports = maxSubarray;

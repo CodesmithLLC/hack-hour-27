@@ -22,15 +22,21 @@
  */
 
 function EventEmitter() {
-
+  
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-
+  // save the function into EE if it doesn't exist 
+  if (!this.funcName){
+    this.funcName = func
+  }
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-
+  // check the EE if it exists 
+  if (this.funcName) {
+    return funcName(...args)
+  }
 };
 
 module.exports = EventEmitter;

@@ -20,9 +20,9 @@ function findInOrderedSet(arr, target) {
     else return findInOrderedSet(arr.slice(mid+1), target);
 }
 
-var nums = [1, 4, 6, 7, 9, 17, 45]
-console.log(findInOrderedSet(nums, 4));  //-> true
-console.log(findInOrderedSet(nums, 2));  //-> false
+// var nums = [1, 4, 6, 7, 9, 17, 45]
+// console.log(findInOrderedSet(nums, 4));  //-> true
+// console.log(findInOrderedSet(nums, 2));  //-> false
 
 
 module.exports = findInOrderedSet;

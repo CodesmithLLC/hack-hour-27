@@ -8,7 +8,6 @@
 // countTwos(1000);  -> 300
 // countTwos(11420);  -> 4483
 
-
 function countTwos(num) {
   //brute force: iterate from 1 to num, then iterate thru each elem
   let output = 0;
@@ -19,12 +18,34 @@ function countTwos(num) {
     }
   }
   return output;
+}
 
-  //strat: O(n) solution: find number of digits of num
-  //2 parts: take care of the 2 to 3 for this level, then add the normals
-  // add first digit (first is the leftest) - 1
-  // also add 10 or 11 depending on if num > 20 and num >= 22
-
+//didn't get
+function countTwos(num) {
+  // create digits array
+  const digits = num.toString().split('').reverse();
+  // reduce it!!!
+  return digits.reduce((count, strDigit, idx, arr) => {
+    // turn string into number
+    const digit = Number(strDigit);
+    // case for first digit
+    if (idx === 0) {
+      if (digit >= 2) count += 1;
+    } else {
+      // use formula to add to count based on digit and index
+      count += digit * idx * Math.pow(10, idx - 1);
+      // add 10 to the index power for digits > 2
+      if (digit > 2) {
+        count += Math.pow(10, idx);
+      } else if (digit === 2) {
+        // for digits === 2, add the total of all previous digits to the count
+        count += Number(arr.slice(0, idx).join('')) + 1;
+      }
+    }
+    // return updated count
+    return count;
+    // include initial value of 0
+  }, 0);
 }
 
 // console.log(countTwos(1)); // -> 0

@@ -15,15 +15,42 @@
 function anagrams(string) {
   let currLetter, shortenedWord;
   let result = [];
-  for (let i = 0; i < string.length; i++) {
-    currLetter = string[i];
-    shortenedWord = string.substring(0, i) + string.substring(i + 1);
-    // call recursion on the shorter word
-    const shortenedWordArray = anagrams(shortenedWord);
-    shortenedWordArray.map(word => result.push(currLetter + word));
+  if (string.length < 2) return [string];
+  else {
+    for (let i = 0; i < string.length; i++) {
+      currLetter = string[i];
+      shortenedWord = string.substring(0, i) + string.substring(i + 1);
+      // call recursion on the shorter word
+      const shortenedWordArray = anagrams(shortenedWord);
+      shortenedWordArray.map(word => result.push(currLetter + word));
+    }
+    result = [...new Set(result)];
+    return result;
   }
-  result = [...new Set(result)];
-  return result;
 }
 
 module.exports = anagrams;
+
+
+// function anagram(str){
+//   const result = [];
+//   const strArr = str.split('');
+//   (function helper(onePerm, remainStrArr) {
+//     if (remainStrArr[0] === undefined) {
+//       result.push(onePerm.join(''))
+//     }
+
+//     for (let index in remainStrArr) {
+//       const tempRemainStrArr = [...remainStrArr]
+//       tempRemainStrArr.splice(index,1)
+
+//       const tempResultArr = [...onePerm]
+//       tempResultArr.push(remainStrArr[index])
+
+//       helper(tempResultArr, tempRemainStrArr)
+//     }
+//   })([], strArr)
+
+
+//   return result;
+// }

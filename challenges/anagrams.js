@@ -30,3 +30,27 @@ function anagrams(string) {
 }
 
 module.exports = anagrams;
+
+
+// function anagram(str){
+//   const result = [];
+//   const strArr = str.split('');
+//   (function helper(onePerm, remainStrArr) {
+//     if (remainStrArr[0] === undefined) {
+//       result.push(onePerm.join(''))
+//     }
+
+//     for (let index in remainStrArr) {
+//       const tempRemainStrArr = [...remainStrArr]
+//       tempRemainStrArr.splice(index,1)
+
+//       const tempResultArr = [...onePerm]
+//       tempResultArr.push(remainStrArr[index])
+
+//       helper(tempResultArr, tempRemainStrArr)
+//     }
+//   })([], strArr)
+
+
+//   return result;
+// }

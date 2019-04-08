@@ -26,7 +26,10 @@ function EventEmitter() {
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
+  // If the event doesn't already exist, create an array to act as
+  // a subscription list for the event. Push the function into the array
   if (!this.cache[funcName]) this.cache[funcName] = func;
+  //if the event already exists, just add it to the subscription list
   else this.cache[funcName].push(func);
 };
 
@@ -34,4 +37,38 @@ EventEmitter.prototype.trigger = function(funcName, ...args) {
   this.cache[funcName].forEach(el => el(...args));
 };
 
+// EventEmitter.prototype.trigger = function(funcName, ...args) {
+//   if(this.events[funcName]){
+//     for(let i=0; i< this.events[funcName].length; i++){
+//       this.events[funcName][i](...args);
+//     }
+//     return true;
+//   }
+//   return false;
+// };
+
 module.exports = EventEmitter;
+
+// let a = new EventEmitter();
+// let counter = 0;
+// // console.log(counter);
+
+// a.on('increment', function() {
+//   counter++;
+// })
+
+// a.on('log', function(word) {
+//   console.log('log1 fired:',word);
+// })
+
+// a.on('log',function(number){
+//   console.log('log2 fired: ',number + number);
+// })
+
+// console.log('expect 0 ->',counter);
+// a.trigger('increment');
+// console.log('expect 1 ->',counter);
+
+
+// console.log(a.trigger('log',5));
+// console.log(a.trigger('yeet'));

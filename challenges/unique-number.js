@@ -10,7 +10,22 @@
  *
  */
 function uniqueNumber(array) {
+  // first pass:
+  // iterate through the array
+  // save the seen numbers to a ledger
+  // review the ledger and return the value that only occurred once
 
+  const ledger = new Set();
+  array.forEach(val => {
+    // if the ledger lacks the current value, add the current value!
+    if (!ledger.has(val)) {
+      ledger.add(val)
+    } else {
+      // if the ledger has the value, we will delete it from the ledger
+      ledger.delete(val)
+    }
+  })
+  // at the end, we should have only one value left!
+  return ledger.values().next().value;
 }
-
 module.exports = uniqueNumber;

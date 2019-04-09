@@ -47,4 +47,4 @@ instance.trigger('increment');
 instance.trigger('increment');
 instance.trigger('increment');
 
-instance.trigger('sayhello', 'Siye')
+instance.trigger('say hello', 'Siye')

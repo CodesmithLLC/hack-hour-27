@@ -17,8 +17,8 @@
  function anagrams(str){
   const result = [];
   const strArr = str.split('');
-  (function helper(onePerm, remainStrArr) {
-    if (remainStrArr[0] === undefined) {
+  function helper(onePerm, remainStrArr) {
+    if (!remainStrArr.length) {
       result.push(onePerm.join(''))
     }
 
@@ -31,7 +31,8 @@
 
       helper(tempResultArr, tempRemainStrArr)
     }
-  })([], strArr)
+  }
+  helper([], strArr)
 
 
   return result;

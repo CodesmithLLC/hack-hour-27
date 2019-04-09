@@ -10,7 +10,12 @@
  *
  */
 function uniqueNumber(array) {
-
+  return array.reduce( (acc, curr) => acc ^ curr)
 }
+
+// tests
+
+// console.log(uniqueNumber([1,2,1,3,3]))
+
 
 module.exports = uniqueNumber;

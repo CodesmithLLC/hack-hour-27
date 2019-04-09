@@ -10,16 +10,18 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
-
-
 function deleteDups(head) {
-  const visited = new Set();
-  if (head.next) {
-    visted.add(head.next);
-    // if head.next's value is already in visted, remove from LL
+  const data = {};
+  let prev;
+  for (let curr = head; curr; curr = curr.next) {
+    if (curr.value in data) {
+      prev.next = curr.next;
+    } else {
+      data[curr.value] = true;
+      prev = curr;
+    }
   }
 }
-
 module.exports = deleteDups;
 
 
@@ -30,19 +32,6 @@ module.exports = deleteDups;
 // // Hashing/Object
 // // Time complexity: O(N)
 // // Space complexity: O(N);
-// function deleteDups(head) {
-//   const data = {};
-  
-//   let prev;
-  
-//   for (let curr = head; curr; curr = curr.next) {
-//     if (curr.value in data) {
-//       prev.next = curr.next;
-//     } else {
-//       data[curr.value] = true;
-//       prev = curr;
-//     }
-//   }
   
 // }
 // // Nested loops
@@ -95,6 +84,6 @@ module.exports = deleteDups;
   
 //   return str;
 // }
-// console.log('before: ',log(a))
+// console.log('before: ',log(a));
 // deleteDups(a);
 // console.log('after:', log(a));

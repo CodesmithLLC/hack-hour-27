@@ -10,7 +10,13 @@
  *
  */
 function uniqueNumber(array) {
-
+  let xor = array[0];
+  for (let i = 1; i < array.length; i++) {
+    xor = xor ^ array[i];
+  }
+  return xor;
 }
 
 module.exports = uniqueNumber;
+
+// console.log(uniqueNumber([1,2,1,3,3])); // -> 2

@@ -9,8 +9,13 @@
  * Complete the challenge in O(1) space
  *
  */
-function uniqueNumber(array) {
 
+ // Reasoning: XOR
+ // Doubles will always cancel out while the unique value will exist
+function uniqueNumber(array) {
+    return array.reduce((acc, curr) => acc^curr);
 }
 
-module.exports = uniqueNumber;
+console.log(uniqueNumber([1,2,1,3,3]));
+
+// module.exports = uniqueNumber;

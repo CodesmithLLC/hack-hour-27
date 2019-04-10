@@ -13,6 +13,11 @@ function getAllProducts(array) {
   if (!array || !array.length) {
     return [0];
   }
+
+  if (array.length === 1) {
+    return array;
+  }
+
   const startFromLeft = Array(array.length).fill(undefined);
   startFromLeft[0] = array[0];
   for (let i = 1; i < array.length; i += 1) {
@@ -50,6 +55,9 @@ function getAllProducts_naive(array) {
   return gotAllProducts;
 }
 
-console.log("got", getAllProducts([1, -1, 3, 4]));
+console.log("got", getAllProducts([1, 7, 3, 4]));
+console.log("got", getAllProducts([0, 0, 0, 0]));
+console.log("got", getAllProducts([3, 12, 2, 5, 0]));
+console.log(getAllProducts([0, 12]));
 
 module.exports = getAllProducts;

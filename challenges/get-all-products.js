@@ -10,6 +10,11 @@
  */
 
 function getAllProducts(array) {
+
+  if (array.length == 0) {
+    return [0];
+  }
+
   // input is an array
   const output = [];
 
@@ -29,7 +34,6 @@ function getAllProducts(array) {
   // output is an array
   return output;
 }
-
 
 
 module.exports = getAllProducts;

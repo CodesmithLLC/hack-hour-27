@@ -10,7 +10,17 @@
  *
  */
 function uniqueNumber(array) {
+  return array.filter(el => array.indexOf(el) === array.lastIndexOf(el))[0]
+}
 
+function uniqueNumberXOR(array) {
+  let result = array[0];
+  for (let i = 1; i < array.length; i++) {
+    result ^= array[i]
+  }
+  return result;
 }
 
 module.exports = uniqueNumber;
+
+console.log(uniqueNumberXOR([1,2,1,3, 2]))

@@ -14,7 +14,7 @@ function getAllProducts(array) {
 
   const result = [];
   for (let i = 0; i < array.length; i++) {
-    result.push((array.filter(el => el !== array[i])).reduce((acc, curr) => acc * curr))
+    result.push((array.filter((el, index) => index !== i)).reduce((acc, curr) => acc * curr))
   }
   return result;
 }

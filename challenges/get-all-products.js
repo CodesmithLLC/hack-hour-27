@@ -22,7 +22,7 @@ function getAllProducts(array) {
     }
   });
   if (numZeroes > 1) return [0];
-  if (numZeroes === 1) return [0, total];
+  if (numZeroes === 1) return [total, 0];
 
   //console.log("TCL: getAllProducts -> total", total)
   array.forEach(num => {
@@ -31,5 +31,5 @@ function getAllProducts(array) {
   return out;
 }
 
-console.log(getAllProducts([1, 7, 3, 4]))
+console.log(getAllProducts([1, 7, 3, 4, 0, 0, 0]))
 module.exports = getAllProducts;

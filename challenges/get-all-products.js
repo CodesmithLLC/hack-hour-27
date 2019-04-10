@@ -10,6 +10,9 @@
  */
 
 function getAllProducts(array) {
+  if (!array || !array.length) {
+    return [0];
+  }
   const startFromLeft = Array(array.length).fill(undefined);
   startFromLeft[0] = array[0];
   for (let i = 1; i < array.length; i += 1) {
@@ -47,6 +50,6 @@ function getAllProducts_naive(array) {
   return gotAllProducts;
 }
 
-//console.log(getAllProducts_naive([1, 7, 3, 4]));
+console.log("got", getAllProducts([1, -1, 3, 4]));
 
 module.exports = getAllProducts;

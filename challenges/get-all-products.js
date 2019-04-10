@@ -10,8 +10,20 @@
  */
 
 function getAllProducts(array) {
+  if (!array.length) return [0];
+  let numZeroes = 0;
   const out = [];
-  const total = array.reduce((acc, curr) => (curr === 0 ? acc : acc * curr));
+  const total = array.reduce((acc, curr) => {
+    if (curr === 0) {
+      numZeroes += 1;
+      return acc;
+    } else {
+      return acc * curr;
+    }
+  });
+  if (numZeroes > 1) return [0];
+  if (numZeroes === 1) return [0, total];
+
   //console.log("TCL: getAllProducts -> total", total)
   array.forEach(num => {
     out.push(num === 0 ? total : total / num);
@@ -19,5 +31,5 @@ function getAllProducts(array) {
   return out;
 }
 
-// console.log(getAllProducts([1, 7, 3, 4]))
+console.log(getAllProducts([1, 7, 3, 4]))
 module.exports = getAllProducts;

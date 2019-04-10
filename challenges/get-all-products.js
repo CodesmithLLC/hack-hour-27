@@ -10,31 +10,22 @@
  */
 
 function getAllProducts(array) {
+  if (array.length === 0) return [0];
   const output = [];
   const initialProd = array.reduce((acc, val)=>{
     return val * acc;
   })
-  if (initialProd === 0){
-    output.push(0);
-    let zeroCount = 0;
-    array.forEach((item)=>{
-      if (item === 0){
-        zeroCount++;
-      }
-    })
-    if (zeroCount === 1){
-      const prod = array.reduce((acc,val)=>{
-        if (val === 0){
+  array.forEach((item, i)=>{
+    if (item === 0){
+      output.push(array.reduce((acc, val, j)=>{
+        if (j === i){
           return acc
         }
-        return val * acc
-      })
-      output.push(prod)
+        return acc * val;
+      }))
+    }else{
+      output.push(initialProd/item)
     }
-    return output;
-  }
-  array.forEach((item)=>{
-    output.push(initialProd/item)
   })
   return output;
 }

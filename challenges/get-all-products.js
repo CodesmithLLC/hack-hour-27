@@ -12,11 +12,12 @@
 function getAllProducts(array) {
   if (!array.length) return [0];
 
-  const result = [];
+  let result = [];
   for (let i = 0; i < array.length; i++) {
     result.push((array.filter((el, index) => index !== i)).reduce((acc, curr) => acc * curr))
   }
-  return result;
+  return [...new Set(result)];
 }
 
 module.exports = getAllProducts;
+console.log(getAllProducts([1,2,0]))

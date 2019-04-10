@@ -10,7 +10,33 @@
  */
 
 function getAllProducts(array) {
-
+  const output = [];
+  const initialProd = array.reduce((acc, val)=>{
+    return val * acc;
+  })
+  if (initialProd === 0){
+    output.push(0);
+    let zeroCount = 0;
+    array.forEach((item)=>{
+      if (item === 0){
+        zeroCount++;
+      }
+    })
+    if (zeroCount === 1){
+      const prod = array.reduce((acc,val)=>{
+        if (val === 0){
+          return acc
+        }
+        return val * acc
+      })
+      output.push(prod)
+    }
+    return output;
+  }
+  array.forEach((item)=>{
+    output.push(initialProd/item)
+  })
+  return output;
 }
 
 module.exports = getAllProducts;

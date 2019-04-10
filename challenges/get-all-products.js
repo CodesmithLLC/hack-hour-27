@@ -27,6 +27,7 @@ function getAllProducts(array) {
   // return output;
 
   //TRUE 200 IQ method:
+  if (!array.length) return [0]
   let output = [];
   let currentProd = 1;
   for (let i = 0; i < array.length; i++) {
@@ -44,5 +45,6 @@ function getAllProducts(array) {
 
 // console.log(getAllProducts([1,7,3,4]));
 // console.log(getAllProducts([1,7,0,4]));
+// console.log(getAllProducts([]));
 
 module.exports = getAllProducts;

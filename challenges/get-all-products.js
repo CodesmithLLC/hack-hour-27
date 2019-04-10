@@ -10,7 +10,26 @@
  */
 
 function getAllProducts(array) {
+  // input is an array
+  const output = [];
 
+  // iterate through the input array
+  array.forEach((elm, idx, arr) => {
+    // in each iteration, create a shallow copy of the input array
+    const shallow = arr.slice();
+    shallow[idx] = elm - (elm - 1);
+    // reduce that shallow copy
+    const finalVal = shallow.reduce((acc, cur) => {
+      return acc * cur
+    })
+    // push that result to output
+    output.push(finalVal);
+  });
+
+  // output is an array
+  return output;
 }
+
+
 
 module.exports = getAllProducts;

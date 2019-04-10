@@ -10,7 +10,27 @@
  *
  */
 function uniqueNumber(array) {
+  let xthis = array[0];
+  for (let i = 1; i < array.length; i += 1) {
+    xthis ^= array[i];
+  }
+  return xthis;
+}
 
+function uniqueNumberNaive(array) {
+  const countObj = {};
+  array.forEach(num => {
+    if (countObj[num]) {
+      countObj[num] += 1;
+    } else {
+      countObj[num] = 1;
+    }
+  });
+  for (let [k, v] of Object.entries(countObj)) {
+    if (v === 1) {
+      return k;
+    }
+  }
 }
 
 module.exports = uniqueNumber;

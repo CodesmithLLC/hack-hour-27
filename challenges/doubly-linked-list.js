@@ -17,46 +17,55 @@ function Node(val) {
 Adds a node to the end of the list
  */
 LinkedList.prototype.add = function(val) {
-    let newNode = new Node(val);
-    if(this.head === null) {
-      this.head = newNode;
-      this.tail = newNode;
-      return this.head;
-    }
-    if(this.tail.next === null) {
-      this.tail.next = newNode;
-      newNode.prev = this.tail.val;
-      this.tail = newNode;
-    }
-
+  let newNode = new Node(val)
+  if (!this.head) { //if LL is empty
+    this.head = newNode;
+    this.tail = newNode;
+  } else {
+    this.tail.next = newNode;
+    newNode.prev = this.tail;
+    this.tail = newNode;
+  }
 };
 
 /*
 Removes the first node with the inputted value
  */
 LinkedList.prototype.remove = function(val) {
-  let currentNode = this.head
-  while(currentNode) {
-   //if head is value
-   if(this.head.val === val) {
-     this.head = this.head.next;
-     this.head.prev = null;
-     return val;
-   }
-   //if middle is value
-   if(currentNode.val === val) {
-     if(!currentNode.next) {
-       this.tail = currentNode.prev;
-       this.tail.next = null;
-       return val;
-     }
-     currentNode.prev.next = currentNode.next;
-     currentNode.next.prev = currentNode.prev;
-     return val;
-   }
-   currentNode = currentNode.next;
+  let pointer = this.head;
+  while (pointer){
+  	//if removing head
+  	if (this.head.val === val) {
+    	this.head = this.head.next;
+      this.head.prev = null;
+      return val;
+    }
+
+    //if removing middle
+    if (pointer.val === val) {
+    	//if removing tail
+    	if (!pointer.next) {
+      	console.log('tail hit')
+        this.tail = pointer.prev;
+        this.tail.next = null;
+        return val;
+      }
+      pointer.prev.next = pointer.next;
+      pointer.next.prev = pointer.prev;
+      return val;
+    }
+
+    pointer = pointer.next;
   }
   return undefined;
 };
+
+// let myLL = new LinkedList();
+// myLL.add('A')
+// myLL.add('B')
+// myLL.add('C')
+// myLL.add('D')
+// console.log('myLL remove', myLL.remove('D'))
+// console.log('myLL after remove', myLL)
 
 module.exports = LinkedList;

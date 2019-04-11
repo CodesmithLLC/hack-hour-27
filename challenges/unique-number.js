@@ -10,7 +10,14 @@
  *
  */
 function uniqueNumber(array) {
-
+  let result = {}
+  for (let i = 0; i < array.length; i++){
+    if (!result[array[i]]) result[array[i]] = 1
+    else result[array[i]] += 1
+  }
+  for (let [key, value] of Object.entries(result)) {
+    if (value === 1) return key
+  } 
 }
 
 module.exports = uniqueNumber;

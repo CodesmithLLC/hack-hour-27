@@ -45,10 +45,12 @@ LinkedList.prototype.remove = function(val) {
       // case 1: if it's in the front
       if (!currNode.prev) {
         this.head = currNode.next;
+        this.head.prev = null;
       }
       // case 2: if it's in the back
       else if (!currNode.next) {
         this.tail = currNode.prev;
+        this.tail.next = null;
       } else {
         // case 3: in the middle
         const frontNode = currNode.next;
@@ -64,17 +66,15 @@ LinkedList.prototype.remove = function(val) {
   return false;
 };
 
-// const ll = new LinkedList();
+const ll = new LinkedList();
+ll.add(1);
+ll.add(2);
+ll.add(3);
+ll.add(4);
+ll.add(5);
+console.log(ll.head.next.next.val);
 
-// ll.add(1);
-// ll.add(2);
-// ll.add(3);
-// ll.add(4);
-
-// console.log(ll.head.next.next.next.prev.prev.prev.val);
-// ll.remove(3);
-// console.log(ll.head.next.next.prev.val);
-// console.log(ll.head.val);
-// console.log(ll.tail.val);
-
+console.log(ll.head.val);
+console.log(ll.head.next.val);
+console.log(ll.tail.val);
 module.exports = LinkedList;

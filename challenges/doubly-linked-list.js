@@ -32,6 +32,7 @@ Removes the first node with the inputted value
 LinkedList.prototype.remove = function(val) {
   if (this.head.val === val) {
     this.head = this.head.next;
+    this.head.prev = null;
     return true;
   } else {
     let pointer = this.head;
@@ -63,5 +64,5 @@ module.exports = LinkedList;
 // //   console.log(p.val);
 // //   p = p.next;
 // // }
-// myList.remove(2);
+// myList.remove(1);
 // console.log(myList);

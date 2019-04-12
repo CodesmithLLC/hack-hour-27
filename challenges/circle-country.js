@@ -23,6 +23,12 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  // helper function
+  // returns true of coord x,y lies within circle center cx, cy, radius r
+  function withinCircle(cx, cy, r, x, y) {
+    return (cx-x)**2 + (cy-y)**2 < r ** 2;
+  }
+
   const len = x.length;
   let count = 0;
   for (let i = 0; i < len; i++) {
@@ -36,10 +42,8 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   return count;
 }
 
-// helper function
-// returns true of coord x,y lies within circle center cx, cy, radius r
-function withinCircle(cx, cy, r, x, y) {
-  return (cx-x)**2 + (cy-y)**2 < r ** 2;
-}
 
 module.exports = circleCountry;
+
+
+console.log(circleCountry([0,5],[0,5],[2,2],-1,0,5,5));

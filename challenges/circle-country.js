@@ -23,7 +23,23 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  const len = x.length;
+  let count = 0;
+  for (let i = 0; i < len; i++) {
+    // only start OR end lands in circle
+    if ((withinCircle(x[i], y[i], r[i], start_x, start_y) && !withinCircle(x[i], y[i], r[i], end_x, end_y))
+    || (!withinCircle(x[i], y[i], r[i], start_x, start_y) && withinCircle(x[i], y[i], r[i], end_x, end_y))) {
+      count++;
+    }
+    // otherwise both points land in same circle or are not in circle at all so don't count
+  }
+  return count;
+}
 
+// helper function
+// returns true of coord x,y lies within circle center cx, cy, radius r
+function withinCircle(cx, cy, r, x, y) {
+  return (cx-x)**2 + (cy-y)**2 < r ** 2;
 }
 
 module.exports = circleCountry;

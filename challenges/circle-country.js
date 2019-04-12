@@ -46,4 +46,4 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 module.exports = circleCountry;
 
 
-console.log(circleCountry([0,5],[0,5],[2,2],-1,0,5,5));
+// console.log(circleCountry([0,5],[0,5],[2,2],-1,0,5,5));

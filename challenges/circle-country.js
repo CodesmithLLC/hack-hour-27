@@ -23,7 +23,23 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  return circlesAround(x, y, r, start_x, start_y, end_x, end_y)
+}
 
+function circlesAround(x, y, r, posX, posY, endX, endY){
+  let circleCount = 0;
+  for (let i = 0; i < x.length; i ++){
+    const includesStart = (distance(posX, posY, x[i], y[i]) < r[i])
+    const includesEnd = (distance(endX, endY, x[i], y[i]) < r[i])
+    if ((includesStart||includesEnd)&&(!(includesStart&&includesEnd))){
+      circleCount++;
+    }
+  }
+  return circleCount
+}
+
+function distance(x, y, x2, y2){
+  return Math.sqrt(((x+x2)**2) + ((y+y2)**2))
 }
 
 module.exports = circleCountry;

@@ -33,25 +33,25 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 
 module.exports = circleCountry;
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-  // check if start or end points lie within circles
-  // if distance between (x,y) are less than the radius distance from (x[i], y[i])
-  // calculate the distance between x[i] and y[i] and x and y and compare it to the radius from x[i] and y[i].. count++ for every circle that ecapsulate x and y of start and end positions
-  // determine the number of circles that surround x, y start and end points
-  // distance = Math.sqrt(Math.pow(2 - 1, 2) + Math.pow(4 - 3, 2))
-  count = 0
-  for (var i = 0; i < x.length; i++) {
-    //distance is the distance between center of circle to (start_x,start_y)
-    distance = Math.sqrt(Math.pow(x[i] - start_x, 2) + Math.pow(y[i] - start_y, 2))
-    if (distance < r[i]) {
-      count++
-    }
-  }
-  for (var i = 0; i < x.length; i++) {
-    //distance is the distance between center of circle to (start_x, start_y)
-    distance = Math.sqrt(Math.pow(x[i] - end_x, 2) + Math.pow(y[i] - end_y, 2))
-    if (distance < r[i]) {
-      count++
-    }
-  }
-}
+// function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+//   // check if start or end points lie within circles
+//   // if distance between (x,y) is less than the radius distance from (x[i], y[i]), calculate the distance between x[i] and y[i] and x and y and compare it to the radius from x[i] and y[i]
+//   // count++ for every circle that ecapsulates x and y of start and end positions
+//   // determine the number of circles that surround x, y start and end points
+//   // distance = Math.sqrt(Math.pow(2 - 1, 2) + Math.pow(4 - 3, 2))
+//   count = 0
+//   for (var i = 0; i < x.length; i++) {
+//     //distance is the distance between center of circle to (start_x, start_y)
+//     distance = Math.sqrt(Math.pow(x[i] - start_x, 2) + Math.pow(y[i] - start_y, 2))
+//     if (distance < r[i]) {
+//       count++;
+//     }
+//   }
+//   for (var i = 0; i < x.length; i++) {
+//     //distance is the distance between center of circle to (start_x, start_y)
+//     distance = Math.sqrt(Math.pow(x[i] - end_x, 2) + Math.pow(y[i] - end_y, 2))
+//     if (distance < r[i]) {
+//       count++;
+//     }
+//   }
+// }

@@ -43,6 +43,16 @@ function makePhoneBookObject(jazbook){
   return output;
 }
 
+makePhoneBookObject.add = function(name, number){
+  this[name] = number;
+}
+makePhoneBookObject.remove = function(name){
+  delete this[name];
+}
+makePhoneBookObject.find = function (name){
+  return this[name];
+}
+
 const objectToExport = {
   findName,
   makePhoneBookObject,

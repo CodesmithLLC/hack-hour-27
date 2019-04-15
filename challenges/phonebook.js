@@ -34,28 +34,25 @@ function findName(jazbook, name) {
 
 // return an object literal representing the jazbook
 function makePhoneBookObject(jazbook){
-  const phonebook = new Phonebook();
-  for (let entry of jazbook) {
-    phonebook.add(entry[0], entry[1]);
-  }
-  return phonebook;
+  return new Phonebook(jazbook);
 }
 
 class Phonebook {
-  constructor() {
-    this.storage = {};
+  constructor (arr) {
+    for (let entry of arr) {
+      this.add(entry[0], entry[1])
+    }
   }
-
   add(name, number) {
-    this.storage[name] = number;
+    this[name] = number;
   }
 
   find(name) {
-    return this.storage[name];
+    return this[name];
   }
 
   remove(name) {
-    delete this.storage[name];
+    delete this[name];
   }
 }
 
@@ -75,4 +72,5 @@ module.exports = objectToExport;
 // ];
 
 // const obj = makePhoneBookObject(jazbook);
+// console.log(obj);
 // console.log(obj.find('jae'));

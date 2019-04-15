@@ -81,21 +81,21 @@ function makePhoneBookObject(jazbook){
 
 //tests
 
-jazbook = [
-  ['alex','301-844-3421'],
-  ['jae','301-844-1211'],
-  ['david','301-844-0978'],
-  ['travis','301-844-8505'],
-  ['jasmine','1800-974-4539'],
-]
+// jazbook = [
+//   ['alex','301-844-3421'],
+//   ['jae','301-844-1211'],
+//   ['david','301-844-0978'],
+//   ['travis','301-844-8505'],
+//   ['jasmine','1800-974-4539'],
+// ]
 
 // console.log(findName(jazbook, 'jasmine'))
 
-makePhoneBookObject(jazbook);
+// makePhoneBookObject(jazbook);
 
-const objectToExport = {
-  findName,
-  makePhoneBookObject,
-};
+// const objectToExport = {
+//   findName,
+//   makePhoneBookObject,
+// };
 
 module.exports = objectToExport;

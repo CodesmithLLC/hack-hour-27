@@ -43,4 +43,10 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
 
 }
 
+const x = [0, 250, 0]
+const y = [0, 250, 0]
+const r = [10, 10, 1000]
+
+console.log(circleCountry(x, y, r, 0, 0, 250, 250))
+
 module.exports = circleCountry;

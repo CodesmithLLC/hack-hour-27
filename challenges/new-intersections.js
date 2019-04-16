@@ -17,7 +17,18 @@
  * 	 
  */
 
-function newIntersections(x, y){
+function newIntersections(x, y) {
+  // I need to find the maximum and minimum values of X and Y for new points
+  const maxX = Math.max(...x);
+  const minX = Math.min(...x);
+  const maxY = Math.max(...y);
+  const minY = Math.min(...y);
+
+  const possibleX = (maxX - minX) + 1;
+  const possibleY = (maxY - minY) + 1;
+
+  return possibleX * possibleY;
+
 
 }
 

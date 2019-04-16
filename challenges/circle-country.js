@@ -22,38 +22,29 @@
  *
  */
 
-function circleCountry(x, y, r, start_x, start_y, end_x, end_y, bordersCrossed) {
-  if (start_x === end_x && start_y === end_y) return bordersCrossed;
+//DIDN'T GET
+// time-complexity: O(n) where n is the number of circles
+// space-complexity: O(1)
+function circleCountry (x, y, r, start_x, start_y, end_x, end_y) {
+  // counter for tracking if we've crossed a circle
+  let total = 0;
+  for (let i = 0; i < x.length; i += 1) {
+    // finds the distance from center of circle[i] to start point
+    const startDist = Math.hypot(x[i] - start_x, y[i] - start_y);
 
-  let crossed;
-  //horizontal moves:
-  let startPosition = [start_x, start_y];
-  function horizontalMove(coords) {
-    return [coords[0] + 1, coord[1]];
+    // finds the distance from center of circle[i] to end point
+    const endDist = Math.hypot(x[i] - end_x, y[i] - end_y);
+    const radius = r[i];
+
+    // checks if the distance from the start OR end point to the center is farther than the radius
+    // if they both are, no reason to enter the circle, you can go around it
+    // if they both are not, no reason to leave the cire, you are traveling within the circle
+    // if one of them is and the other is not, you have to cross circle to get to the end
+    if (startDist < radius && endDist > radius || startDist > radius && endDist < radius) {
+      total += 1;
+    }
   }
-  //vertical moves:
-  function verticalMove(coords) {
-    return [coords[0], coord[1] + 1];
-  }
-
-  //test horizontal move and vertical move. use whichever one doesn't return a crossed border.
-  let horizontal = horizontalMove(startPosition);
-  let vertical = verticalMove(startPosition);
-  if (horizontalMove(startPosition)) {
-    return circleCountry(x, y, r, horizontal[0], horizontal[1], end_x, end_y, bordersCrossed)
-  }
-  else if (verticalMove(startPosition)) {
-    return circleCountry(x, y, r, vertical[0], vertical[1], end_x, end_y, bordersCrossed)
-  }
-
-  
-
-  //recursion? try to escape one circle, and then repeat.
-
-
-
-
-  return crossed;
+  return total;
 }
 
 module.exports = circleCountry;

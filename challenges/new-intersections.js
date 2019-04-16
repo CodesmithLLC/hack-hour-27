@@ -18,7 +18,47 @@
  */
 
 function newIntersections(x, y){
+  const len = x.length;
+  let count = 0;
 
+  // set to store coordinates
+  const coords = new Set();
+  for (let i = 0; i < len; i++) {
+    coords.add(`${x[i]},${y[i]}`);
+  }
+  console.log(coords);
+
+  // store for seen new coordinates
+  const seen = new Set();
+
+  for (let i = 0; i < len; i++) {
+    // above
+    if (!seen.has(`${x[i]},${y[i]+1}`) && coords.has(`${x[i]},${y[i]+2}`) && coords.has(`${x[i]+1},${y[i]+1}`) && coords.has(`${x[i]-1},${y[i]+1}`)) {
+      seen.add(`${x[i]},${y[i]+1}`);
+      count++;
+    }
+    // right
+    if (!seen.has(`${x[i]+1},${y[i]}`) && coords.has(`${x[i]+1},${y[i]+1}`) && coords.has(`${x[i]+2},${y[i]}`) && coords.has(`${x[i]+1},${y[i]-1}`)) {
+      seen.add(`${x[i]+1},${y[i]}`);
+      count++;
+    }
+    // bottom
+    if (!seen.has(`${x[i]},${y[i]-1}`) && coords.has(`${x[i]},${y[i]-2}`) && coords.has(`${x[i]+1},${y[i]-1}`) && coords.has(`${x[i]-1},${y[i]-1}`)) {
+      seen.add(`${x[i]},${y[i]-1}`);
+      count++;
+    }
+    // left
+    if (!seen.has(`${x[i]-1},${y[i]}`) && coords.has(`${x[i]-2},${y[i]}`) && coords.has(`${x[i]-1},${y[i]+1}`) && coords.has(`${x[i]-1},${y[i]-1}`)) {
+      seen.add(`${x[i]-1},${y[i]}`);
+      count++;
+    }
+  }
+  
+  return count;
 }
 
 module.exports = newIntersections;
+
+// const x = [0,1,2,1];
+// const y = [0,1,0,-1];
+// console.log(newIntersections(x,y));

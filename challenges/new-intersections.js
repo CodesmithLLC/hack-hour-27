@@ -19,17 +19,38 @@
 
 function newIntersections(x, y) {
   // I need to find the maximum and minimum values of X and Y for new points
-  const maxX = Math.max(...x);
-  const minX = Math.min(...x);
-  const maxY = Math.max(...y);
-  const minY = Math.min(...y);
+  const maxX = (Math.max(...x)) - 1;
+  const minX = Math.min(...x) + 1;
+  const maxY = Math.max(...y) - 1;
+  const minY = Math.min(...y) + 1;
 
-  const possibleX = (maxX - minX) + 1;
-  const possibleY = (maxY - minY) + 1;
 
-  return possibleX * possibleY;
 
+  const newX = [];
+  for (let i = minX; i <= maxX; i += 1) {
+    newX.push(i)
+  }
+
+  const newY = [];
+  for (let i = minY; i <= maxY; i += 1) {
+    newY.push(i)
+  }
+
+  // now that we have all our new possible points, lets see if any are valid
+  let validNewPoints = 0;
+  for (let i = 0; i < x.length; i += 1) {
+    if ((newX[i] === x[i] && newY[i] < y[i]) && (newY[i] === y[i] && newX[i] < x[i])) {
+      validNewPoints += 1;
+    }
+  }
+
+
+  return validNewPoints;
 
 }
 
+const arr1 = [1, 7, 3, 5];
+const arr2 = [2, 6, 4, 5];
+
+console.log(newIntersections(arr1, arr2));
 module.exports = newIntersections;

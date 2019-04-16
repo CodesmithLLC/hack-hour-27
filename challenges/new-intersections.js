@@ -18,7 +18,21 @@
  */
 
 function newIntersections(x, y){
-
+  let maxX = Math.max(...x)
+  let minX = Math.min(...x)
+  let maxY = Math.max(...y)
+  let minY = Math.min(...y)
+  let length = maxX - minX - 1;
+	console.log("~: newIntersections -> length", length)
+  let height = maxY - minY - 1;
+	console.log("~: newIntersections -> height", height)
+  return length * height; 
 }
 
 module.exports = newIntersections;
+// let x = [2, 2, -2, -2];
+// let y = [2, -2, -2, 2];
+
+// let x = [1, -10, -5]
+// let y = [1, -10, 5]
+// console.log(newIntersections(x,y))

@@ -18,7 +18,23 @@
  */
 
 function newIntersections(x, y){
-
+  const smallX = Math.min(...x);
+  const bigX = Math.max(...x);
+  const smallY = Math.min(...y);
+  const bigY = Math.max(...y);
+  const xDiff = bigX-smallX;
+  const yDiff = bigY-smallY;
+  if(xDiff === 0 && yDiff === 0) return 1;
+  if(xDiff === 0) return yDiff;
+  if(yDiff === 0) return xDiff;
+  return xDiff * yDiff;
 }
+
+// testing
+
+// let x = [9,9,9,9,9,9,9,9,9]
+// let y = [8,5,9,4,5,3,1,0,3]
+
+// console.log(newIntersections(x,y))
 
 module.exports = newIntersections;

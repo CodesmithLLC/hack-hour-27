@@ -1,0 +1,40 @@
+/**
+ *
+ * You are given an array x and an array y that represent the coordinates of several OLD points
+ * 
+ *   - x is the array of x-coordinates and y is the array of y-coordinates 
+ *   - (x[i], y[i]) correspond to coordinates of the i'th OLD point
+ *
+ * Write an algorithm to find the number of NEW points that can be placed 
+ * such that there are OLD points above, below, to the left, and to the right of the NEW point
+ *
+ *   - 'OLD directly above NEW' means the NEW x-coordinate = OLD x-coordinate & NEW y-coordinate < OLD y-coordinate
+ *
+ * Constraints and Notes:
+ *
+ * 	 - x and y will contain the same number of elements
+ *   - if a new point is bounded by old points and lands on an old point, then count it
+ * 	 
+ */
+
+function newIntersections(x, y){
+  const smallX = Math.min(...x);
+  const bigX = Math.max(...x);
+  const smallY = Math.min(...y);
+  const bigY = Math.max(...y);
+  const xDiff = bigX-smallX;
+  const yDiff = bigY-smallY;
+  if(xDiff === 0 && yDiff === 0) return 1;
+  if(xDiff === 0) return yDiff;
+  if(yDiff === 0) return xDiff;
+  return xDiff * yDiff;
+}
+
+// testing
+
+// let x = [9,9,9,9,9,9,9,9,9]
+// let y = [8,5,9,4,5,3,1,0,3]
+
+// console.log(newIntersections(x,y))
+
+module.exports = newIntersections;

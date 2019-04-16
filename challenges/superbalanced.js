@@ -56,7 +56,7 @@ module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};
 //   if (tree.left !== null) leftHeight = treeHeight(tree.left);
 //   if (tree.right !== null) rightHeight = treeHeight(tree.right);
 
-//   // update value for height base on what recurive call found
+//   // update value for height base on what recursive call found
 //   if (leftHeight > maxHeight) maxHeight = leftHeight;
 //   if (rightHeight > maxHeight) maxHeight = rightHeight;
 

@@ -1,3 +1,4 @@
+
 // Have the function knightjumps(str) read str which will be a
 // string consisting of the location of a knight on a standard 8x8 chess board with no other pieces on the board.
 
@@ -27,9 +28,9 @@ function knightjumps(str) {
 }
 
 function move(posX, posY){
-  if (posX <= 1 || posX >= 8 || posY <= 1 || posY >= 8) return 0
+  if (posX < 1 || posX > 8 || posY < 1 || posY > 8) return 0
   return 1;
 }
 
 module.exports = knightjumps;
-// console.log(knightjumps("(8 8)"))
+console.log(knightjumps("(1 2)"))

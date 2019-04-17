@@ -11,7 +11,24 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  let x = Number(str[1]);
+  let y = Number(str[3]);
+  if (x >= 3 && x <= 6) {
+    if (y >= 3 && y <= 6) return 8;
+    else if (y >= 2 && y <= 7) return 6;
+    else return 4;
+  } else if (x >= 2 && x <= 7) {
+    if (y >= 3 && y <= 6) return 6;
+    else if (y >= 2 && y <= 7) return 4;
+    else return 3;
+  } else {
+    if (y >= 3 && y <= 6) return 4;
+    else if (y >= 2 && y <= 7) return 3;
+    else return 2;
+  }
 }
 
 module.exports = knightjumps;
+
+// var str = "(2 1)"
+// console.log(knightjumps(str));

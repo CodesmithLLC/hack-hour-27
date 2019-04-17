@@ -16,17 +16,17 @@ function knightjumps(str) {
   const y = parseInt(str[3]);
   const xDist = distFromEdge(x)
   const yDist = distFromEdge(y)
+  console.log(xDist, yDist);
   const totalDist = xDist + yDist;
-  if(totalDist === 1) moves -= 2;
-  if(totalDist === 2) moves -= 4;
-  if(totalDist === 3) moves -= 5;
-  if(totalDist === 4) moves -= 6;
+  if(totalDist < 3) moves -= 2*totalDist;
+  if(totalDist >= 3) moves -= 2+totalDist;
+  console.log(moves);
   return moves;
 }
 
 function distFromEdge(x){
-  if (x < 3) return 3-x;
-  if (x > 6) return 3-(9-x);
+  if (x < 3) return x;
+  if (x > 6) return (9-x);
   return 0;
 }
 

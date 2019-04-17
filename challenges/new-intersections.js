@@ -20,45 +20,42 @@
 function newIntersections(x, y){
   const len = x.length;
   let count = 0;
-
-  // set to store coordinates
-  const coords = new Set();
+  const xLines = {};
+  const yLines = {};
   for (let i = 0; i < len; i++) {
-    coords.add(`${x[i]},${y[i]}`);
-  }
-  console.log(coords);
-
-  // store for seen new coordinates
-  const seen = new Set();
-
-  for (let i = 0; i < len; i++) {
-    // above
-    if (!seen.has(`${x[i]},${y[i]+1}`) && coords.has(`${x[i]},${y[i]+2}`) && coords.has(`${x[i]+1},${y[i]+1}`) && coords.has(`${x[i]-1},${y[i]+1}`)) {
-      seen.add(`${x[i]},${y[i]+1}`);
-      count++;
+    if (!xLines[x[i]]) {
+      xLines[x[i]] = [y[i], y[i]];
+    } else {
+      xLines[x[i]][0] = Math.min(xLines[x[i]][0], y[i]);
+      xLines[x[i]][1] = Math.max(xLines[x[i]][1], y[i]);
     }
-    // right
-    if (!seen.has(`${x[i]+1},${y[i]}`) && coords.has(`${x[i]+1},${y[i]+1}`) && coords.has(`${x[i]+2},${y[i]}`) && coords.has(`${x[i]+1},${y[i]-1}`)) {
-      seen.add(`${x[i]+1},${y[i]}`);
-      count++;
-    }
-    // bottom
-    if (!seen.has(`${x[i]},${y[i]-1}`) && coords.has(`${x[i]},${y[i]-2}`) && coords.has(`${x[i]+1},${y[i]-1}`) && coords.has(`${x[i]-1},${y[i]-1}`)) {
-      seen.add(`${x[i]},${y[i]-1}`);
-      count++;
-    }
-    // left
-    if (!seen.has(`${x[i]-1},${y[i]}`) && coords.has(`${x[i]-2},${y[i]}`) && coords.has(`${x[i]-1},${y[i]+1}`) && coords.has(`${x[i]-1},${y[i]-1}`)) {
-      seen.add(`${x[i]-1},${y[i]}`);
-      count++;
+    if (!yLines[y[i]]) {
+      yLines[y[i]] = [x[i], x[i]];
+    } else {
+      yLines[y[i]][0] = Math.min(yLines[y[i]][0], x[i]);
+      yLines[y[i]][1] = Math.max(yLines[y[i]][1], x[i]);
     }
   }
-  
+  // console.log('xLines',xLines);
+  // console.log('yLines',yLines);
+
+  for (let xkey in xLines) {
+    if (xLines[xkey][0] !== xLines[xkey][1]) {
+      for (let ykey in yLines) {
+        if (yLines[ykey][0] !== yLines[ykey][1]) {
+          if (Number(ykey) > xLines[xkey][0] && Number(ykey) < xLines[xkey][1] && Number(xkey) > yLines[ykey][0] && Number(xkey) < yLines[ykey][1]){
+            count++;
+          }
+        }
+        
+      }
+    }
+  }
   return count;
 }
 
 module.exports = newIntersections;
 
-// const x = [0,1,2,1];
-// const y = [0,1,0,-1];
+// const x = [0,5,1,1];
+// const y = [0,0,2,-1];
 // console.log(newIntersections(x,y));

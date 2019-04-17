@@ -25,8 +25,8 @@ function knightjumps(str) {
 }
 
 function distFromEdge(x){
-  if (x < 3) return x;
-  if (x > 6) return (9-x);
+  if (x < 3) return 3-x;
+  if (x > 6) return 3-(9-x);
   return 0;
 }
 

@@ -11,7 +11,34 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  let jumps = 8;
+  const x = str[1];
+  const y = str[3];
+  const xDist = isWithnTwo(x);
+  const yDist = isWithinTwo(y);
+  if (xDist === 2){
+    jumps -= 2;
+    if(yDist === 2){
+    jumps -=2
+    }else if (yDist === 1){
+      jumps -= 2
+    }
+  } else if (xDist === 1){
+    jumps -= 4
+    if(yDist === 2){
+      jumps -= 1;
+    } 
+    if (yDist === 1){
+      jumps -= 2;
+    }
+  }
+  return jumps
+}
 
+function isWithinTwo(x){
+  if (x < 3) return x;
+  if (x > 6) return (9-x);
+  return false;
 }
 
 module.exports = knightjumps;

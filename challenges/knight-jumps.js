@@ -12,7 +12,7 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-  let arr = str.match(/\w/gm)
+  let arr = str.match(/\d/gm)
   let x = parseInt(arr[0])
   let y = parseInt(arr[1])
   let count = 0;

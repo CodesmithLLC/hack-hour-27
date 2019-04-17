@@ -11,7 +11,33 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  // convert the str to a tuple 
+  let [x, y] = [Number(str.match(/\d/g)[0]), Number(str.match(/\d/g)[1])]
+  let count = 0;
+
+  // transform the coords
+  if(x+2 < 9) {
+    if(y-1 > 0) count+=1;
+    if(y+1 < 9) count+=1;
+  }
+  if(x-2 > 0) {
+    if(y-1 > 0) count+=1;
+    if(y+1 < 9) count+=1;
+  }
+
+  if(x+1 < 9) {
+    if(y-2 > 0) count+=1;
+    if(y+2 < 9) count+=1;
+  }
+  if(x-1 > 0) {
+    if(y-2 > 0) count+=1;
+    if(y+2 < 9) count+=1;
+  }
+
+  return count;
 
 }
+
+console.log(knightjumps("(4 5)"))
 
 module.exports = knightjumps;

@@ -11,34 +11,23 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-  let jumps = 8;
-  const x = str[1];
-  const y = str[3];
-  const xDist = isWithnTwo(x);
-  const yDist = isWithinTwo(y);
-  if (xDist === 2){
-    jumps -= 2;
-    if(yDist === 2){
-    jumps -=2
-    }else if (yDist === 1){
-      jumps -= 2
-    }
-  } else if (xDist === 1){
-    jumps -= 4
-    if(yDist === 2){
-      jumps -= 1;
-    } 
-    if (yDist === 1){
-      jumps -= 2;
-    }
-  }
-  return jumps
+  let moves = 8;
+  const x = parseInt(str[1]);
+  const y = parseInt(str[3]);
+  const xDist = distFromEdge(x)
+  const yDist = distFromEdge(y)
+  console.log(xDist, yDist);
+  const totalDist = xDist + yDist;
+  if(totalDist < 3) moves -= 2*totalDist;
+  if(totalDist >= 3) moves -= 2+totalDist;
+  console.log(moves);
+  return moves;
 }
 
-function isWithinTwo(x){
+function distFromEdge(x){
   if (x < 3) return x;
   if (x > 6) return (9-x);
-  return false;
+  return 0;
 }
 
 module.exports = knightjumps;

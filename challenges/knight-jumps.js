@@ -11,7 +11,25 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  let arr = str.match(/\w/gm)
+  let x = parseInt(arr[0])
+  let y = parseInt(arr[1])
+  let count = 0;
+  count += move(x - 2, y + 1);
+  count += move(x + 2, y + 1);
+  count += move(x - 2, y - 1);
+  count += move(x + 2, y - 1);
+  count += move(x + 1, y - 2);
+  count += move(x + 1, y + 2);
+  count += move(x - 1, y - 2);
+  count += move(x - 1, y + 2);
+  return count;
+}
 
+function move(posX, posY){
+  if (posX <= 1 || posX >= 8 || posY <= 1 || posY >= 8) return 0
+  return 1;
 }
 
 module.exports = knightjumps;
+// console.log(knightjumps("(8 8)"))

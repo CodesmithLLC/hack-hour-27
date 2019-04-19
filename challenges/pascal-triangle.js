@@ -32,8 +32,23 @@
   ]
 */
 
-function pascalTriangle(numRows) {
+function pascalTriangle(numRows, count = numRows, lastRow = [1,1], output= [ [1], [1,1] ]) {
+  // edge cases
+  if (numRows === 0) return undefined;
+  if (numRows === 1) return [[1]];
+  // base case -  end at 2 b/c we start recuing at the 2nd iteration
+  if (count === 2) return output;
+  // recu case
+  const newLastRow = [1];
+  newLastRow[lastRow.length] = 1;
+  for(let i=1; i<newLastRow.length-1; i++){
+    newLastRow[i] = lastRow[i-1] + lastRow[i]
+  }
+  output.push(newLastRow);
+  return pascalTriangle(numRows, count-1, newLastRow, output);
 
 }
+
+console.log(pascalTriangle(6))
 
 module.exports = pascalTriangle;

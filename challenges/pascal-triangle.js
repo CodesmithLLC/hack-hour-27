@@ -46,29 +46,16 @@ function pascalTriangle(numRows, output = []) {
   
   //recursion
   let previous = [...pascalTriangle(numRows - 1)]
-  // console.log('previous:', previous)
   let mostRecent = [...previous[previous.length - 1]];
   let current = [];
-  // console.log('mostRecent before loop:', mostRecent)
   let i = 0;
   do {
-    let secondNumber;
-    if (!mostRecent[i - 1]) secondNumber = 0;
-    else secondNumber = mostRecent[i - 1]
-
-    let firstNumber;
-    if (!mostRecent[i]) firstNumber = 0;
-    else firstNumber = mostRecent[i]
-
-    // console.log('secondNumber:', secondNumber)
-    current[i] = firstNumber + secondNumber;
+    current[i] = (mostRecent[i] ? mostRecent[i] : 0) + (mostRecent[i - 1] ? mostRecent[i - 1] : 0);
     i++;
   } while(current.length < previous.length + 1)
-  // console.log('current', current)
   previous.push(current)
   return previous;
 }
-
 
 // console.log(pascalTriangle(5))
 module.exports = pascalTriangle;

@@ -32,8 +32,39 @@
   ]
 */
 
+function generateNewRow(prevRow) {
+  const newRow = [1];
+  for (let i = 0; i < prevRow.length; i += 1) {
+    const curVal = prevRow[i];
+    const nextVal = prevRow[i + 1];
+    if (nextVal !== undefined) {
+      newRow.push(curVal + nextVal);
+    }
+  }
+  newRow.push(1);
+  return newRow;
+}
+
 function pascalTriangle(numRows) {
 
+
+
+
+
+  if (numRows === 1) {
+    return [[1]];
+  } else if (numRows === 2) {
+    return [[1], [1, 1]];
+  } else {
+    const output = [[1], [1, 1]];
+    let count = 2;
+
+    while (count < numRows) {
+      output.push(generateNewRow(output[output.length - 1]));
+      count += 1;
+    }
+    return output;
+  }
 }
 
 module.exports = pascalTriangle;

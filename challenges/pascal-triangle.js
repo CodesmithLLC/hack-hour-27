@@ -35,7 +35,7 @@
 function pascalTriangle(numRows) {
   const triangle = []
   let pointer;
-  for (let i = 0; i < numRows; i++){
+  for (let i = 1; i <= numRows; i++){
     pointer = generateRow(i, pointer);
     triangle.push(pointer);
   }
@@ -53,6 +53,8 @@ function generateRow(n, last = [1]){
   }
   return row;
 }
+
+console.log(pascalTriangle(3));
 
 
 module.exports = pascalTriangle;

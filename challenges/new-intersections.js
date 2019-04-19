@@ -1,3 +1,4 @@
+//@ts-check
 /**
  *
  * You are given an array x and an array y that represent the coordinates of several OLD points
@@ -47,7 +48,7 @@ function newIntersections(x, y) {
     }
   }
 
-  count = 0;
+  let count = 0;
 
   for (let i = 0; i < x.length; i += 1) {
     const x_val = x[i];
@@ -67,8 +68,5 @@ function hasIntersection(curr_x, curr_y, xObj, yObj) {
     yObj[curr_y].min < curr_x
   );
 }
-
-const x_arr = [0, 0, 10, -10, 0];
-const y_arr = [10, -10, 0, 0, 0];
 
 module.exports = newIntersections;

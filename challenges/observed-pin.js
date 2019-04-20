@@ -39,12 +39,38 @@ expectations = {
 
 */
 
-
-
+const adjList = {
+  1: ["1", "2", "4"],
+  2: ["1", "3", "5", "2"],
+  3: ["2", "6", "3"],
+  4: ["1", "5", "7", "4'"],
+  5: ["2", "4", "6", "8", "5"],
+  6: ["3", "5", "9", "6"],
+  7: ["4", "8", "7"],
+  8: ["5", "7", "8", "9", "0"],
+  9: ["6", "8", "9'"],
+  0: ["8"]
+};
 
 function getPINs(observed) {
+  const digits = Array.from(observed);
 
+  return helper(digits, 0);
 }
 
+function helper(digits, depth, accumulated = "", possibilities = []) {
+  if (depth === digits.length) {
+    possibilities.push(accumulated);
+    return;
+  }
+  adjList[digits[depth]].forEach(numb => {
+    accumulated += numb;
+    helper(digits, depth + 1, accumulated, possibilities);
+    accumulated = accumulated.slice(0, -1);
+  });
+  return possibilities;
+}
 
-module.exports = getPINs
+// console.log(getPINs("11"));
+
+module.exports = getPINs;

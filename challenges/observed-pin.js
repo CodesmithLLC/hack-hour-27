@@ -45,7 +45,7 @@ expectations = {
 function getPINs(observed) {
   const possibles = {
     1: ['1','2','4'],
-    2: ['2','5'],
+    2: ['1','2','3','5'],
     3: ['2','3','6'],
     4: ['1','4','5','7'],
     5: ['2','4','5','6','8'],
@@ -73,3 +73,4 @@ module.exports = getPINs
 // console.log(getPINs('11'));
 // console.log(getPINs('369'));
 // console.log(getPINs('0123456789'));
+// console.log(getPINs('123456'));

@@ -59,7 +59,7 @@ function getPINs(observed) {
   if (observed.length === 1) return possibles[observed];
 
   return getPINs(observed.slice(1)).reduce((acc, cur) => {
-    possibles[cur].forEach(e=>{
+    possibles[observed[0]].forEach(e=>{
       acc.push(e+cur);
     })
     return acc;
@@ -71,3 +71,5 @@ module.exports = getPINs
 
 // console.log(getPINs('8'));
 // console.log(getPINs('11'));
+// console.log(getPINs('369'));
+// console.log(getPINs('0123456789'));

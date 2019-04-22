@@ -21,7 +21,7 @@
      3: 3,
     //  4: 5,
     //  5: 8,
-    //  6: 12
+    //  6: 13
     //  7: 17?
     //  8: 23?
  }
@@ -31,7 +31,7 @@ function countStairs(n) {
     if(cacheCount[n])
         return cacheCount[n];
 
-    cacheCount[n] = countStairs(n-1) + (n-2);
+    cacheCount[n] = countStairs(n-1) + countStairs(n-2);
 
     return cacheCount[n];
 }
@@ -43,5 +43,5 @@ function countStairsOld(n) {
     return countStairs(n-1) + (n-2);
 }
 
-// console.log(countStairs(8));
+// console.log(countStairs(6));
 module.exports = countStairs;

@@ -11,7 +11,19 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+  const position = str.match(/\d/g).map(el=>Number(el))
+  let total = 8;
+  if (position[0]+1 > 8) total -=2;
+  if (position[0]+2 > 8) total -=2;
+  if (position[1]+1 > 8) total -=2;
+  if (position[1]+2 > 8) total -=2;
+  if (position[0]-1 < 1) total -=2;
+  if (position[0]-2 < 1) total -=2;
+  if (position[1]-1 < 1) total -=2;
+  if (position[1]-2 < 1) total -=2;
+return total;
 }
 
 module.exports = knightjumps;
+
+console.log(knightjumps('(2 7)'))

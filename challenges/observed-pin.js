@@ -43,7 +43,26 @@ expectations = {
 
 
 function getPINs(observed) {
-
+  let adjacents = {
+    '0': [0,8],
+    '1': [1,2,4],
+    '2': [2,1,3],
+    '3': [3,2,6],
+    '4': [4,1,5,7],
+    '5': [5,2,4,6,8],
+    '6': [6,3,5,9],
+    '7': [7,4,8],
+    '8': [8,0,5,7,9],
+    '9': [9,6,8]
+  }
+  let possiblePins = observed.split('').map(el=>el = adjacents[el]);
+  function permutation(arr) {
+    if (arr.length === 1) {
+      return arr[0];
+    }
+    const temp = arr.slice(1)
+    permutation(temp)
+  }
 }
 
 

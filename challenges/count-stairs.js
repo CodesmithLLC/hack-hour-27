@@ -16,6 +16,54 @@
 
 function countStairs(n) {
 
+  function Node(val) {
+    this.val = val; 
+    this.children = [];
+  }
+
+  function Graph() {
+    this.nodes = {}
+    this.count = 0;
+  }
+
+  Graph.prototype.addNodes = function(val) {
+    this.nodes[val] = new Node(val);    
+    if(!this.nodes[val-1]) this.nodes[val-1] = new Node(val-1);
+    if(!this.nodes[val-2]) this.nodes[val-2] = new Node(val-2);
+    if(val >= 2)  this.nodes[val].children = [val-1, val-2]
+    if(val === 1) this.nodes[val].children = [val-1]
+    if(val >= 0)  this.addNodes(val-1);
+  }
+
+  Graph.prototype.traverse = function(val) {
+    // find all paths to 0 - for each child, spawn a new path
+    if(val === 0) this.count++;
+    else if (val > 0) this.nodes[val].children.forEach( v => {
+      this.traverse(this.nodes[v].val);
+    })
+    
+  }
+
+  g = new Graph;
+  g.addNodes(n);
+  g.traverse(n);
+  return g.count;
+
 }
+
+// testing
+
+// const ggg = countStairs(5)
+
+// console.log(ggg.nodes[5])
+// console.log(ggg.nodes[4])
+// console.log(ggg.nodes[3])
+// console.log(ggg.nodes[2])
+// console.log(ggg.nodes[1])
+// console.log(ggg.nodes[0])
+// console.log(ggg.count)
+
+
+
 
 module.exports = countStairs;

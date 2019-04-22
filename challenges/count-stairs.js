@@ -15,7 +15,7 @@
  */
 
  const cacheCount = {
-     0: 0,
+     0: 1,
      1: 1,
      2: 2,
      3: 3,
@@ -28,12 +28,20 @@
 
  // possibly optimize with a cache count as they are calculated
 function countStairs(n) {
+    if(cacheCount[n])
+        return cacheCount[n];
+
+    cacheCount[n] = countStairs(n-1) + (n-2);
+
+    return cacheCount[n];
+}
+
+function countStairsOld(n) {
     if(n < 3)
         return cacheCount[n];
 
     return countStairs(n-1) + (n-2);
 }
 
-
-
+// console.log(countStairs(8));
 module.exports = countStairs;

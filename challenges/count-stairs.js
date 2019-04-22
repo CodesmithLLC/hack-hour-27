@@ -15,7 +15,10 @@
  */
 
 function countStairs(n) {
+  if (n === 1) return 1;
+  if (n === 2) return 2;
 
+  return countStairs(n-2) + countStairs(n-1)
 }
 
 module.exports = countStairs;

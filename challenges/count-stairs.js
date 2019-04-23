@@ -14,15 +14,14 @@
  * That is a total of 8 different ways to take 5 steps, given that you can take 1 or 2 steps at a time.
  */
 
-function countStairs(n, steps = 0) {
+function countStairs(n) {
   let ways = 0;
-  if (steps + 1 > n) return 1;
-  if (steps + 2 <= n) ways += countStairs(n, steps += 2)
-  if (steps + 1 <= n) ways += countStairs(n, steps += 1)
-  return ways;
-}
+  if (n <= 0) return 1;
+  if (n === 1) return 1;
+  return ways += (countStairs(n-1) + countStairs(n-2))
+} 
 
 
 module.exports = countStairs;
 
-console.log(countStairs(5))
+console.log(countStairs(15))

@@ -71,6 +71,6 @@ function getPINs(observed) {
   return output;
 }
 
-// console.log(getPINs('1337'))
+console.log(getPINs('1337897620'))
 
 module.exports = getPINs

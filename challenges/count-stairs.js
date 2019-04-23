@@ -15,7 +15,9 @@
  */
 
 function countStairs(n) {
-
+  if(n < 2) return 1
+  return countStairs(n-2) + countStairs(n-1)
 }
+console.log(countStairs(5))
 
 module.exports = countStairs;

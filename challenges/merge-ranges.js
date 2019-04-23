@@ -25,8 +25,11 @@ function mergeRanges(array) {
   //iterate thru rest of array
   for (let i = 0; i < array.length; i++){
     //if starting time of array[i] is not within stack top's range, push array[i] onto stack
-    if (array[i][0] ) return 1;
+    if (array[i][0] <= stack[stack.length - 1][1]) stack[stack.length - 1][1] = array[i][1];
+    else stack.push(array[i])
   }
+
+  return stack;
 }
 
 console.log(mergeRanges([[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]]));

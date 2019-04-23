@@ -22,12 +22,12 @@
 function poker(hand1, hand2) {
   const rank1 = parseHand(hand1);
   const rank2 = parseHand(hand2);
-  console.log('rank1:',rank1);
-  console.log('rank2:',rank2);
+  // console.log('rank1:',rank1);
+  // console.log('rank2:',rank2);
   if (rank1[0] < rank2[0]) return 'Player 1 wins';
   else if (rank1[0] > rank2[0]) return 'Player 2 wins';
-  else if (rank1[1] < rank2[1]) return 'Player 1 wins';
-  else if (rank1[1] > rank2[1]) return 'Player 2 wins';
+  else if (rank1[1] > rank2[1]) return 'Player 1 wins';
+  else if (rank1[1] < rank2[1]) return 'Player 2 wins';
   else return 'Draw';
 }
 
@@ -49,7 +49,7 @@ function parseHand(arr) {
     if (hand[value]) hand[value]++;
     else hand[value] = 1;
   }
-  console.log(hand);
+  // console.log(hand);
   const cards = Object.keys(hand);
   if (cards.length === 2) {
     if (hand[cards[0]] === 4 || hand[cards[1]] === 4) rank = 0;
@@ -76,6 +76,6 @@ function parseHand(arr) {
 module.exports = poker;
 
 
-// const hand1 = [2,3,3,6,6];
-// const hand2 = [3,2,7,4,4]
+// const hand1 = [2,3,4,8,6];
+// const hand2 = [3,2,7,13,4];
 // console.log(poker(hand1,hand2));

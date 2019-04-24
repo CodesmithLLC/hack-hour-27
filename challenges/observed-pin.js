@@ -72,6 +72,6 @@ function getPINs(observed) {
 
 }
 
-console.log(getPINs("369"))
+console.log(getPINs("0123456789"))
 
 module.exports = getPINs

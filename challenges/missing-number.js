@@ -25,7 +25,12 @@ Challange:
   ** cannot use additional storage, variables are okay not any TYPE of object
   ** keep in mind time complexity
 */
-function missingNum(Array) {
+
+function missingNum(arr) {
+  const nums = new Set(arr);
+  for (let i = 1; i <= arr.length+1; i++){
+    if (!nums.has(i)) return i;
+  }
 }
 
 module.exports = missingNum;

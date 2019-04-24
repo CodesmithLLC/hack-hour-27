@@ -37,7 +37,6 @@ function missingNum(Array) {
   return expected - real;
 }
 
-
-// console.log(missingNum([]))
+console.log(missingNum([2,3,1,5]))
 
 module.exports = missingNum;

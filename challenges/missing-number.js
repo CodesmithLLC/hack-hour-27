@@ -26,10 +26,8 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(Array) {
-  //strat: use Gauss to find expected sum
-  // reduce array to find real sum
-  //missing number is expected - realÍ
-  let expected = Math.max(...Array) * (Math.max(...Array) + 1) / 2
+  // let expected = Math.max(...Array) * (Math.max(...Array) + 1) / 2
+  let expected = (Array.length + 1) * (Array.length + 2) / 2
   let real = Array.reduce( (acc, val) => acc + val)
   // console.log('expected', expected)
   // console.log('real', real)
@@ -39,6 +37,6 @@ function missingNum(Array) {
 }
 
 
-console.log(missingNum([2,3,1,5,4,6,7,9,10,11,12,13,14]))
+console.log(missingNum([2,3,1,5]))
 
 module.exports = missingNum;

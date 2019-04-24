@@ -26,6 +26,7 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(Array) {
+  return ((Array.length+1)*(Array.length+2))/2 - Array.reduce((acc,cur) => acc + cur);
 }
 
 module.exports = missingNum;

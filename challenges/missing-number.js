@@ -16,7 +16,7 @@ Assume that:
  * N is an integer within the range [0..100,000];
  * the elements of A are all distinct;
  * each element of array A is an integer within the range [1..(N + 1)].
- Complexity:
+  Complexity:
 
 expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
@@ -26,6 +26,30 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(Array) {
+  // establish min and max
+  const max = Math.max(...Array);
+  const min = Math.min(...Array);
+
+  // remove minimum
+  Array.splice(Array.indexOf(min), 1);
+  // remove maximum
+  Array.splice(Array.indexOf(max), 1);
+  const expectedArray = [];
+  for (let i = min + 1; i < max; i += 1) {
+    expectedArray.push(i);
+  }
+
+  let expectedXor = 0;
+  for (let i = 0; i < expectedArray.length; i += 1) {
+    expectedXor ^= expectedArray[i];
+  }
+
+  let partialXor = 0;
+  for (let i = 0; i < Array.length; i += 1) {
+    partialXor ^= Array[i];
+  }
+  // exor the expected array with Array
+  return expectedXor ^ partialXor;
 }
 
 module.exports = missingNum;

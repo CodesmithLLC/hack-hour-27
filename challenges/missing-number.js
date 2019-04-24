@@ -26,6 +26,12 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(Array) {
+  if(Array.includes(0)){
+    return ((Array.length)*(Array.length+1))/2 - Array.reduce((acc,cur) => acc + cur);  
+  }
+  return ((Array.length+1)*(Array.length+2))/2 - Array.reduce((acc,cur) => acc + cur);
 }
 
 module.exports = missingNum;
+let arr = [0,1,2,3,4,5,6,7,9,10]
+console.log(missingNum(arr))

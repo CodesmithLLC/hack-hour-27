@@ -60,7 +60,7 @@ function parseHand(arr) {
   } else if (cards.length === 4) {
     rank = 5;
   } else {
-    let sorted = arr.slice().sort();
+    let sorted = arr.slice().sort((a,b)=>a-b);
     let isStraight = true;
     let i = 1;
     while (isStraight && i < sorted.length) {
@@ -76,6 +76,6 @@ function parseHand(arr) {
 module.exports = poker;
 
 
-// const hand1 = [2,3,4,8,6];
-// const hand2 = [3,2,7,13,4];
+// const hand1 = [12,12,11,11,6];
+// const hand2 = [7,8,9,10,11];
 // console.log(poker(hand1,hand2));

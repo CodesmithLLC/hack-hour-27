@@ -7,7 +7,6 @@
  */
 
 function Stack() {
-  // body...
   this.storage = [];
   this.max = -Infinity;
   this.length = 0;

@@ -45,15 +45,15 @@ BinaryTree.prototype.add = function add(value) {
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
 
-let myBST = new BinaryTree(5);
-myBST.add(4);
-myBST.add(9);
-myBST.add(3);
-myBST.add(2);
-myBST.add(3.5);
-myBST.add(6);
-myBST.add(8);
-myBST.right.left.left = new BinaryTree(18)
+// let myBST = new BinaryTree(5);
+// myBST.add(4);
+// myBST.add(9);
+// myBST.add(3);
+// myBST.add(2);
+// myBST.add(3.5);
+// myBST.add(6);
+// myBST.add(8);
+// myBST.right.left.left = new BinaryTree(18)
 // console.log('myBST', myBST)
-console.log(validBST(myBST))
+// console.log(validBST(myBST))
 

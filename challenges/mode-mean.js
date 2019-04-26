@@ -15,7 +15,7 @@ function modemean(array) {
 	array.sort((a,b) => a - b)
 
 	//Mean
-  let mean = Math.floor(array.reduce((acc,val) => acc + val) / array.length);
+  let mean = Math.floor(array.reduce( (acc,val) => acc + val) / array.length);
   
   //Mode
   let counts = {};

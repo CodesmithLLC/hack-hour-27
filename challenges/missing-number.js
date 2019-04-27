@@ -26,6 +26,8 @@ Challange:
   ** keep in mind time complexity
 */
 function missingNum(Array) {
+  if (!Array.length) return [];
+  if (Array.length === 1) return Array[0];
   // let expected = Math.max(...Array) * (Math.max(...Array) + 1) / 2
   let expected = (Array.length + 1) * (Array.length + 2) / 2
   let real = Array.reduce( (acc, val) => acc + val)
@@ -33,9 +35,7 @@ function missingNum(Array) {
   // console.log('real', real)
 
   return expected - real;
-
 }
-
 
 console.log(missingNum([2,3,1,5]))
 

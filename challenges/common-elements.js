@@ -20,7 +20,7 @@ function commonElements(array1, array2, array3, array4){
     acc.forEach(elem => {
       if (val.includes(elem) && !output.includes(elem)) output.push(elem)
     })
-    return output
+    return output;
   })
   return commons.length ? commons : "Nothing in Common!";
 }

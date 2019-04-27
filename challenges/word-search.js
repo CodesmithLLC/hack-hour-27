@@ -56,4 +56,4 @@ console.log(wordSearch([
   ['A','D','E','E']
  ], 'SEE'))
 
-module.exports = wordSearch;
+// module.exports = wordSearch;

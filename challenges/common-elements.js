@@ -15,13 +15,14 @@
 function commonElements(array1, array2, array3, array4){
   //build output array, reduce
   let args = Object.values(arguments);
-  return args.reduce( (acc, val) => {
+  let commons = args.reduce( (acc, val) => {
     let output = [];
     acc.forEach(elem => {
       if (val.includes(elem) && !output.includes(elem)) output.push(elem)
     })
-    return output;
+    return output
   })
+  return commons.length ? commons : "Nothing in Common!";
 
 }
 
@@ -31,6 +32,7 @@ function commonElements(array1, array2, array3, array4){
   // var array3 = [23,12,12,77,'ferret',9,88,100,'dog'];
   // var array4 = ['ferret',12,12,45,9,66,77,78,2000];
   // console.log(commonElements(array1, array2, array3, array4));
+  // console.log(commonElements([1], ['string'], ['yeet'], ['yolo', 42]))
 
 module.exports = commonElements;
 

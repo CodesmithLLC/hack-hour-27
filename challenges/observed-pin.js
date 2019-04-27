@@ -39,39 +39,160 @@ expectations = {
 
 */
 
+let pad = {
+	"1": ['1', '2', '4'],
+	"2": ['1', '2', '3', '5'],
+	"3": ['2', '3', '6'],
+	"4": ['1', '4', '5', '7'],
+	"5": ['2', '4', '5', '6', '8'],
+	"6": ['3', '5', '6', '9'],
+	"7": ['4', '7', '8'],
+	"8": ['5', '7', '8', '9', '0'],
+	"9": ['6', '8', '9'],
+	"0": ['8', '0'],
+};
 
 
-
+// ITERATIVE SOLUTION
 function getPINs(observed) {
-  let neighbors = {
-		"0": ["0", "8"],
-		"1": ["1", "2", "4"],
-		"2": ["1", "2", "3", "5"],
-		"3": ["2", "3", "6"],
-		"4": ["1", "4", "5", "7"],
-		"5": ["2", "4", "5", "6", "8"],
-		"6": ["3", "5", "6", "9"],
-		"7": ["4", "7", "8"],
-		"8": ["5", "7", "8", "9", "0"],
-		"9": ["6", "8", "9"]
-	};
 
+	// you'll need to hard-code this no matter the approach
+
+
+	let possibilities = ['']; //for this solution, we need at least one element to start so we use empty string
+
+	// do until string is empty
+	while (observed) {
+		let adjacents = pad[observed[0]]; // get all adjacent pins for the current number
+		let newPossibles = []; // to hold our current iterations combinations
+
+		// for every number that a digit could have actually been (1 -> 1,2,4)
+		for (let i = 0; i < adjacents.length; i++) {
+
+			// we want to add this digit to end of every possible combination we have so far
+			for (let j = 0; j < possibilities.length; j++) {
+				newPossibles.push(possibilities[j] + adjacents[i]); //concat each of the adjacent possibility
+			}
+		}
+		console.log('current possibilities:', newPossibles);
+		// replace (update) old possibilities with new ones
+		possibilities = newPossibles;
+		// remove digit we just processed from observed
+		observed = observed.slice(1);
+	}
+	return possibilities;
 }
 
 
 
 
+// recursive solution
+function getPINs2(observed) {
+	// what we will return
+	var possibilities = [];
+
+
+	function getAdjacents(observed, path) {
+		console.log('path:', path)
+		// BASE CASE: observed string is empty, path is full length
+		if (!observed) {
+			return possibilities.push(path);
+		}
+
+		// array of possible digits
+		var adjacent = pad[observed[0]];
+
+		// remove digit we just processed from 'observed' 
+		observed = observed.slice(1);
+
+		// RECURSE with shortened 'observed' string
+		// and every possible new path
+		for (var i = 0; i < adjacent.length; i++) {
+			getAdjacents(observed, path + adjacent[i]);
+		}
+	}
+	getAdjacents(observed, '');
+	console.log(possibilities);
+
+	return possibilities;
+}
 
 
 
+function getPINs3(observed) {
+	// form array of arrays of possibilities for each observed digit
+	let optionsArray = observed.split('').map(function (digit) {
+		return pad[digit];
+	});
+	let final = [];
+	// recurse through each subarray to form all possibilities
+	// adding each digit from the next array to a new combo
+	(function formCombos(array, combo) {
+		// base case --> combo/path has reached length of observed pin
+		if (combo.length === optionsArray.length) return final.push(combo);
+		array.forEach(function (digit) {
+			return formCombos(optionsArray[combo.length + 1], combo + digit);
+		})
+	})(optionsArray[0], '')
+	return final;
+}
 
-// let returnArr = [];
- 
-// adjacentNumbers[num].forEach(possibleNum =>{
-//   returnArr.push(possibleNum);
-// });
-// return returnArr;
 
-// return observed.split("").map(possibleNum=>(neighbors[possibleNum])).reduce((pre, cur)=> [].concat.apply([], pre.map(possibleNum => cur.map(g => possibleNum + g))));
+function getPINs4(observed) {
+	// Object mapping out possibilities based on observed digit.
+	const adj = {
+		0: ['8', '0'],
+		1: ['1', '2', '4'],
+		2: ['1', '2', '3', '5'],
+		3: ['2', '3', '6'],
+		4: ['1', '4', '5', '7'],
+		5: ['2', '4', '5', '6', '8'],
+		6: ['3', '5', '6', '9'],
+		7: ['4', '7', '8'],
+		8: ['5', '7', '8', '9', '0'],
+		9: ['6', '8', '9']
+	}
+
+	// If there is only one observed digit, return array of possibilities from the object above.
+	if (observed.length === 1) return adj[observed]
+
+	// Get the remaining possibilities from remaining digits.
+	const theRest = getPINs(observed.slice(1))
+
+	// Place each possible digit from current observed digit and place it front of every possibility from
+	// above array of possibilities (based on remaining observed digits). Return big array of possibilities.
+	return adj[observed[0]].reduce((accum, num) => [...accum, ...theRest.map(pins => num.concat(pins))], [])
+}
+
+
+
 
 module.exports = getPINs
+
+
+
+
+// function getPINs(observed) {
+// 	let neighbors = {
+// 		"0": ["0", "8"],
+// 		"1": ["1", "2", "4"],
+// 		"2": ["1", "2", "3", "5"],
+// 		"3": ["2", "3", "6"],
+// 		"4": ["1", "4", "5", "7"],
+// 		"5": ["2", "4", "5", "6", "8"],
+// 		"6": ["3", "5", "6", "9"],
+// 		"7": ["4", "7", "8"],
+// 		"8": ["5", "7", "8", "9", "0"],
+// 		"9": ["6", "8", "9"]
+// 	};
+// 	let returnArr = [];
+
+// 	adjacentNumbers[num].forEach(possibleNum => {
+// 		returnArr.push(possibleNum);
+// 	});
+
+// 	return returnArr;
+
+// 	return observed.split("").map(possibleNum => (neighbors[possibleNum])).reduce((pre, cur) => [].concat.apply([], pre.map(possibleNum => cur.map(g => possibleNum + g))));
+// }
+

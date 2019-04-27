@@ -60,3 +60,99 @@ function newIntersections(x, y){
 }
 
 module.exports = newIntersections;
+
+// function Range(arr) {
+//   this.endpoints = [Math.min(...arr), Math.max(...arr)];
+// }
+
+// // method to tell us if a number is between the range
+// Range.prototype.contains = function (num) {
+//   return (this.endpoints[0] < num) && (num < this.endpoints[1]);
+// };
+
+
+// // take the arrays of coordinates and turn them into ranges
+// function rangify(lines) {
+//   Object.entries(lines)
+//     .forEach(([coord, valArray]) => {
+//       lines[coord] = new Range(valArray);
+//     }
+//   );
+// }
+
+
+// // count the number of elements in the array and return an object 
+// function count(arr) {
+//   return arr.reduce((counts, num) => {
+//     if (counts[num] === undefined) counts[num] = 0;
+//     counts[num] += 1;
+//     return counts;
+//   }, {});
+// }
+// /*
+// [3, 3, 1, 4, 4, 4, 4, 4] will return
+// {
+//   '3': 2,
+//   '1': 1,
+//   '4': 5
+// }
+// */
+
+// function newIntersections(xArr, yArr) {
+//   const xCounts = count(xArr);
+//   const yCounts = count(yArr);
+//   const horizontals = {};
+//   const verticals = {};
+
+//   // find vertical lines and place into an object.
+//   // The keys are the x-coordinates where the line is at
+//   // and the values are arrays of y-coordinates along that line
+//   Object.keys(xCounts).forEach((xCoord) => {
+//     // a line is defined by its two endpoints
+//     // only check for a line if there are multiple points at this value
+//     if (xCounts[xCoord] > 1) {
+//       // collect any corresponding y values in verticals
+//       xArr.forEach((x, i) => {
+//         if (x == xCoord) {
+//           if (verticals[x] === undefined) verticals[x] = [];
+//           verticals[x].push(yArr[i]);
+//         }
+//       });
+//     }
+//   });
+
+//   // find horizontal lines and place into an object.
+//   // The keys are the y-coordinates where the line is at
+//   // and the values are arrays of x-coordinates along that line
+//   Object.keys(yCounts).forEach((yCoord) => {
+//     // a line is defined by its two endpoints
+//     // only check for a line if there are multiple points at this value
+//     if (yCounts[yCoord] > 1) {
+//       // collect any corresponding y values in verticals
+//       yArr.forEach((y, i) => {
+//         if (y == yCoord) {
+//           if (horizontals[y] === undefined) horizontals[y] = [];
+//           horizontals[y].push(xArr[i]);
+//         }
+//       });
+//     }
+//   });
+
+
+
+//   // rangify keeps only the minimum & maximum values in an array for each key
+//   rangify(verticals);
+//   rangify(horizontals);
+
+//   let newPoints = 0;
+
+//   Object.entries(horizontals).forEach(([yCoord, xRange]) => {
+//     Object.entries(verticals).forEach(([xCoord, yRange]) => {
+//       if (xRange.contains(xCoord) && yRange.contains(yCoord)) newPoints += 1;
+//     });
+//   });
+
+//   console.log({ xArr, yArr, newPoints });
+
+//   return newPoints;
+// }

@@ -14,10 +14,19 @@
  * That is a total of 8 different ways to take 5 steps, given that you can take 1 or 2 steps at a time.
  */
 
+ // // O(2^n) linear time
 function countStairs(n) {
   if (n < 2) return 1;
   if (n === 2) return 2;
   return countStairs(n - 1) + countStairs(n - 2);
 }
+
+// // O(n) linear time
+// function countStairs(num, memo) {
+//   memo = memo || {};
+//   if (memo[num]) return memo[num];
+//   if (num <= 1) return 1;
+//   return memo[num] = countStairs(num - 1, memo) + countStairs(num - 2, memo);
+// }
 
 module.exports = countStairs;

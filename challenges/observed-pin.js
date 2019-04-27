@@ -26,7 +26,7 @@ never finally lock the system or sound the alarm. That's why we can try out all 
 
 Can you help us to find all those variations? It would be nice to have a function, that returns an array 
 of all variations for an observed PIN with a length of 1 to 8 digits. We could name the function getPINs. 
-But please note that all PINs, the observed one and also the results, must be strings, because of 
+But please note that all PINs, the observed one and also the results, must be strings, because of  
 potentially leading '0's. Don't worry about the order of the array.
 
 Detective, we count on you!

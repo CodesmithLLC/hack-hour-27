@@ -33,7 +33,7 @@ function solveKnapsack(items, weightAvailable) {
     }
 
   }
-
+  //next strat to try: if WA > highest weight, start from the highest. If WA is within weights, start from lowest.
   return value;
 
 };

@@ -23,7 +23,6 @@ function commonElements(array1, array2, array3, array4){
     return output
   })
   return commons.length ? commons : "Nothing in Common!";
-
 }
 
 
@@ -35,5 +34,3 @@ function commonElements(array1, array2, array3, array4){
   // console.log(commonElements([1], ['string'], ['yeet'], ['yolo', 42]))
 
 module.exports = commonElements;
-
-

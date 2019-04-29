@@ -31,8 +31,8 @@ function getPerms(arr) {
   let output = [];
   //base
   if (arr.length === 1){
-    output.push(arr);
-    return output;
+    return arr
+    
   }
 
   //recurse
@@ -41,14 +41,14 @@ function getPerms(arr) {
     let everythingElse = arr.slice(0, i).concat(arr.slice(i + 1));
     let innerPerms = getPerms(everythingElse)
     for (let j = 0; j < innerPerms.length; j++) {
-      output.push([first, ...everythingElse])
+      output.push([first].concat(innerPerms[j]));
     }
   }
   return output;
 }
 
 
-// console.log(getPerms([1,2,3]))
+// console.log(getPerms([1,2,3,4]))
 // eachPermutation([1,2,3], (perm) => console.log(perm))
 
 

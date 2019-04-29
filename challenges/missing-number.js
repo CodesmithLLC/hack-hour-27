@@ -40,6 +40,6 @@ function missingNum(Array) {
 }
 
 const a = [2, 3, 1, 5];
-console.log(missingNum(a));
+// console.log(missingNum(a));
 
 module.exports = missingNum;

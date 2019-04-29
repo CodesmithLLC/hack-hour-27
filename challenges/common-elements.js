@@ -13,18 +13,30 @@
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
 function commonElements(array1, array2, array3, array4) {
-  const common = [];
-  array1.forEach(val => {
-    if (
-      array2.includes(val) &&
-      array3.includes(val) &&
-      array3.includes(val) &&
-      array4.includes(val) &&
-      !common.includes(val)
-    ) {
+  const set1 = new Set(array1);
+  const set2 = new Set(array2);
+  const set3 = new Set(array3);
+  const set4 = new Set(array4);
+
+  let common = [];
+  set1.forEach(val => {
+    if (set2.has(val)) {
       common.unshift(val);
     }
   });
+
+  // console.log(common);
+
+  common = common.filter(val => {
+    return set3.has(val);
+  });
+  // console.log(common);
+
+  common = common.filter(val => {
+    return set4.has(val);
+  });
+  // console.log(common);
+
   return common.length ? common : "Nothing in Common!";
 }
 // console.log(commonElements(array1, array2, array3, array4));

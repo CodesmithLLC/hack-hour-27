@@ -21,9 +21,26 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
+  let output = [];
+  const permHelper = (arr, combo = []) => {
+    if(arr.length === 0) {
+      output.push(combo);
+    } else {
+      arr.forEach( ele => {
+        newCombo = [...combo];
+        newCombo.push(ele);
+        permHelper(arr.slice(1), newCombo);
+      });
+    }
+  }
+
+  permHelper(arr);
+  output.forEach( combo => callback(combo) );
 
 }
 
+// tests
 
+// eachPermutation([1, 2, 3], (perm) => console.log(perm) );
 
 module.exports = eachPermutation;

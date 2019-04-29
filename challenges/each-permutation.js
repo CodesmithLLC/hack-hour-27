@@ -43,6 +43,6 @@ function permHelper(arr, idx, acc, cb, active) {
   }
 }
 
-console.log(eachPermutation([1, 2, 3, 4], val => console.log(val)));
+// console.log(eachPermutation([1, 2, 3, 4], val => console.log(val)));
 
 module.exports = eachPermutation;

@@ -21,9 +21,28 @@ eachPermutation([1, 2, 3], function(perm) {
 */
 
 function eachPermutation(arr, callback) {
-
+  const accumulated = [];
+  let idx = 0;
+  const isActive = Array(arr.length).fill(false);
+  permHelper(arr, 0, accumulated, callback, isActive);
 }
 
+function permHelper(arr, idx, acc, cb, active) {
+  if (idx === arr.length) {
+    cb(acc);
+    return;
+  }
+  for (let i = 0; i < arr.length; i += 1) {
+    if (!active[i]) {
+      acc.push(arr[i]);
+      active[i] = true;
+      permHelper(arr, idx + 1, acc, cb, active);
+      active[i] = false;
+      acc.pop();
+    }
+  }
+}
 
+console.log(eachPermutation([1, 2, 3, 4], val => console.log(val)));
 
 module.exports = eachPermutation;

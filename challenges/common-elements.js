@@ -12,22 +12,9 @@
 
 // if there are no common numbers or strings return the string "Nothing in Common!"
 
-function commonElements(array1, array2, array3, array4){
-  const set = new Set(array1);
-  const set2 = new Set();
-  for (val of array2) {
-    if (set.has(val)) set2.add(val);
-  }
-  const set3 = new Set();
-  for (val of array3) {
-    if (set2.has(val)) set3.add(val);
-  }
-  const output = []
-  for (val of array4) {
-    if (set3.has(val) && !output.includes(val)) output.push(val);
-  }
-  if (!output.length) return "Nothing in Common!";
-  else return output;
+function commonElements(array1, array2, array3, array4) {
+  let common = [...new Set(array1.filter(e=>array2.includes(e)).filter(e=>array3.includes(e)).filter(e=>array4.includes(e)))];
+  return common.length ? common : 'Nothing in Common!';
 }
 
 module.exports = commonElements;

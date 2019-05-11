@@ -35,3 +35,4 @@ const BST = {
 
 console.log(superBalanced(BST));
 */
+module.exports = {BinaryTree: BinaryTree, superbalanced: superbalanced};

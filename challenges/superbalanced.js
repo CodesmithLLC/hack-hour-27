@@ -15,7 +15,7 @@ function heightOrUnbalanced(tree) {
   return Math.max(right, left) + 1;
 }
 
-function superBalanced(tree){
+function superbalanced(tree){
   return !!(heightOrUnbalanced(tree));
 }
 

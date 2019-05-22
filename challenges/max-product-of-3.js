@@ -1,0 +1,1 @@
+// Given an array of at least three integers, find the highest product you can get from three of the integers.

@@ -5,6 +5,9 @@
 // write a function that will find the sum of all the multiples of 3 or 5
 // below 1000 and return that sum.
 
+
+// time complexity: O(n) 
+// --> where n is the number you are counting up to
 function sumMultiples3Or5Below1000() {
   let sum = 0;
   for (let i = 0; i < 1000; i++) {
@@ -13,12 +16,12 @@ function sumMultiples3Or5Below1000() {
   return sum;
 }
 
-// extensino make it dynamic function that takes input x,y,z
+// extensino: make it dynamic function that takes input x,y,z
 // and returns the sum of multiples of x and y below z
 function sumMultiplesXOrYBelowZ(x, y, z) {
   let sum = 0;
   for (let i = 0; i < z; i++) {
-    if (i % x === 0 || i % y === 0) sum += i
+    if (i % x === 0 && i % y === 0) sum += i
   }
   return sum;
 }
@@ -29,3 +32,36 @@ const objectToExport = {
 };
 
 module.exports = objectToExport;
+
+
+
+
+
+
+
+// // time complexity: O(1) [courtesy of TANG]
+// function sumMultiples3Or5Below1000() {
+//   return sumMultiplesXOrYBelowZ(3,5,1000);
+// }
+
+// // extension make it dynamic function that takes input x,y,z
+// // and returns the sum of multiples of x and y below z
+// function sumMultiplesXOrYBelowZ(x, y, z) {
+//   z = z-1
+//   let sum = 0;
+//   const xy = x*y;
+//   const nOfX = Math.floor(z/x);
+//   const nOfY = Math.floor(z/y);
+//   const nOfXY = Math.floor(z/(xy));
+//   const topX = nOfX * x;
+//   const topY = nOfY * y;
+//   const topXY = nOfXY * (xy);
+//   sum += findSum(x, topX, nOfX);
+//   sum += findSum(y, topY, nOfY);
+//   sum -= findSum(xy, topXY, nOfXY);
+//   return sum;
+// }
+
+// function findSum(start, end, n){
+//   return (start+end) * n/2
+// }

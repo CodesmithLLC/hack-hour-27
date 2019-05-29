@@ -47,3 +47,18 @@ function hasCycle(head) {
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
+
+
+// function hasCycle(head) {
+//   // set fast and slow variables
+//   let tortoise = head;
+//   let hare = head;
+//   // iterate through LL so long as the fast variable has a .next value
+//   while (hare.next !== null) {
+//     // increment slow by one, fast by two
+//     tortoise = tortoise.next;
+//     hare = hare.next.next;
+//     if (tortoise === hare) return true;
+//   }
+//   return false;
+// }

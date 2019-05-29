@@ -55,3 +55,20 @@ module.exports = countStairs;
 //   }
 //   return combos
 // }
+
+
+
+
+
+
+
+// emilia
+// O(2^n) exponential time
+// function countStairs(n) {
+//   if (n === 0) return 1;
+//   if (n < 0) return 0;
+//   return countStairs(n - 1) + countStairs(n - 2);
+// }
+
+// console.log(countStairs(5));
+console.log(countStairs(5, {}));

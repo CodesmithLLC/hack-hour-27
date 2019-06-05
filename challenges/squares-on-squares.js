@@ -1,0 +1,1 @@
+// Given a square of n x n squares, how many possible squares can be found?

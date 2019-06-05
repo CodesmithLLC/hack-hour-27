@@ -25,7 +25,6 @@ const testData = {
 function newIntersections(x, y){
   const hLines = makeLines(y, x);
   const vLines = makeLines(x, y);
-  console.log('hLines:', hLines, 'vLines:', vLines)
   return compareAndMapArrs(hLines, vLines, compareLines);
 }
 
@@ -52,7 +51,6 @@ function makeLines(alignedAxis, variantAxis){
 }
 
 function compareLines(hLine, vLine){
-  console.log(hLine, vLine);
   if(
       (vLine.aligned> hLine.variant[0] && 
         vLine.aligned< hLine.variant[hLine.variant.length-1]) 
@@ -76,6 +74,10 @@ function compareAndMapArrs(arr1, arr2, cb){
   }
   return returnArr;
 }
+console.log( newIntersections(
+        [-1, -2, 10, 2, 3, 3, 5, 5, 6, 9,  9, 12], 
+        [ 5, -5, -1, 3, 4, 9, 1, 6, 3, 3, 10, 5]
+      ))
 
 /*
 console.log(newIntersections(testData.x, testData.y));

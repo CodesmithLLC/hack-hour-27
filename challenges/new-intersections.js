@@ -77,6 +77,8 @@ function compareAndMapArrs(arr1, arr2, cb){
   return returnArr;
 }
 
+/*
 console.log(newIntersections(testData.x, testData.y));
+*/
 
 module.exports = newIntersections;

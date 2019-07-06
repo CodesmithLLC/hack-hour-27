@@ -15,14 +15,13 @@ function getAllProducts(array) {
   for (let i = 0; i < array.length; i++) {
     let prod = 1;
     for (let j = 0; j < array.length; j++) {
-      if (array[i] != array[j]) prod *= array[j];
+      if (i != j) prod *= array[j];
     }
     output.push(prod);
   }
   return output;
 }
-
-module.exports = getAllProducts;
+// console.log(getAllProducts([2, 4, 5, 7]))
 
 // // same with a while loop
 // function getAllProducts(array) {
@@ -39,23 +38,14 @@ module.exports = getAllProducts;
 //   return output;
 // }
 
-
-
-
-
-
-
-
-
-
-// ken
-function getAllProduct(arr) {
+// with reduce (ken)
+function getAllProducts1(arr) {
   const result = [];
   for (let i = 0; i < arr.length; i += 1){
     result.push(arr.reduce((accum, curr, index) => {
       if (index === i) return accum;
         return accum *= curr
-    }))
+    }, 1))
   }
   return result;
 }
@@ -63,22 +53,25 @@ function getAllProduct(arr) {
 // b,1,b,b,
 // c,c,1,c,
 // d,d,d,1
+// console.log(getAllProducts1([2, 4, 5, 7]))
 
-function getAllProductN(arr) {
+// no nested loops (ken)
+function getAllProducts2(arr) {
   const arrTop = [];
   const arrBtm = [];
   let accum = 1;
-  for (let i = 0; i < arr.length; i ++){
+  for (let i = 0; i < arr.length; i++) {
     arrTop.push(accum);
-    accum *= arr[i]
+    accum *= arr[i];
   }
   accum = 1;
-  for (let j = arr.length - 1; j >= 0; j --) {
+  for (let j = arr.length - 1; j >= 0; j--) {
     arrBtm[j] = accum;
-    accum *= arr[j]
+    accum *= arr[j];
   }
   return arrTop.map((el, index) => el * arrBtm[index])
 }
+// console.log(getAllProducts2([2, 4, 5, 7]))
 
 
 
@@ -89,42 +82,45 @@ function getAllProductN(arr) {
 
 
 
-// HH archive sol'n
+
+// HH archive sol'ns
 // Using Division
-function getAllProducts(array) {
-  var products = array.reduce(function(acc, curr) {
-    return acc * curr;
-  }, 1);
-  return array.map(function(curr) {
-    return products / curr;
-  });
-}
+// function getAllProducts(array) {
+//   var products = array.reduce(function(acc, curr) {
+//     return acc * curr;
+//   }, 1);
+//   return array.map(function(curr) {
+//     return products / curr;
+//   });
+// }
 
 // Find Products Before and After
-function getAllProducts(array) {
-  if (!array || !array.length) {
-    return [0];
-  }
+// function getAllProducts(array) {
+//   if (!array || !array.length) {
+//     return [0];
+//   }
 
-  var front = [];
-  var back = [];
-  var result = [];
+//   var front = [];
+//   var back = [];
+//   var result = [];
 
-  var productSoFar = 1;
-  for (var i = 0; i < array.length; ++i) {
-    front[i] = productSoFar;
-    productSoFar *= array[i];
-  }
+//   var productSoFar = 1;
+//   for (var i = 0; i < array.length; ++i) {
+//     front[i] = productSoFar;
+//     productSoFar *= array[i];
+//   }
 
-  productSoFar = 1;
-  for (var j = array.length - 1; j >= 0; --j) {
-    back[j] = productSoFar;
-    productSoFar *= array[j];
-  }
+//   productSoFar = 1;
+//   for (var j = array.length - 1; j >= 0; --j) {
+//     back[j] = productSoFar;
+//     productSoFar *= array[j];
+//   }
 
-  for (var k = 0; k < array.length; k++) {
-    result[k] = front[k] * back[k];
-  }
+//   for (var k = 0; k < array.length; k++) {
+//     result[k] = front[k] * back[k];
+//   }
 
-  return result;
-}
+//   return result;
+// }
+
+module.exports = getAllProducts;

@@ -21,54 +21,40 @@ function countStairs(n) {
   return countStairs(n - 1) + countStairs(n - 2);
 }
 
-// // O(n) linear time
-// function countStairs(num, memo) {
-//   memo = memo || {};
-//   if (memo[num]) return memo[num];
-//   if (num <= 1) return 1;
-//   return memo[num] = countStairs(num - 1, memo) + countStairs(num - 2, memo);
-// }
+// O(n) linear time
+function countStairs(num, memo) {
+  memo = memo || {};
+  if (memo[num]) return memo[num];
+  if (num < 2) return 1;
+  if (n === 2) return 2;
+  return memo[num] = countStairs(num - 1, memo) + countStairs(num - 2, memo);
+}
 
 module.exports = countStairs;
 
 
 // // factorial count stairs 
-// const factorial = (num, tot = 1)=>{
-//   if (num === 0){
-//     return 1;
-//   }
-//   else if (num === 1){ 
-//     return tot
-//   }else{
-//     return factorial(num-1, tot * num);
-//   }
-// }
-// const getCombo = (n, steps)=>{
-//   const twos = steps-n;
-//   const ones = steps-(2*twos);
-//   return (factorial(n))/(factorial(ones)*factorial(twos))
-// }
-// function countStairs(sum) {
-//   let combos = 0;
-//   for(let i = sum; i >= sum/2; i--){
-//     combos += getCombo(i, sum)
-//   }
-//   return combos
-// }
 
+const factorial = (num, tot = 1) => {
+  if (num === 0) return 1;
+  else if (num === 1) return tot;
+  else return factorial(num - 1, tot * num);
+}
 
+const getCombo = (n, steps) => {
+  const twos = steps - n;
+  const ones = steps - (2 * twos);
+  return (factorial(n))/(factorial(ones) * factorial(twos))
+}
 
-
-
-
-
-// emilia
-// O(2^n) exponential time
-// function countStairs(n) {
-//   if (n === 0) return 1;
-//   if (n < 0) return 0;
-//   return countStairs(n - 1) + countStairs(n - 2);
-// }
+function countStairs(sum) {
+  let combos = 0;
+  for(let i = sum; i >= sum/2; i--){
+    combos += getCombo(i, sum)
+  }
+  return combos
+}
 
 // console.log(countStairs(5));
+
 console.log(countStairs(5, {}));

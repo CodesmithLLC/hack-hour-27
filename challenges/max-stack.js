@@ -6,9 +6,15 @@
  * BONUS: The getMax method should retrieve the maximum value from the stack in O(1) time.
  */
 
+// O(1) time, O(n) space
 function Stack() {
+  this.length = 0;
   this.stack = [];
+  // uncomment this for the second solution
+  // this.maxStack = [];
 }
+
+
 Stack.prototype.push = function (el) {
   this.stack[this.stack.length] = el;
   // push returns new length
@@ -28,16 +34,10 @@ Stack.prototype.getMax = function () {
   return max;
 };
 
-// O(1) time, O(n) space
-// function Stack() {
-//   this.length = 0;
-//   this.stack = [];
-//   this.maxStack = [];
-// };
 
+// // these push/pop/getMax solutions sort the array upon pushing to the array, making the max value the last item in the array
 // Stack.prototype.push = function(value) {
 //   this.stack.push(value);
-
 //   const m = this.maxStack;
 //   // if maxStack is empty, or if the value is greater than the max so far, push the value
 //   // otherwise, our last max is still our max at the new index

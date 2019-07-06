@@ -16,7 +16,20 @@
  * BONUS: Do this in place
  */
 
-// O(n ^ 2) time, O(1) space
+// O(n ^ 2) time, O(n) space
+function rotateGrid(grid, n) {
+  let newGrid = [];
+  for (let i = 0; i < n; i ++) {
+    let inner = [];
+    for (let j = n - 1; j >= 0; j--) {
+      inner.push(grid[j][i]);
+    }
+    newGrid.push(inner);
+  }
+  return newGrid;
+}
+
+// O(n) time, O(1) space
 function rotateGrid(grid, n) {
   
   // this loop tracks which ring we are on

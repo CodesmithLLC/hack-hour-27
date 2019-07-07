@@ -21,4 +21,6 @@ function drawStairs(n) {
     }
   }
 
+  // how to print something without have a new line char (which console.log creates) is something called process.stdout.write() on the last one. but you need to console.log everything before the last line bc you need to see the new lines that console.log creates. it would make it all one line because of the \n that's implicit to console.log
+
 module.exports = drawStairs;

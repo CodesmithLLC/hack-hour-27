@@ -24,19 +24,20 @@
  *
  */
 
+
 function balancedParens(input) {
     if (typeof input !== 'string') return false;
-    var opposites = {
+    let opposites = {
         '(': ')',
         '{': '}',
         '[': ']'
     }
 
-    var openBrackets = ['(', '{', '['];
-    var closeBrackets = [']', '}', ')'];
-    var storage = [];
+    let openBrackets = ['(', '{', '['];
+    let closeBrackets = [']', '}', ')'];
+    let storage = [];
 
-    for (var i of input) {
+    for (let i of input) {
         if (openBrackets.includes(i)) {
             storage.push(i);
         }
@@ -50,3 +51,29 @@ function balancedParens(input) {
 }
 
 module.exports = balancedParens;
+
+
+
+
+
+
+
+
+
+
+// // HH archive sol'n
+// function balancedParens(input){
+//     var matches = {'[':']', '{':'}', '(':')'};
+//     var brackets = [];
+//     for (let i = 0; i < input.length; i++) {
+//       char = input[i];
+//       if (char in matches) {
+//         brackets.push(char);
+//       } else if (char === ']' || char === ')' || char === '}') {
+//         if (matches[brackets.pop()] !== char) {
+//           return false;
+//         }
+//       }
+//     }
+//     return !brackets.length;
+//   }

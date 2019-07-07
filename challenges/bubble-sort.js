@@ -15,4 +15,23 @@ return array;
 
 module.exports = bubbleSort;
 
-// recursion
+
+
+// jae
+// time-complexity: O(n^2)
+// space-complexity: O(1)
+function bubbleSort(array) {
+    let swapped;
+    do {
+      swapped = false;
+      for (let i = 0; i < array.length - 1; i += 1) {
+        if (array[i] > array[i + 1]) {
+          const temp = array[i];
+          array[i] = array[i + 1];
+          array[i + 1] = temp;
+          swapped = true;
+        }
+      }
+    } while (swapped);
+    return array;
+  }

@@ -17,8 +17,70 @@
  * 	 
  */
 
-function newIntersections(x, y){
-
+const testData = {
+  x:[0,1 ,2,3,4, 1],
+  y:[1,12,3,1,5, 0]
 }
+
+function newIntersections(x, y){
+  const hLines = makeLines(y, x);
+  const vLines = makeLines(x, y);
+  return compareAndMapArrs(hLines, vLines, compareLines);
+}
+
+function makeLines(alignedAxis, variantAxis){
+  const lines = [];
+  const alreadyHandledComps = new Set();
+  for (let i = 0; i<alignedAxis.length; i++){
+    if(alreadyHandledComps.has(alignedAxis[i])){
+      continue;
+    }
+    const line = {"aligned": alignedAxis[i], "variant":[variantAxis[i]]};
+    for(let j = i+1; j < alignedAxis.length; j++){
+      if(alignedAxis[i] === alignedAxis[j]){
+        line.variant.push(variantAxis[j]);
+      }
+    }
+    if(line.variant.length>1){
+      line.variant.sort((a,b)=>a-b);
+      lines.push(line);
+    }
+    alreadyHandledComps.add(alignedAxis[i]);
+  }
+  return lines;
+}
+
+function compareLines(hLine, vLine){
+  if(
+      (vLine.aligned> hLine.variant[0] && 
+        vLine.aligned< hLine.variant[hLine.variant.length-1]) 
+      &&
+      (hLine.aligned> vLine.variant[0] &&
+       hLine.aligned< vLine.variant[vLine.variant.length-1])
+    ){
+    return {x: vLine.aligned, y: hLine.aligned}
+  }
+}
+
+function compareAndMapArrs(arr1, arr2, cb){
+  const returnArr = [];
+  for(let i = 0; i < arr1.length; i++){
+    for(let j = 0; j < arr2.length; j++){
+      const item = cb(arr1[i], arr2[j])
+      if(item){
+        returnArr.push(item);
+      }
+    }
+  }
+  return returnArr;
+}
+console.log( newIntersections(
+        [-1, -2, 10, 2, 3, 3, 5, 5, 6, 9,  9, 12], 
+        [ 5, -5, -1, 3, 4, 9, 1, 6, 3, 3, 10, 5]
+      ))
+
+/*
+console.log(newIntersections(testData.x, testData.y));
+*/
 
 module.exports = newIntersections;

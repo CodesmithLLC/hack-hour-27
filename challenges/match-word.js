@@ -17,7 +17,7 @@ function matchWord(str) {
   for (let i = 0; i < cleanArr.length; i++){
     const topStack = stack[stack.length-1];
     const currentStr = cleanArr[i];
-    const reverseStr = cleanArr[i].split('').reverse().join('').toLowerCase();
+    const reverseStr = currentStr.split('').reverse().join('')
     if (topStack === reverseStr){
       stack.pop();
     } else{
@@ -31,13 +31,13 @@ function matchWord(str) {
   }
 }
 
-/*
+
 console.log(matchWord('__END_DNE-----') + ' -> true');
 console.log(matchWord('__ENDDNE__') + ' -> false');
 console.log(matchWord('IF()()fi[]') + ' -> true');
 console.log(matchWord('for__if__rof__fi') + ' -> false')
 console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw') + ' -> true')
 console.log(matchWord('') + ' -> true')
-*/
+
 
 module.exports = matchWord;

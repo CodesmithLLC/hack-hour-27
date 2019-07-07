@@ -32,6 +32,7 @@ var Node = function(value) {
   this.next = null;
 }
 
+// roughly O(n), just might take more iterations and O(1) space
 function hasCycle(head) {
   if (!head) return false;
   // a slower pointer and faster pointer to keep track of pace
@@ -39,6 +40,7 @@ function hasCycle(head) {
   let shark = head;
   // slow will eventually catch up if there is a cycle
   while (shark.next) {
+    // increment slow by one, fast by two
     axolotl = axolotl.next
     shark = shark.next.next;
     if (shark === axolotl) return true;
@@ -46,19 +48,18 @@ function hasCycle(head) {
   return false;
 }
 
+// O(n) space and time
+function hasCycle(head) {
+  const visited = new Set()
+  function recurse(node){
+    if (node.next === null) return false;
+    if (visited.has(node)) return true;
+    visited.add(node)
+    return recurse(node.next);
+  }
+  // initialize first recurse
+  return recurse(head);
+}
+
 module.exports = {Node: Node, hasCycle: hasCycle}
 
-
-// function hasCycle(head) {
-//   // set fast and slow variables
-//   let tortoise = head;
-//   let hare = head;
-//   // iterate through LL so long as the fast variable has a .next value
-//   while (hare.next !== null) {
-//     // increment slow by one, fast by two
-//     tortoise = tortoise.next;
-//     hare = hare.next.next;
-//     if (tortoise === hare) return true;
-//   }
-//   return false;
-// }

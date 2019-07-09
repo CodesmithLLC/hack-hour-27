@@ -35,7 +35,7 @@ module.exports = deleteDups;
   
 // }
 // // Nested loops
-// // Time Complexity: O(N^2)
+// // Time Complexity: O(N^2)s
 // // Space Complexity: O(1)
 // function deleteDups2(head) {
 //   let inner;

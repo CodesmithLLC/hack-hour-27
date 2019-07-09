@@ -57,7 +57,7 @@ function hasCycle(head) {
     visited.add(node)
     return recurse(node.next);
   }
-  // initialize first recurse
+  // initialize
   return recurse(head);
 }
 
